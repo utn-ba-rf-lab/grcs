@@ -1,2 +1,2 @@
 # grcs
-GNU Radio codes
+GNU Radio codes for some SDR's
