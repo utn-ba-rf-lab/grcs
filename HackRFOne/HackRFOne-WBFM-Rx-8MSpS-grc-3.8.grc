@@ -36,7 +36,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 1,2,1,1
+    gui_hint: 1,3,1,1
     label: Volumen
     min_len: '200'
     orient: Qt.Horizontal
@@ -50,7 +50,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 680.0]
+    coordinate: [496, 692.0]
     rotation: 0
     state: true
 - name: BB_Gain
@@ -71,7 +71,36 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 536.0]
+    coordinate: [624, 532.0]
+    rotation: 0
+    state: true
+- name: Bandwidth
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: 1,2,1,1
+    label: bandwidth
+    label0: Auto
+    label1: 1,75 MHz
+    label2: 20 MHz
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '3'
+    option1: 1.75e6
+    option2: 20e6
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: real
+    value: '0'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 684.0]
     rotation: 0
     state: true
 - name: FI_BWD
@@ -121,39 +150,18 @@ blocks:
   parameters:
     comment: ''
     'false': '0'
-    gui_hint: 0,3,1,1
-    label: RF Gain
-    'true': '13'
-    type: raw
-    value: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [376, 536.0]
-    rotation: 0
-    state: disabled
-- name: RF_Gain
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
     gui_hint: 0,2,1,1
-    label: RF Gain
-    min_len: '200'
-    orient: Qt.Horizontal
-    rangeType: float
-    start: '0'
-    step: '1'
-    stop: '13'
+    label: RF Gain (13 dB)
+    'true': '13'
+    type: real
     value: '0'
-    widget: counter
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 536.0]
+    coordinate: [288, 540.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: fi
   id: variable
   parameters:
@@ -522,7 +530,7 @@ blocks:
     bb_gain7: '20'
     bb_gain8: '20'
     bb_gain9: '20'
-    bw0: '0'
+    bw0: Bandwidth
     bw1: '0'
     bw10: '0'
     bw11: '0'
@@ -1078,7 +1086,7 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_HORIZ
-    gui_hint: 1,3,1,1
+    gui_hint: 1,4,1,1
     label1: "Se\xF1al"
     label10: ''
     label2: ''
