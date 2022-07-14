@@ -299,7 +299,7 @@ blocks:
     audio_decim: '1'
     audio_pass: '5000'
     audio_stop: '6000'
-    chan_rate: samp_rate/100
+    chan_rate: samp_rate/50
     comment: ''
     deviation: '5000'
     gain: '1'
@@ -976,7 +976,7 @@ blocks:
     autoscale: 'False'
     average: '0.1'
     axislabels: 'True'
-    bw: samp_rate/100
+    bw: samp_rate/50
     color1: '"blue"'
     color10: '"dark blue"'
     color2: '"red"'
@@ -1056,7 +1056,7 @@ blocks:
     autoscale: 'False'
     average: '0.1'
     axislabels: 'True'
-    bw: samp_rate/100
+    bw: samp_rate/50
     color1: '"blue"'
     color10: '"dark blue"'
     color2: '"red"'
