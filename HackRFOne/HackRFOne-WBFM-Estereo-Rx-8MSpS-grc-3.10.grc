@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: HackRFOne_WBFM
+    id: HackRFOne_WBFM_Estereo
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -28,7 +28,7 @@ options:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12.0]
+    coordinate: [176, 12.0]
     rotation: 0
     state: enabled
 
@@ -117,7 +117,7 @@ blocks:
     start: 10e3
     step: 10e3
     stop: 250E3
-    value: 250e3
+    value: 200e3
     widget: counter
   states:
     bus_sink: false
@@ -1662,7 +1662,7 @@ blocks:
     label2: Post Dect
     label3: Tono piloto duplicado
     label4: Salida estereo
-    label5: "Detecci\xF3n sincr\xF3nica"
+    label5: "Constalaci\xF3n RDS"
     label6: Tab 6
     label7: Tab 7
     label8: Tab 8
