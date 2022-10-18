@@ -778,7 +778,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 796.0]
+    coordinate: [704, 788.0]
     rotation: 0
     state: enabled
 - name: freq_xlating_fir_filter_xxx_0
@@ -812,13 +812,13 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: samp_rate / decimation
-    taps: firdes.low_pass(1.0, samp_rate / decimation, 7.5e3, 5e3)
+    taps: firdes.low_pass(1.0, samp_rate / decimation, 2e3, 1e3)
     type: fcc
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [876.0, 488]
+    coordinate: [876.0, 432]
     rotation: 270
     state: enabled
 - name: import_0
@@ -870,7 +870,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [828.0, 488]
+    coordinate: [828.0, 432]
     rotation: 90
     state: enabled
 - name: note_1
@@ -1578,6 +1578,87 @@ blocks:
     coordinate: [936, 212.0]
     rotation: 180
     state: true
+- name: qtgui_freq_sink_x_0_0_1
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    average: '0.2'
+    axislabels: 'True'
+    bw: samp_rate // decimation // 10
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'True'
+    fc: '57000'
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'True'
+    gui_hint: qtgui_tab@3:0,0,5,5
+    label: Relative Gain
+    label1: ''
+    label10: ''''''
+    label2: ''''''
+    label3: ''''''
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    norm_window: 'False'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: complex
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: window.WIN_BLACKMAN_hARRIS
+    ymax: '-40'
+    ymin: '-80'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 612.0]
+    rotation: 180
+    state: true
 - name: qtgui_number_sink_0
   id: qtgui_number_sink
   parameters:
@@ -1647,8 +1728,8 @@ blocks:
     alias: ''
     comment: ''
     gui_hint: 2,0,5,5
-    label0: RF
-    label1: Post FI
+    label0: Espectro de RF
+    label1: Espectro Post FI
     label10: Tab 10
     label11: Tab 11
     label12: Tab 12
@@ -1659,8 +1740,8 @@ blocks:
     label17: Tab 17
     label18: Tab 18
     label19: Tab 19
-    label2: Post Dect
-    label3: Tono piloto duplicado
+    label2: Espectro Post Dect
+    label3: Espectro de RDS
     label4: Salida estereo
     label5: "Constalaci\xF3n RDS"
     label6: Tab 6
@@ -1771,7 +1852,7 @@ blocks:
     bus_structure: null
     coordinate: [1212.0, 536]
     rotation: 270
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -1906,7 +1987,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 692.0]
+    coordinate: [736, 692.0]
     rotation: 180
     state: true
 
@@ -1948,6 +2029,7 @@ connections:
 - [fir_filter_xxx_2, '0', analog_agc_xx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_quadrature_demod_cf_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', qtgui_freq_sink_x_0_0, '0']
+- [freq_xlating_fir_filter_xxx_1_0, '0', qtgui_freq_sink_x_0_0_1, '0']
 - [freq_xlating_fir_filter_xxx_1_0, '0', rational_resampler_xxx_1, '0']
 - [osmosdr_source_0, '0', blocks_add_const_vxx_0, '0']
 - [osmosdr_source_0, '0', blocks_complex_to_mag_0, '0']
