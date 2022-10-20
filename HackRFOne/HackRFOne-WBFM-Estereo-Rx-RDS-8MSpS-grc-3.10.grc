@@ -812,7 +812,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: samp_rate / decimation
-    taps: firdes.low_pass(1.0, samp_rate / decimation, 2e3, 1e3)
+    taps: firdes.low_pass(1.0, samp_rate / decimation, 3e3, 1e3)
     type: fcc
   states:
     bus_sink: false
