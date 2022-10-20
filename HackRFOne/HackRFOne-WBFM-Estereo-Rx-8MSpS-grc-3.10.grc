@@ -442,7 +442,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 348.0]
+    coordinate: [296, 348.0]
     rotation: 0
     state: true
 - name: blocks_add_xx_0
@@ -492,7 +492,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 104.0]
+    coordinate: [296, 128.0]
     rotation: 0
     state: true
 - name: blocks_delay_0
@@ -531,8 +531,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 144.0]
-    rotation: 180
+    coordinate: [472, 100.0]
+    rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0_0
   id: blocks_multiply_const_vxx
@@ -1719,7 +1719,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 244.0]
+    coordinate: [648, 100.0]
     rotation: 0
     state: true
 - name: qtgui_tab
