@@ -314,24 +314,6 @@ blocks:
     coordinate: [336, 104.0]
     rotation: 0
     state: true
-- name: blocks_file_sink_0
-  id: blocks_file_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    append: 'False'
-    comment: ''
-    file: /home/mdoallo/Descargas/WBFM-Navia-400Ksps
-    type: complex
-    unbuffered: 'False'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [744, 164.0]
-    rotation: 0
-    state: disabled
 - name: blocks_moving_average_xx_0
   id: blocks_moving_average_xx
   parameters:
@@ -1184,7 +1166,6 @@ connections:
 - [dc_blocker_xx_0, '0', low_pass_filter_1, '0']
 - [dc_blocker_xx_0, '0', qtgui_freq_sink_x_0_0_0, '0']
 - [low_pass_filter_0, '0', analog_fm_demod_cf_0, '0']
-- [low_pass_filter_0, '0', blocks_file_sink_0, '0']
 - [low_pass_filter_0, '0', qtgui_freq_sink_x_0_0, '0']
 - [low_pass_filter_1, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_multiply_const_vxx_0, '0']
