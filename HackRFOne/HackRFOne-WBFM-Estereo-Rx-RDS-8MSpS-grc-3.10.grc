@@ -199,7 +199,7 @@ blocks:
     rangeType: float
     start: '88'
     step: '0.2'
-    stop: '108'
+    stop: '130'
     value: '100.7'
     widget: counter
   states:
@@ -1365,7 +1365,7 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     fc: freq_sdr
     fftsize: '1024'
     freqhalf: 'True'
