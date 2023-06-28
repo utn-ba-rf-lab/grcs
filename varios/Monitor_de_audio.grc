@@ -285,7 +285,7 @@ blocks:
     affinity: ''
     alias: ''
     autoscale: 'False'
-    avg: '0.5'
+    avg: '0.25'
     color1: ("black", "red")
     color10: ("black", "black")
     color2: ("black", "black")

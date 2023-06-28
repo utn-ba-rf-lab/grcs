@@ -480,27 +480,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 128.0]
+    coordinate: [296, 176.0]
     rotation: 0
     state: true
-- name: blocks_moving_average_xx_0
-  id: blocks_moving_average_xx
+- name: blocks_max_xx_0
+  id: blocks_max_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    length: '1000'
-    max_iter: '4000'
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: '0.001'
+    num_inputs: '1'
     type: float
-    vlen: '1'
+    vlen: '1024'
+    vlen_out: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [472, 100.0]
+    coordinate: [640, 164.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0_1
@@ -543,6 +542,24 @@ blocks:
     bus_structure: null
     coordinate: [736, 420.0]
     rotation: 180
+    state: true
+- name: blocks_stream_to_vector_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: '1024'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 176.0]
+    rotation: 0
     state: true
 - name: fir_filter_xxx_1
   id: fir_filter_xxx
@@ -1115,14 +1132,14 @@ blocks:
     coordinate: [744, 244.0]
     rotation: 0
     state: true
-- name: qtgui_number_sink_0
+- name: qtgui_number_sink_0_0
   id: qtgui_number_sink
   parameters:
     affinity: ''
     alias: ''
     autoscale: 'False'
-    avg: '1'
-    color1: ("blue", "red")
+    avg: '0.1'
+    color1: ("black", "red")
     color10: ("black", "black")
     color2: ("black", "black")
     color3: ("black", "black")
@@ -1145,7 +1162,7 @@ blocks:
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_HORIZ
     gui_hint: 0,5,1,1
-    label1: "Se\xF1al"
+    label1: Nivel Ent.
     label10: ''
     label2: ''
     label3: ''
@@ -1170,12 +1187,12 @@ blocks:
     unit7: ''
     unit8: ''
     unit9: ''
-    update_time: '0.5'
+    update_time: '0.10'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [648, 100.0]
+    coordinate: [976, 148.0]
     rotation: 0
     state: true
 - name: qtgui_tab
@@ -1239,10 +1256,11 @@ connections:
 - [analog_quadrature_demod_cf_0, '0', rational_resampler_xxx_0_0, '0']
 - [blocks_add_const_vxx_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [blocks_add_const_vxx_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_complex_to_mag_0, '0', blocks_moving_average_xx_0, '0']
-- [blocks_moving_average_xx_0, '0', qtgui_number_sink_0, '0']
+- [blocks_complex_to_mag_0, '0', blocks_stream_to_vector_0, '0']
+- [blocks_max_xx_0, '0', qtgui_number_sink_0_0, '0']
 - [blocks_multiply_const_vxx_0_1, '0', audio_sink_0_0, '0']
 - [blocks_selector_0, '0', blocks_multiply_const_vxx_0_1, '0']
+- [blocks_stream_to_vector_0, '0', blocks_max_xx_0, '0']
 - [fir_filter_xxx_1, '0', analog_fm_deemph_0_0_0, '0']
 - [fir_filter_xxx_1, '0', analog_fm_deemph_0_0_0_0, '0']
 - [fir_filter_xxx_1, '0', blocks_selector_0, '0']
