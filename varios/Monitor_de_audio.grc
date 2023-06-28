@@ -97,7 +97,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 364.0]
+    coordinate: [488, 364.0]
     rotation: 0
     state: true
 - name: blocks_rms_xx_0
@@ -339,7 +339,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 348.0]
+    coordinate: [696, 348.0]
     rotation: 0
     state: true
 - name: qtgui_tab
