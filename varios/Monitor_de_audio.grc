@@ -33,6 +33,29 @@ options:
     state: enabled
 
 blocks:
+- name: Graba
+  id: variable_qtgui_toggle_button_msg
+  parameters:
+    comment: ''
+    gui_hint: 2,4,1,1
+    initPressed: 'False'
+    label: Graba
+    outputmsgname: value
+    pressBackgroundColor: red
+    pressFontColor: black
+    pressed: '1'
+    relBackgroundColor: default
+    relFontColor: default
+    released: '0'
+    type: int
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 12.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -61,7 +84,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 148.0]
+    coordinate: [16, 260.0]
     rotation: 0
     state: true
 - name: blocks_abs_xx_0_0
@@ -100,6 +123,23 @@ blocks:
     coordinate: [488, 364.0]
     rotation: 0
     state: true
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 464.0]
+    rotation: 0
+    state: true
 - name: blocks_rms_xx_0
   id: blocks_rms_xx
   parameters:
@@ -115,6 +155,29 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [240, 228.0]
+    rotation: 0
+    state: true
+- name: blocks_selector_0
+  id: blocks_selector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enabled: 'True'
+    input_index: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    num_outputs: '2'
+    output_index: Graba
+    showports: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [240, 444.0]
     rotation: 0
     state: true
 - name: blocks_stream_to_vector_0
@@ -135,6 +198,28 @@ blocks:
     coordinate: [328, 376.0]
     rotation: 0
     state: true
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    bits_per_sample1: FORMAT_PCM_16
+    bits_per_sample2: FORMAT_PCM_16
+    bits_per_sample3: FORMAT_VORBIS
+    bits_per_sample4: FORMAT_PCM_16
+    comment: ''
+    file: /home/mdoallo/Descargas/salida.wav
+    format: FORMAT_WAV
+    nchan: '1'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 460.0]
+    rotation: 0
+    state: enabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -308,7 +393,7 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_VERT
-    gui_hint: 1,4,2,1
+    gui_hint: 1,4,1,1
     label1: Nivel Ent.
     label10: ''
     label2: ''
@@ -339,7 +424,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 348.0]
+    coordinate: [704, 348.0]
     rotation: 0
     state: true
 - name: qtgui_tab
@@ -477,11 +562,14 @@ blocks:
 connections:
 - [audio_source_0, '0', blocks_abs_xx_0_0, '0']
 - [audio_source_0, '0', blocks_rms_xx_0, '0']
+- [audio_source_0, '0', blocks_selector_0, '0']
 - [audio_source_0, '0', qtgui_freq_sink_x_0, '0']
 - [audio_source_0, '0', qtgui_time_sink_x_0, '0']
 - [blocks_abs_xx_0_0, '0', blocks_stream_to_vector_0, '0']
 - [blocks_max_xx_0, '0', qtgui_number_sink_0_0, '0']
 - [blocks_rms_xx_0, '0', qtgui_number_sink_0, '0']
+- [blocks_selector_0, '0', blocks_null_sink_0, '0']
+- [blocks_selector_0, '1', blocks_wavfile_sink_0, '0']
 - [blocks_stream_to_vector_0, '0', blocks_max_xx_0, '0']
 
 metadata:
