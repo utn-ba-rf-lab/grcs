@@ -56,6 +56,42 @@ blocks:
     coordinate: [424, 12.0]
     rotation: 0
     state: true
+- name: date
+  id: variable
+  parameters:
+    comment: ''
+    value: datetime.now().strftime("%Y%m%d_%H%M%S(ARG)")
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [744, 12.0]
+    rotation: 0
+    state: true
+- name: file_name
+  id: variable
+  parameters:
+    comment: ''
+    value: '"NOAA_pass_"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 76.0]
+    rotation: 0
+    state: true
+- name: path
+  id: variable
+  parameters:
+    comment: ''
+    value: '"/home/mdoallo/Descargas/"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 76.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -68,6 +104,22 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
+- name: variable_qtgui_label_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: ''
+    label: 'label = '
+    type: int
+    value: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 204.0]
+    rotation: 0
+    state: true
 - name: audio_source_0
   id: audio_source
   parameters:
@@ -209,7 +261,7 @@ blocks:
     bits_per_sample3: FORMAT_VORBIS
     bits_per_sample4: FORMAT_PCM_16
     comment: ''
-    file: /home/mdoallo/Descargas/salida.wav
+    file: path + file_name + date +".wav"
     format: FORMAT_WAV
     nchan: '1'
     samp_rate: samp_rate
@@ -220,6 +272,19 @@ blocks:
     coordinate: [568, 460.0]
     rotation: 0
     state: enabled
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from datetime import datetime
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 12.0]
+    rotation: 0
+    state: true
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
