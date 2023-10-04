@@ -190,7 +190,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: 1,1,1,1
-    label: Frec. de modulante 1 [KHz]
+    label: Frec. de modulante 2 [KHz]
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
