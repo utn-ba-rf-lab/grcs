@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: HackRFOne_WBFM_Estereo
+    id: SIM_APT137_Rx
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Receptor de NOAA APT 137 MHz
+    title: Simulador de Receptor de NOAA APT 137 MHz
     window_size: ''
   states:
     bus_sink: false
@@ -51,7 +51,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 732.0]
+    coordinate: [352, 732.0]
     rotation: 0
     state: true
 - name: FI_BWD
@@ -75,6 +75,29 @@ blocks:
     coordinate: [176, 732.0]
     rotation: 0
     state: true
+- name: Graba
+  id: variable_qtgui_toggle_button_msg
+  parameters:
+    comment: ''
+    gui_hint: 5,5,1,1
+    initPressed: 'False'
+    label: Graba
+    outputmsgname: value
+    pressBackgroundColor: red
+    pressFontColor: black
+    pressed: '1'
+    relBackgroundColor: default
+    relFontColor: default
+    released: '0'
+    type: int
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 732.0]
+    rotation: 0
+    state: true
 - name: center
   id: variable
   parameters:
@@ -87,6 +110,18 @@ blocks:
     coordinate: [32, 596.0]
     rotation: 0
     state: true
+- name: date
+  id: variable
+  parameters:
+    comment: ''
+    value: datetime.now().strftime("%Y%m%d_%H%M%S(ARG)")
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [928, 12.0]
+    rotation: 0
+    state: true
 - name: decimation
   id: variable
   parameters:
@@ -96,7 +131,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [528, 12.0]
+    coordinate: [440, 12.0]
     rotation: 0
     state: enabled
 - name: fi
@@ -111,13 +146,37 @@ blocks:
     start: -samp_rate/2
     step: '100'
     stop: samp_rate/2
-    value: '0'
+    value: '112500'
     widget: counter
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [176, 596.0]
+    rotation: 0
+    state: true
+- name: file_name
+  id: variable
+  parameters:
+    comment: ''
+    value: '"NOAA_pass_"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1112, 12.0]
+    rotation: 0
+    state: true
+- name: path
+  id: variable
+  parameters:
+    comment: ''
+    value: '"/home/mdoallo/Descargas/"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [752, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -141,7 +200,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [624, 12.0]
+    coordinate: [536, 12.0]
     rotation: 0
     state: enabled
 - name: sintonia_qtgui_label
@@ -193,6 +252,23 @@ blocks:
     coordinate: [528, 436.0]
     rotation: 180
     state: enabled
+- name: blocks_abs_xx_0_0
+  id: blocks_abs_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 624.0]
+    rotation: 0
+    state: enabled
 - name: blocks_complex_to_mag_0
   id: blocks_complex_to_mag
   parameters:
@@ -209,22 +285,6 @@ blocks:
     coordinate: [280, 248.0]
     rotation: 180
     state: enabled
-- name: blocks_complex_to_mag_0_0
-  id: blocks_complex_to_mag
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [752, 128.0]
-    rotation: 0
-    state: enabled
 - name: blocks_file_source_0
   id: blocks_file_source
   parameters:
@@ -232,7 +292,7 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: /home/mdoallo/Descargas/gqrx_20230801_137912500Hz_2400KSpS.raw
+    file: /home/mdoallo/Descargas/gqrx_20230801_137800000Hz_2400KSpS.raw
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -244,7 +304,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 268.0]
+    coordinate: [208, 324.0]
     rotation: 0
     state: true
 - name: blocks_max_xx_0
@@ -263,27 +323,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 132.0]
+    coordinate: [112, 164.0]
     rotation: 0
     state: enabled
-- name: blocks_moving_average_xx_0_0
-  id: blocks_moving_average_xx
+- name: blocks_max_xx_0_0
+  id: blocks_max_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    length: '1000'
-    max_iter: '4000'
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: '0.001'
+    num_inputs: '1'
     type: float
-    vlen: '1'
+    vlen: '1024'
+    vlen_out: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 100.0]
+    coordinate: [952, 612.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0_1
@@ -301,9 +360,84 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [784, 436.0]
+    coordinate: [816, 436.0]
     rotation: 180
     state: enabled
+- name: blocks_nlog10_ff_0
+  id: blocks_nlog10_ff
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    k: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    n: '20'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [888, 124.0]
+    rotation: 0
+    state: true
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1064, 736.0]
+    rotation: 0
+    state: true
+- name: blocks_rms_xx_0
+  id: blocks_rms_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 124.0]
+    rotation: 0
+    state: true
+- name: blocks_selector_0
+  id: blocks_selector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enabled: 'True'
+    input_index: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    num_outputs: '2'
+    output_index: Graba
+    showports: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 716.0]
+    rotation: 0
+    state: true
 - name: blocks_stream_to_vector_0
   id: blocks_stream_to_vector
   parameters:
@@ -319,28 +453,49 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 200.0]
+    coordinate: [112, 248.0]
     rotation: 180
     state: enabled
-- name: blocks_throttle_0
-  id: blocks_throttle
+- name: blocks_stream_to_vector_0_0
+  id: blocks_stream_to_vector
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    ignoretag: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samples_per_second: samp_rate
-    type: complex
+    num_items: '1024'
+    type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 300.0]
+    coordinate: [792, 624.0]
     rotation: 0
-    state: true
+    state: enabled
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    bits_per_sample1: FORMAT_PCM_16
+    bits_per_sample2: FORMAT_PCM_16
+    bits_per_sample3: FORMAT_VORBIS
+    bits_per_sample4: FORMAT_PCM_16
+    comment: ''
+    file: path + file_name + date +".wav"
+    format: FORMAT_WAV
+    nchan: '1'
+    samp_rate: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1168, 732.0]
+    rotation: 0
+    state: enabled
 - name: entrada
   id: qtgui_number_sink
   parameters:
@@ -370,7 +525,7 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_VERT
-    gui_hint: 0,5,3,1
+    gui_hint: 0,5,2,1
     label1: "Se\xF1al"
     label10: ''
     label2: ''
@@ -453,16 +608,29 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 12.0]
+    coordinate: [648, 12.0]
     rotation: 0
     state: enabled
+- name: import_0_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from datetime import datetime
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 60.0]
+    rotation: 0
+    state: true
 - name: qt_gui_num_fi
   id: qtgui_number_sink
   parameters:
     affinity: ''
     alias: ''
     autoscale: 'False'
-    avg: '1'
+    avg: '0.0001'
     color1: ("blue", "red")
     color10: ("black", "black")
     color2: ("black", "black")
@@ -484,9 +652,9 @@ blocks:
     factor7: '1'
     factor8: '1'
     factor9: '1'
-    graph_type: qtgui.NUM_GRAPH_VERT
-    gui_hint: 3,5,3,1
-    label1: "Se\xF1al"
+    graph_type: qtgui.NUM_GRAPH_NONE
+    gui_hint: 2,5,1,1
+    label1: Pot. en FI
     label10: ''
     label2: ''
     label3: ''
@@ -498,10 +666,10 @@ blocks:
     label9: ''
     max: '1'
     min: '0'
-    name: '"FI"'
+    name: ''
     nconnections: '1'
     type: float
-    unit1: ''
+    unit1: dBFS
     unit10: ''
     unit2: ''
     unit3: ''
@@ -516,7 +684,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 92.0]
+    coordinate: [1000, 100.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -759,8 +927,71 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 492.0]
+    coordinate: [768, 492.0]
     rotation: 180
+    state: enabled
+- name: qtgui_number_sink_salida
+  id: qtgui_number_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    autoscale: 'False'
+    avg: '0.25'
+    color1: ("black", "red")
+    color10: ("black", "black")
+    color2: ("black", "black")
+    color3: ("black", "black")
+    color4: ("black", "black")
+    color5: ("black", "black")
+    color6: ("black", "black")
+    color7: ("black", "black")
+    color8: ("black", "black")
+    color9: ("black", "black")
+    comment: ''
+    factor1: '1'
+    factor10: '1'
+    factor2: '1'
+    factor3: '1'
+    factor4: '1'
+    factor5: '1'
+    factor6: '1'
+    factor7: '1'
+    factor8: '1'
+    factor9: '1'
+    graph_type: qtgui.NUM_GRAPH_VERT
+    gui_hint: 3,5,2,1
+    label1: Nivel Ent.
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    max: '1'
+    min: '0'
+    name: '""'
+    nconnections: '1'
+    type: float
+    unit1: ''
+    unit10: ''
+    unit2: ''
+    unit3: ''
+    unit4: ''
+    unit5: ''
+    unit6: ''
+    unit7: ''
+    unit8: ''
+    unit9: ''
+    update_time: '0.10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 596.0]
+    rotation: 0
     state: enabled
 - name: qtgui_tab
   id: qtgui_tab_widget
@@ -880,21 +1111,27 @@ blocks:
 
 connections:
 - [analog_quadrature_demod_cf_0, '0', rational_resampler_xxx_0_0, '0']
+- [blocks_abs_xx_0_0, '0', blocks_stream_to_vector_0_0, '0']
 - [blocks_complex_to_mag_0, '0', blocks_stream_to_vector_0, '0']
-- [blocks_complex_to_mag_0_0, '0', blocks_moving_average_xx_0_0, '0']
-- [blocks_file_source_0, '0', blocks_throttle_0, '0']
+- [blocks_file_source_0, '0', blocks_complex_to_mag_0, '0']
+- [blocks_file_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [blocks_file_source_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_file_source_0, '0', qtgui_waterfall_sink_x_0, '0']
 - [blocks_max_xx_0, '0', entrada, '0']
-- [blocks_moving_average_xx_0_0, '0', qt_gui_num_fi, '0']
+- [blocks_max_xx_0_0, '0', qtgui_number_sink_salida, '0']
 - [blocks_multiply_const_vxx_0_1, '0', audio_sink_0_0, '0']
+- [blocks_multiply_const_vxx_0_1, '0', blocks_abs_xx_0_0, '0']
+- [blocks_multiply_const_vxx_0_1, '0', blocks_selector_0, '0']
+- [blocks_nlog10_ff_0, '0', qt_gui_num_fi, '0']
+- [blocks_rms_xx_0, '0', blocks_nlog10_ff_0, '0']
+- [blocks_selector_0, '0', blocks_null_sink_0, '0']
+- [blocks_selector_0, '1', blocks_wavfile_sink_0, '0']
 - [blocks_stream_to_vector_0, '0', blocks_max_xx_0, '0']
-- [blocks_throttle_0, '0', blocks_complex_to_mag_0, '0']
-- [blocks_throttle_0, '0', freq_xlating_fir_filter_xxx_0, '0']
-- [blocks_throttle_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_throttle_0, '0', qtgui_waterfall_sink_x_0, '0']
+- [blocks_stream_to_vector_0_0, '0', blocks_max_xx_0_0, '0']
 - [fir_filter_xxx_1, '0', blocks_multiply_const_vxx_0_1, '0']
 - [fir_filter_xxx_1, '0', qtgui_freq_sink_x_0_0_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_quadrature_demod_cf_0, '0']
-- [freq_xlating_fir_filter_xxx_0, '0', blocks_complex_to_mag_0_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', blocks_rms_xx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', qtgui_freq_sink_x_0_0, '0']
 - [rational_resampler_xxx_0_0, '0', fir_filter_xxx_1, '0']
 
