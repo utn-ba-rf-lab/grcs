@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Receptor de IQ
+    title: Receptor de QPSK
     window_size: ''
   states:
     bus_sink: false
@@ -37,7 +37,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 0,4,1,1
+    gui_hint: qtgui_tab@0:2,5,1,1
     label: BB Gain
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -51,14 +51,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 540.0]
+    coordinate: [848, 684.0]
     rotation: 0
     state: true
 - name: Bandwidth
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: 1,2,1,1
+    gui_hint: 0,2,1,1
     label: bandwidth
     label0: Auto
     label1: 1,75 MHz
@@ -88,7 +88,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 1,1,1,1
+    gui_hint: 0,1,1,1
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -109,7 +109,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 0,3,1,1
+    gui_hint: qtgui_tab@0:1,5,1,1
     label: FI Gain
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -123,14 +123,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 540.0]
+    coordinate: [848, 556.0]
     rotation: 0
     state: true
 - name: FreqCorrect
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 1,3,1,1
+    gui_hint: 0,3,1,1
     label: "Correcci\xF3n de frecuencia"
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -152,7 +152,7 @@ blocks:
   parameters:
     comment: ''
     'false': '0'
-    gui_hint: 0,2,1,1
+    gui_hint: qtgui_tab@0:0,5,1,1
     label: RF Gain (13 dB)
     'true': '13'
     type: real
@@ -161,7 +161,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 540.0]
+    coordinate: [848, 444.0]
     rotation: 0
     state: enabled
 - name: fi
@@ -180,10 +180,10 @@ blocks:
   id: variable_qtgui_entry
   parameters:
     comment: ''
-    gui_hint: 1,0,1,1
+    gui_hint: 0,0,1,1
     label: 'Sintonia '
     type: real
-    value: 20e6
+    value: 50e6
   states:
     bus_sink: false
     bus_source: false
@@ -195,7 +195,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 0,0,1,1
+    gui_hint: qtgui_tab@0:3,5,1,1
     label: Offset Re
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -209,14 +209,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 536.0]
+    coordinate: [848, 812.0]
     rotation: 0
     state: true
 - name: offset_Im
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 0,1,1,1
+    gui_hint: qtgui_tab@0:4,5,1,1
     label: Offset Im
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -230,7 +230,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [152, 536.0]
+    coordinate: [848, 940.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -336,31 +336,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [520, 400.0]
+    coordinate: [552, 400.0]
     rotation: 0
     state: true
-- name: high_pass_filter_0
-  id: high_pass_filter
+- name: digital_costas_loop_cc_0
+  id: digital_costas_loop_cc
   parameters:
     affinity: ''
     alias: ''
-    beta: '6.76'
     comment: ''
-    cutoff_freq: '100'
-    decim: '1'
-    gain: '1'
-    interp: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samp_rate: samp_rate/10
-    type: fir_filter_ccf
-    width: '1000'
-    win: window.WIN_HAMMING
+    order: '4'
+    use_snr: 'False'
+    w: '0.0628'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 308.0]
+    coordinate: [864, 144.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -797,7 +791,7 @@ blocks:
     marker9: '0'
     name: '""'
     nconnections: '1'
-    size: '800'
+    size: '1024'
     style1: '0'
     style10: '0'
     style2: '0'
@@ -833,7 +827,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 188.0]
+    coordinate: [1128, 132.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -871,7 +865,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'True'
-    gui_hint: qtgui_tab@0:0,0,5,5
+    gui_hint: qtgui_tab@0:0,0,5,4
     label: Relative Gain
     label1: ''
     label10: ''''''
@@ -995,7 +989,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 268.0]
+    coordinate: [1128, 196.0]
     rotation: 0
     state: true
 - name: qtgui_number_sink_0
@@ -1027,7 +1021,7 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_HORIZ
-    gui_hint: 1,4,1,1
+    gui_hint: 0,4,1,1
     label1: "Se\xF1al"
     label10: ''
     label2: ''
@@ -1066,7 +1060,7 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    gui_hint: 2,0,5,5
+    gui_hint: 1,0,5,5
     label0: RF
     label1: Post FI
     label10: Tab 10
@@ -1189,7 +1183,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 356.0]
+    coordinate: [1128, 284.0]
     rotation: 0
     state: true
 
@@ -1200,10 +1194,10 @@ connections:
 - [blocks_moving_average_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_multiply_xx_0, '0', low_pass_filter_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '0']
-- [high_pass_filter_0, '0', qtgui_const_sink_x_0, '0']
-- [high_pass_filter_0, '0', qtgui_freq_sink_x_0_0, '0']
-- [high_pass_filter_0, '0', qtgui_time_sink_x_0, '0']
-- [low_pass_filter_0, '0', high_pass_filter_0, '0']
+- [digital_costas_loop_cc_0, '0', qtgui_const_sink_x_0, '0']
+- [digital_costas_loop_cc_0, '0', qtgui_freq_sink_x_0_0, '0']
+- [digital_costas_loop_cc_0, '0', qtgui_time_sink_x_0, '0']
+- [low_pass_filter_0, '0', digital_costas_loop_cc_0, '0']
 - [osmosdr_source_0, '0', blocks_add_const_vxx_0, '0']
 - [osmosdr_source_0, '0', blocks_complex_to_mag_0, '0']
 
