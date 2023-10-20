@@ -45,7 +45,7 @@ blocks:
     start: '0'
     step: '2'
     stop: '62'
-    value: '20'
+    value: '22'
     widget: counter
   states:
     bus_sink: false
@@ -84,6 +84,29 @@ blocks:
     coordinate: [280, 684.0]
     rotation: 0
     state: true
+- name: Costas
+  id: variable_qtgui_toggle_button_msg
+  parameters:
+    comment: ''
+    gui_hint: qtgui_tab@2:2,5,1,1
+    initPressed: 'False'
+    label: Costas
+    outputmsgname: value
+    pressBackgroundColor: blue
+    pressFontColor: black
+    pressed: '1'
+    relBackgroundColor: default
+    relFontColor: default
+    released: '0'
+    type: int
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 396.0]
+    rotation: 0
+    state: true
 - name: FI_BWD
   id: variable_qtgui_range
   parameters:
@@ -117,7 +140,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '47'
-    value: '18'
+    value: '20'
     widget: counter
   states:
     bus_sink: false
@@ -339,6 +362,29 @@ blocks:
     coordinate: [552, 400.0]
     rotation: 0
     state: true
+- name: blocks_selector_0
+  id: blocks_selector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enabled: 'True'
+    input_index: Costas
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    num_outputs: '1'
+    output_index: '0'
+    showports: 'True'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [936, 28.0]
+    rotation: 0
+    state: true
 - name: digital_costas_loop_cc_0
   id: digital_costas_loop_cc
   parameters:
@@ -354,7 +400,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 144.0]
+    coordinate: [896, 256.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -767,7 +813,7 @@ blocks:
     color9: '"red"'
     comment: ''
     grid: 'True'
-    gui_hint: qtgui_tab@2:0,0,5,5
+    gui_hint: qtgui_tab@2:0,0,5,4
     label1: ''
     label10: ''
     label2: ''
@@ -791,8 +837,8 @@ blocks:
     marker9: '0'
     name: '""'
     nconnections: '1'
-    size: '1024'
-    style1: '0'
+    size: '800'
+    style1: '3'
     style10: '0'
     style2: '0'
     style3: '0'
@@ -827,7 +873,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 132.0]
+    coordinate: [1152, 132.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -942,7 +988,7 @@ blocks:
     color9: '"dark green"'
     comment: ''
     ctrlpanel: 'False'
-    fc: freq
+    fc: '0'
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'True'
@@ -989,7 +1035,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 196.0]
+    coordinate: [1152, 196.0]
     rotation: 0
     state: true
 - name: qtgui_number_sink_0
@@ -1160,7 +1206,7 @@ blocks:
     tr_chan: '0'
     tr_delay: '0'
     tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_mode: qtgui.TRIG_MODE_AUTO
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
     type: complex
@@ -1183,7 +1229,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 284.0]
+    coordinate: [1152, 284.0]
     rotation: 0
     state: true
 
@@ -1194,9 +1240,11 @@ connections:
 - [blocks_moving_average_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_multiply_xx_0, '0', low_pass_filter_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '0']
-- [digital_costas_loop_cc_0, '0', qtgui_const_sink_x_0, '0']
-- [digital_costas_loop_cc_0, '0', qtgui_freq_sink_x_0_0, '0']
-- [digital_costas_loop_cc_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_selector_0, '0', qtgui_const_sink_x_0, '0']
+- [blocks_selector_0, '0', qtgui_freq_sink_x_0_0, '0']
+- [blocks_selector_0, '0', qtgui_time_sink_x_0, '0']
+- [digital_costas_loop_cc_0, '0', blocks_selector_0, '1']
+- [low_pass_filter_0, '0', blocks_selector_0, '0']
 - [low_pass_filter_0, '0', digital_costas_loop_cc_0, '0']
 - [osmosdr_source_0, '0', blocks_add_const_vxx_0, '0']
 - [osmosdr_source_0, '0', blocks_complex_to_mag_0, '0']
