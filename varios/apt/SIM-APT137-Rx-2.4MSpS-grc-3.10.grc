@@ -403,7 +403,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    alpha: '1'
+    alpha: '.000001'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -630,7 +630,7 @@ blocks:
     affinity: ''
     alias: ''
     autoscale: 'False'
-    avg: '0.0001'
+    avg: '1'
     color1: ("blue", "red")
     color10: ("black", "black")
     color2: ("black", "black")
@@ -679,7 +679,7 @@ blocks:
     unit7: ''
     unit8: ''
     unit9: ''
-    update_time: '0.5'
+    update_time: '0.1'
   states:
     bus_sink: false
     bus_source: false
