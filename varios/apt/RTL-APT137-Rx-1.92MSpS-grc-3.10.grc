@@ -51,7 +51,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 732.0]
+    coordinate: [520, 732.0]
     rotation: 0
     state: true
 - name: FI_BWD
@@ -59,7 +59,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: 1,1,1,1
-    label: ''
+    label: Ancho de banda [Hz]
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -93,7 +93,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 732.0]
+    coordinate: [336, 732.0]
     rotation: 0
     state: true
 - name: agc_toggle_button_msg
@@ -116,7 +116,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 596.0]
+    coordinate: [336, 596.0]
     rotation: 0
     state: true
 - name: center
@@ -157,14 +157,14 @@ blocks:
   parameters:
     comment: ''
     gui_hint: 0,1,1,1
-    label: FI [Hz]
+    label: Frec. Intermedia [KHz]
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: -samp_rate/2
     step: '100'
     stop: samp_rate/2
-    value: '0'
+    value: '70000'
     widget: counter
   states:
     bus_sink: false
@@ -189,7 +189,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: center*1e6 - fi
+    value: center*1e6 +fi
   states:
     bus_sink: false
     bus_source: false
@@ -201,11 +201,11 @@ blocks:
   id: variable_qtgui_label
   parameters:
     comment: ''
-    formatter: 'lambda x: f''{x:.0f}'''
+    formatter: 'lambda x: f''{x:.6f}'''
     gui_hint: 1,0,1,1
-    label: 'Sintonia [Hz]: '
+    label: 'Sintonia [MHz]: '
     type: real
-    value: sintonia
+    value: sintonia/1e6
   states:
     bus_sink: false
     bus_source: false
@@ -468,45 +468,6 @@ blocks:
     coordinate: [760, 12.0]
     rotation: 0
     state: enabled
-- name: note_0
-  id: note
-  parameters:
-    alias: ''
-    comment: ''
-    note: NOAA-15 137.62 MHz
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [40, 372.0]
-    rotation: 0
-    state: true
-- name: note_0_0
-  id: note
-  parameters:
-    alias: ''
-    comment: ''
-    note: NOAA-18 137.9125 MHz
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [40, 420.0]
-    rotation: 0
-    state: true
-- name: note_0_0_0
-  id: note
-  parameters:
-    alias: ''
-    comment: ''
-    note: NOAA-19 137.1 MHz
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [40, 468.0]
-    rotation: 0
-    state: true
 - name: qt_gui_num_fi
   id: qtgui_number_sink
   parameters:
@@ -935,7 +896,11 @@ blocks:
     agc: agc_toggle_button_msg
     alias: ''
     center_freq: center*1e6
-    comment: ''
+    comment: 'NOAA-15 137.62 MHz
+
+      NOAA-18 137.9125 MHz
+
+      NOAA-19 137.1 MHz'
     dev_args: ''
     freq_correction: '0'
     gain: RF_Gain
