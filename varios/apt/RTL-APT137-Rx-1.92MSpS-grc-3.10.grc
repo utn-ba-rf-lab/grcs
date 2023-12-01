@@ -510,7 +510,7 @@ blocks:
     label9: ''
     max: '1'
     min: '0'
-    name: '"FI"'
+    name: "\"FI con 0 en sinton\xEDa\""
     nconnections: '1'
     type: float
     unit1: ''
@@ -643,7 +643,7 @@ blocks:
     color9: '"dark green"'
     comment: ''
     ctrlpanel: 'True'
-    fc: sintonia
+    fc: '0'
     fftsize: '2048'
     freqhalf: 'True'
     grid: 'True'
