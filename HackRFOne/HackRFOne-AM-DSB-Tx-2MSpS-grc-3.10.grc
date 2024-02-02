@@ -256,7 +256,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: Imaginary part
     const: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -317,7 +317,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: Offset correction
     const: complex(offset , offset_Im)
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -335,7 +335,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: Real part
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '3'
@@ -353,7 +353,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: Complex envelope
     maxoutbuf: '0'
     minoutbuf: '0'
     vlen: '1'
