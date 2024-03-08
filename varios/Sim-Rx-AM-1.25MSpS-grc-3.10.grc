@@ -269,8 +269,8 @@ blocks:
     coordinate: [296, 240.0]
     rotation: 0
     state: enabled
-- name: blocks_complex_to_mag_0_0
-  id: blocks_complex_to_mag
+- name: blocks_complex_to_mag_squared_0
+  id: blocks_complex_to_mag_squared
   parameters:
     affinity: ''
     alias: ''
@@ -282,9 +282,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 128.0]
+    coordinate: [736, 120.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: blocks_file_source_0
   id: blocks_file_source
   parameters:
@@ -332,26 +332,26 @@ blocks:
     coordinate: [288, 132.0]
     rotation: 0
     state: enabled
-- name: blocks_moving_average_xx_0_0
+- name: blocks_moving_average_xx_0
   id: blocks_moving_average_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    length: '1000'
+    length: '25000'
     max_iter: '4000'
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: '0.005'
+    scale: 1/25000
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 100.0]
+    coordinate: [904, 92.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: blocks_multiply_const_vxx_0_1
   id: blocks_multiply_const_vxx
   parameters:
@@ -388,6 +388,24 @@ blocks:
     coordinate: [112, 516.0]
     rotation: 0
     state: enabled
+- name: blocks_nlog10_ff_0
+  id: blocks_nlog10_ff
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    k: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    n: '10'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 116.0]
+    rotation: 0
+    state: true
 - name: blocks_stream_to_vector_0
   id: blocks_stream_to_vector
   parameters:
@@ -527,7 +545,7 @@ blocks:
     affinity: ''
     alias: ''
     autoscale: 'False'
-    avg: '.1'
+    avg: '.01'
     color1: ("blue", "red")
     color10: ("black", "black")
     color2: ("black", "black")
@@ -549,7 +567,7 @@ blocks:
     factor7: '1'
     factor8: '1'
     factor9: '1'
-    graph_type: qtgui.NUM_GRAPH_VERT
+    graph_type: qtgui.NUM_GRAPH_NONE
     gui_hint: 3,5,3,1
     label1: "Se\xF1al"
     label10: ''
@@ -566,7 +584,7 @@ blocks:
     name: ''
     nconnections: '1'
     type: float
-    unit1: ''
+    unit1: dbFS
     unit10: ''
     unit2: ''
     unit3: ''
@@ -581,7 +599,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1104, 100.0]
+    coordinate: [1184, 92.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -948,19 +966,20 @@ connections:
 - [analog_agc_xx_0, '0', qtgui_freq_sink_x_0_0, '1']
 - [analog_am_demod_cf_0, '0', rational_resampler_xxx_0_0, '0']
 - [blocks_complex_to_mag_0, '0', blocks_stream_to_vector_0, '0']
-- [blocks_complex_to_mag_0_0, '0', blocks_moving_average_xx_0_0, '0']
+- [blocks_complex_to_mag_squared_0, '0', blocks_moving_average_xx_0, '0']
 - [blocks_file_source_0, '0', blocks_throttle_0, '0']
 - [blocks_max_xx_0, '0', entrada, '0']
-- [blocks_moving_average_xx_0_0, '0', qt_gui_num_fi, '0']
+- [blocks_moving_average_xx_0, '0', blocks_nlog10_ff_0, '0']
 - [blocks_multiply_const_vxx_0_1, '0', audio_sink_0_0, '0']
 - [blocks_multiply_const_vxx_0_1_0, '0', blocks_complex_to_mag_0, '0']
 - [blocks_multiply_const_vxx_0_1_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [blocks_multiply_const_vxx_0_1_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_multiply_const_vxx_0_1_0, '0', qtgui_waterfall_sink_x_0, '0']
+- [blocks_nlog10_ff_0, '0', qt_gui_num_fi, '0']
 - [blocks_stream_to_vector_0, '0', blocks_max_xx_0, '0']
 - [blocks_throttle_0, '0', blocks_multiply_const_vxx_0_1_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
-- [freq_xlating_fir_filter_xxx_0, '0', blocks_complex_to_mag_0_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', blocks_complex_to_mag_squared_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', qtgui_freq_sink_x_0_0, '0']
 - [rational_resampler_xxx_0_0, '0', blocks_multiply_const_vxx_0_1, '0']
 - [rational_resampler_xxx_0_0, '0', qtgui_freq_sink_x_0_0_0, '0']
