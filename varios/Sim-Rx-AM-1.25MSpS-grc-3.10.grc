@@ -291,7 +291,13 @@ blocks:
     affinity: ''
     alias: ''
     begin_tag: pmt.PMT_NIL
-    comment: Archivo con las muestras
+    comment: 'Sampling file
+
+      Available at:
+
+      https://drive.google.com/drive/folders/
+
+      1tpBzL0OpcI2KrdQEuzPgg48fFwdVsN8M'
     file: /home/mdoallo/Descargas/1150000Hz-1250000SpS-AM_Broadcastings-BUE.raw
     length: '0'
     maxoutbuf: '0'
@@ -379,7 +385,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [96, 332.0]
+    coordinate: [112, 516.0]
     rotation: 0
     state: enabled
 - name: blocks_stream_to_vector_0
@@ -416,7 +422,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [56, 276.0]
+    coordinate: [64, 380.0]
     rotation: 180
     state: true
 - name: entrada
