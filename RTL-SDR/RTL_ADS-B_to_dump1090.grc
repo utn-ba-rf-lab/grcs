@@ -4,7 +4,17 @@ options:
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
-    comment: ''
+    comment: 'Antes de correr este grc:
+
+      1. Ejecutar "tail -f /home/mdoallo/Descargas/datos.dat"
+
+      2. Correr "RTL_ADS-B_to_dump1090.grc"
+
+      3. Detener "RTL_ADS-B_to_dump1090.grc"
+
+      4. Ejecutar "./dump1090 --ifile /home/mdoallo/Descargas/datos.dat --net --metric"
+
+      5. Detener "tail -f /home/mdoallo/Descargas/datos.dat"'
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -51,7 +61,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 12.0]
+    coordinate: [304, 12.0]
     rotation: 0
     state: true
 - name: gain
@@ -72,7 +82,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 12.0]
+    coordinate: [432, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -152,7 +162,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 160.0]
+    coordinate: [304, 176.0]
     rotation: 0
     state: true
 - name: blocks_file_sink_0
@@ -239,7 +249,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [456, 132.0]
+    coordinate: [512, 148.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -278,6 +288,30 @@ blocks:
     coordinate: [640, 428.0]
     rotation: 0
     state: enabled
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: 0.925e6
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_ccf
+    width: 50e3
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [80, 340.0]
+    rotation: 0
+    state: true
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -419,7 +453,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 132.0]
+    coordinate: [688, 148.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -477,10 +511,11 @@ connections:
 - [blocks_moving_average_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_add_const_vxx_0, '0']
 - [blocks_multiply_const_vxx_0_0, '0', blocks_add_const_vxx_0_0, '0']
+- [low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_complex_to_float_0, '0']
 - [soapy_rtlsdr_source_0, '0', blocks_complex_to_mag_0, '0']
+- [soapy_rtlsdr_source_0, '0', low_pass_filter_0, '0']
 - [soapy_rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
-- [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
 
 metadata:
   file_format: 1
