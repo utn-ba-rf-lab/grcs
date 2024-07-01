@@ -33,27 +33,6 @@ options:
     state: enabled
 
 blocks:
-- name: Audio_Gain
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 1,3,1,1
-    label: Volumen
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '0'
-    step: '2.5e-2'
-    stop: '1'
-    value: '0'
-    widget: dial
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [424, 460.0]
-    rotation: 0
-    state: true
 - name: BB_Gain
   id: variable_qtgui_range
   parameters:
@@ -79,7 +58,7 @@ blocks:
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: 1,2,1,1
+    gui_hint: 0,6,1,1
     label: bandwidth
     label0: Auto
     label1: 1,75 MHz
@@ -96,34 +75,13 @@ blocks:
     options: '[0, 1, 2]'
     orient: Qt.QVBoxLayout
     type: real
-    value: '0'
+    value: 12e6
     widget: combo_box
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [272, 460.0]
-    rotation: 0
-    state: true
-- name: FI_BWD
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 1,1,1,1
-    label: ''
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: 10e3
-    step: 10e3
-    stop: 250E3
-    value: 200e3
-    widget: counter
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [144, 460.0]
     rotation: 0
     state: true
 - name: FI_Gain
@@ -151,12 +109,12 @@ blocks:
   id: variable_qtgui_check_box
   parameters:
     comment: ''
-    'false': '0'
+    'false': 'False'
     gui_hint: 0,2,1,1
     label: RF Gain (13 dB)
-    'true': '13'
-    type: real
-    value: '0'
+    'true': 'True'
+    type: bool
+    value: 'False'
   states:
     bus_sink: false
     bus_source: false
@@ -168,8 +126,8 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 1,0,1,1
-    label: Sintonia [MHz]
+    gui_hint: 0,5,1,1
+    label: Centro [MHz]
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -474,8 +432,8 @@ blocks:
     factor7: '1'
     factor8: '1'
     factor9: '1'
-    graph_type: qtgui.NUM_GRAPH_HORIZ
-    gui_hint: 1,4,1,1
+    graph_type: qtgui.NUM_GRAPH_VERT
+    gui_hint: 1,6,5,1
     label1: "Se\xF1al"
     label10: ''
     label2: ''
@@ -516,7 +474,7 @@ blocks:
     comment: "BANDA I \u2013 VHF: CANALES 2 AL 6\n54 a 88 MHz\n\nBANDA II \u2013 VHF:\
       \ CANALES 7 AL 13\n174 a 216 MHz\n\nBANDA III \u2013 UHF: CANALES 21 AL 69\n\
       512 a 806 MHz"
-    gui_hint: 2,0,5,5
+    gui_hint: 1,0,5,6
     label0: Espectro de RF
     label1: ''
     label10: Tab 10
@@ -550,7 +508,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: 'False'
+    amp: RF_Gain
     bandwidth: Bandwidth
     center_freq: freq_sdr
     comment: ''
