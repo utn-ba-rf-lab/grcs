@@ -1,0 +1,8 @@
+#!/bin/sh
+./sdrstick-magic 
+#./sdrstick-set-8 sdr
+#./sdrstick-set-n sdr 6
+#./sdrstick-set-n sdr 1
+#./sdrstick-set-frec sdr 550000
+#./sdrstick-run sdr
+./sdrstick-set-384k sdr
