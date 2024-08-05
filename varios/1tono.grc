@@ -54,6 +54,27 @@ blocks:
     coordinate: [272, 12.0]
     rotation: 0
     state: true
+- name: frecuencia
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 0,1,1,1
+    label: Frecuencia
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '100'
+    step: '100'
+    stop: '5000'
+    value: '1000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 12.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -73,7 +94,7 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: '1000'
+    freq: frecuencia
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -85,7 +106,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 116.0]
+    coordinate: [32, 188.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -102,7 +123,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 196.0]
+    coordinate: [432, 268.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0
@@ -120,7 +141,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [248, 156.0]
+    coordinate: [248, 228.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -154,7 +175,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: 1,0,3,1
+    gui_hint: 1,0,3,2
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -217,7 +238,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 100.0]
+    coordinate: [432, 172.0]
     rotation: 0
     state: true
 
