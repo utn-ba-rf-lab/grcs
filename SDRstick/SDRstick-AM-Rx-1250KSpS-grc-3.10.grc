@@ -134,6 +134,26 @@ blocks:
     coordinate: [672, 12.0]
     rotation: 0
     state: true
+- name: analog_agc_xx_0
+  id: analog_agc_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain: '1.0'
+    max_gain: '65536'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate: 1e-4
+    reference: '1.0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [584, 316.0]
+    rotation: 0
+    state: true
 - name: analog_am_demod_cf_0
   id: analog_am_demod_cf
   parameters:
@@ -150,7 +170,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 316.0]
+    coordinate: [752, 316.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -167,7 +187,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1160, 340.0]
+    coordinate: [1328, 340.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_mag_0
@@ -281,7 +301,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 340.0]
+    coordinate: [1008, 340.0]
     rotation: 0
     state: true
 - name: freq_xlating_fir_filter_xxx_0
@@ -465,7 +485,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 316.0]
+    coordinate: [1152, 316.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -473,7 +493,7 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: signal
+    stream_id: signal2
   states:
     bus_sink: false
     bus_source: false
@@ -486,7 +506,7 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: signal
+    stream_id: signal2
   states:
     bus_sink: false
     bus_source: false
@@ -496,6 +516,7 @@ blocks:
     state: true
 
 connections:
+- [analog_agc_xx_0, '0', analog_am_demod_cf_0, '0']
 - [analog_am_demod_cf_0, '0', blocks_multiply_const_vxx_0, '0']
 - [blocks_complex_to_mag_0, '0', blocks_moving_average_xx_0_0, '0']
 - [blocks_file_source_0, '0', blocks_interleaved_short_to_complex_0, '0']
@@ -503,7 +524,7 @@ connections:
 - [blocks_moving_average_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_moving_average_xx_0_0, '0', blocks_moving_average_xx_0, '0']
 - [blocks_multiply_const_vxx_0, '0', rational_resampler_xxx_0, '0']
-- [freq_xlating_fir_filter_xxx_0, '0', analog_am_demod_cf_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
 - [rational_resampler_xxx_0, '0', audio_sink_0, '0']
 - [virtual_source_0, '0', blocks_complex_to_mag_0, '0']
 - [virtual_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
