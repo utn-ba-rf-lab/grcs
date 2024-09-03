@@ -82,7 +82,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 12.0]
+    coordinate: [488, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -94,7 +94,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [168, 12.0]
+    coordinate: [192, 12.0]
     rotation: 0
     state: enabled
 - name: blocks_add_const_vxx_0
@@ -112,7 +112,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 372.0]
+    coordinate: [536, 492.0]
     rotation: 0
     state: enabled
 - name: blocks_add_const_vxx_0_0
@@ -130,7 +130,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 428.0]
+    coordinate: [536, 548.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_float_0
@@ -146,7 +146,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 376.0]
+    coordinate: [192, 496.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_mag_0
@@ -180,8 +180,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [888, 260.0]
-    rotation: 180
+    coordinate: [1024, 492.0]
+    rotation: 0
     state: enabled
 - name: blocks_float_to_uchar_0
   id: blocks_float_to_uchar
@@ -195,7 +195,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 376.0]
+    coordinate: [688, 496.0]
     rotation: 0
     state: enabled
 - name: blocks_float_to_uchar_0_0
@@ -210,7 +210,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 432.0]
+    coordinate: [688, 552.0]
     rotation: 0
     state: enabled
 - name: blocks_interleave_0
@@ -229,8 +229,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1112, 264.0]
-    rotation: 180
+    coordinate: [888, 496.0]
+    rotation: 0
     state: enabled
 - name: blocks_moving_average_xx_0
   id: blocks_moving_average_xx
@@ -267,7 +267,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 372.0]
+    coordinate: [384, 492.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0_0
@@ -285,7 +285,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 428.0]
+    coordinate: [384, 548.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -309,7 +309,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 340.0]
+    coordinate: [304, 340.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -453,7 +453,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [688, 148.0]
+    coordinate: [728, 148.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -473,7 +473,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 364.0]
+    coordinate: [600, 364.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
@@ -495,7 +495,33 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [40, 196.0]
+    coordinate: [40, 244.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: virtual
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 388.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: virtual
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 508.0]
     rotation: 0
     state: true
 
@@ -505,17 +531,18 @@ connections:
 - [blocks_complex_to_float_0, '0', blocks_multiply_const_vxx_0, '0']
 - [blocks_complex_to_float_0, '1', blocks_multiply_const_vxx_0_0, '0']
 - [blocks_complex_to_mag_0, '0', blocks_moving_average_xx_0, '0']
-- [blocks_float_to_uchar_0, '0', blocks_interleave_0, '1']
-- [blocks_float_to_uchar_0_0, '0', blocks_interleave_0, '0']
+- [blocks_float_to_uchar_0, '0', blocks_interleave_0, '0']
+- [blocks_float_to_uchar_0_0, '0', blocks_interleave_0, '1']
 - [blocks_interleave_0, '0', blocks_file_sink_0, '0']
 - [blocks_moving_average_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_add_const_vxx_0, '0']
 - [blocks_multiply_const_vxx_0_0, '0', blocks_add_const_vxx_0_0, '0']
 - [low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
-- [rational_resampler_xxx_0, '0', blocks_complex_to_float_0, '0']
+- [rational_resampler_xxx_0, '0', virtual_sink_0, '0']
 - [soapy_rtlsdr_source_0, '0', blocks_complex_to_mag_0, '0']
 - [soapy_rtlsdr_source_0, '0', low_pass_filter_0, '0']
 - [soapy_rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
+- [virtual_source_0, '0', blocks_complex_to_float_0, '0']
 
 metadata:
   file_format: 1
