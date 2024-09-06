@@ -14,7 +14,9 @@ options:
 
       4. Ejecutar "./dump1090 --ifile /home/mdoallo/Descargas/datos.dat --net --metric"
 
-      5. Detener "tail -f /home/mdoallo/Descargas/datos.dat"'
+      5. Correr "RTL_ADS-B_to_dump1090.grc"
+
+      6. Detener "tail -f /home/mdoallo/Descargas/datos.dat"'
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -112,7 +114,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 492.0]
+    coordinate: [536, 516.0]
     rotation: 0
     state: enabled
 - name: blocks_add_const_vxx_0_0
@@ -130,7 +132,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 548.0]
+    coordinate: [536, 572.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_float_0
@@ -146,7 +148,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 496.0]
+    coordinate: [192, 520.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_mag_0
@@ -162,7 +164,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 176.0]
+    coordinate: [304, 200.0]
     rotation: 0
     state: true
 - name: blocks_file_sink_0
@@ -180,7 +182,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1024, 492.0]
+    coordinate: [1024, 516.0]
     rotation: 0
     state: enabled
 - name: blocks_float_to_uchar_0
@@ -195,7 +197,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [688, 496.0]
+    coordinate: [688, 520.0]
     rotation: 0
     state: enabled
 - name: blocks_float_to_uchar_0_0
@@ -210,7 +212,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [688, 552.0]
+    coordinate: [688, 576.0]
     rotation: 0
     state: enabled
 - name: blocks_interleave_0
@@ -229,7 +231,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [888, 496.0]
+    coordinate: [888, 520.0]
     rotation: 0
     state: enabled
 - name: blocks_moving_average_xx_0
@@ -249,7 +251,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 148.0]
+    coordinate: [512, 172.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -267,7 +269,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 492.0]
+    coordinate: [384, 516.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0_0
@@ -285,7 +287,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 548.0]
+    coordinate: [384, 572.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -309,7 +311,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 340.0]
+    coordinate: [304, 364.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -390,7 +392,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 236.0]
+    coordinate: [304, 260.0]
     rotation: 0
     state: true
 - name: qtgui_number_sink_0
@@ -453,7 +455,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 148.0]
+    coordinate: [728, 172.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -473,7 +475,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [600, 364.0]
+    coordinate: [600, 388.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
@@ -495,7 +497,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [40, 244.0]
+    coordinate: [40, 268.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -508,7 +510,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 388.0]
+    coordinate: [800, 412.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -521,7 +523,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 508.0]
+    coordinate: [24, 532.0]
     rotation: 0
     state: true
 
