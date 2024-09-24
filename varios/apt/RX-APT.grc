@@ -44,7 +44,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 12.0]
+    coordinate: [672, 12.0]
     rotation: 0
     state: enabled
 - name: FI
@@ -56,14 +56,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 12.0]
+    coordinate: [608, 12.0]
     rotation: 0
     state: enabled
 - name: FI_BWD
   id: variable
   parameters:
     comment: ''
-    value: 50e3
+    value: 40e3
   states:
     bus_sink: false
     bus_source: false
@@ -83,6 +83,30 @@ blocks:
     coordinate: [936, 108.0]
     rotation: 0
     state: true
+- name: decim_1
+  id: variable
+  parameters:
+    comment: ''
+    value: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 12.0]
+    rotation: 0
+    state: enabled
+- name: decim_2
+  id: variable
+  parameters:
+    comment: ''
+    value: '32'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 12.0]
+    rotation: 0
+    state: enabled
 - name: file_name
   id: variable
   parameters:
@@ -99,7 +123,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '240000'
+    value: 2.048e6
   states:
     bus_sink: false
     bus_source: false
@@ -124,7 +148,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 260.0]
+    coordinate: [656, 260.0]
     rotation: 0
     state: true
 - name: analog_fm_demod_cf_0
@@ -132,10 +156,10 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    audio_decim: '15'
+    audio_decim: decim_2
     audio_pass: '5000'
     audio_stop: '7000'
-    chan_rate: samp_rate
+    chan_rate: samp_rate/decim_1
     comment: ''
     deviation: Desvio
     gain: '.8'
@@ -146,26 +170,10 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [992, 236.0]
+    coordinate: [864, 236.0]
     rotation: 0
     state: enabled
-- name: blocks_float_to_complex_0
-  id: blocks_float_to_complex
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [248, 256.0]
-    rotation: 0
-    state: true
-- name: blocks_head_0
+- name: blocks_head_0_0
   id: blocks_head
   parameters:
     affinity: ''
@@ -173,14 +181,14 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_items: int(samp_rate*timeout/15)
+    num_items: int(samp_rate*timeout/(decim_1*decim_2))
     type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [648, 380.0]
+    coordinate: [512, 396.0]
     rotation: 0
     state: true
 - name: blocks_null_sink_0
@@ -197,26 +205,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 384.0]
-    rotation: 0
-    state: true
-- name: blocks_throttle_0
-  id: blocks_throttle
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    ignoretag: 'True'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    samples_per_second: samp_rate*5
-    type: complex
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [464, 204.0]
+    coordinate: [696, 400.0]
     rotation: 0
     state: true
 - name: blocks_wavfile_sink_0
@@ -233,50 +222,14 @@ blocks:
     file: path + file_name + date +".wav"
     format: FORMAT_WAV
     nchan: '1'
-    samp_rate: int(samp_rate/15)
+    samp_rate: int(samp_rate/64)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 476.0]
+    coordinate: [1072, 412.0]
     rotation: 0
     state: enabled
-- name: blocks_wavfile_source_0
-  id: blocks_wavfile_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    file: /home/mdoallo/Descargas/sdrangel_20230801_137800000Hz_240KSpS.wav
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    nchan: '2'
-    repeat: 'False'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [8, 256.0]
-    rotation: 0
-    state: true
-- name: dc_blocker_xx_0
-  id: dc_blocker_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    length: int(samp_rate/15/100)
-    long_form: 'True'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: ff
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [200, 500.0]
-    rotation: 0
-    state: true
 - name: freq
   id: parameter
   parameters:
@@ -301,7 +254,7 @@ blocks:
     alias: ''
     center_freq: FI
     comment: ''
-    decim: '1'
+    decim: decim_1
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: samp_rate
@@ -311,7 +264,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 260.0]
+    coordinate: [336, 260.0]
     rotation: 0
     state: enabled
 - name: import_0
@@ -350,7 +303,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '15'
+    decim: decim_1*decim_2
     fbw: '0'
     interp: '1'
     maxoutbuf: '0'
@@ -361,7 +314,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 356.0]
+    coordinate: [336, 372.0]
     rotation: 0
     state: true
 - name: rfgain
@@ -381,6 +334,28 @@ blocks:
     coordinate: [464, 12.0]
     rotation: 0
     state: true
+- name: soapy_rtlsdr_source_0
+  id: soapy_rtlsdr_source
+  parameters:
+    affinity: ''
+    agc: 'False'
+    alias: ''
+    center_freq: freq
+    comment: ''
+    dev_args: ''
+    freq_correction: '0'
+    gain: rfgain
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [88, 260.0]
+    rotation: 0
+    state: true
 - name: timeout
   id: parameter
   parameters:
@@ -395,7 +370,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [776, 12.0]
+    coordinate: [744, 12.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -408,7 +383,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1232, 284.0]
+    coordinate: [1112, 284.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -421,23 +396,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 508.0]
+    coordinate: [888, 444.0]
     rotation: 0
     state: true
 
 connections:
 - [analog_agc_xx_0, '0', analog_fm_demod_cf_0, '0']
 - [analog_fm_demod_cf_0, '0', virtual_sink_0, '0']
-- [blocks_float_to_complex_0, '0', blocks_throttle_0, '0']
-- [blocks_float_to_complex_0, '0', freq_xlating_fir_filter_xxx_0, '0']
-- [blocks_float_to_complex_0, '0', rational_resampler_xxx_0, '0']
-- [blocks_head_0, '0', blocks_null_sink_0, '0']
-- [blocks_wavfile_source_0, '0', blocks_float_to_complex_0, '0']
-- [blocks_wavfile_source_0, '1', blocks_float_to_complex_0, '1']
-- [dc_blocker_xx_0, '0', blocks_wavfile_sink_0, '0']
+- [blocks_head_0_0, '0', blocks_null_sink_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
-- [rational_resampler_xxx_0, '0', blocks_head_0, '0']
-- [virtual_source_0, '0', dc_blocker_xx_0, '0']
+- [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
+- [soapy_rtlsdr_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
+- [virtual_source_0, '0', blocks_wavfile_sink_0, '0']
 
 metadata:
   file_format: 1

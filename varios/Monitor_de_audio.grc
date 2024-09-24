@@ -37,7 +37,7 @@ blocks:
   id: variable_qtgui_toggle_button_msg
   parameters:
     comment: ''
-    gui_hint: 2,4,1,1
+    gui_hint: 0,6,1,1
     initPressed: 'False'
     label: Graba
     outputmsgname: value
@@ -96,7 +96,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '48000'
+    value: '44100'
   states:
     bus_sink: false
     bus_source: false
@@ -104,22 +104,6 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
-- name: variable_qtgui_label_0
-  id: variable_qtgui_label
-  parameters:
-    comment: ''
-    formatter: None
-    gui_hint: ''
-    label: 'label = '
-    type: int
-    value: samp_rate
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [576, 204.0]
-    rotation: 0
-    state: true
 - name: audio_source_0
   id: audio_source
   parameters:
@@ -320,7 +304,7 @@ blocks:
     fftsize: '2048'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: qtgui_tab@1:0,0,2,2
+    gui_hint: qtgui_tab@1:0,0,5,5
     label: Relative Gain
     label1: ''
     label10: ''''''
@@ -395,7 +379,7 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_NONE
-    gui_hint: 0,4,1,1
+    gui_hint: 0,5,1,1
     label1: Valor RMS
     label10: ''
     label2: ''
@@ -458,7 +442,7 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_VERT
-    gui_hint: 1,4,1,1
+    gui_hint: 1,5,4,2
     label1: Nivel Ent.
     label10: ''
     label2: ''
@@ -497,7 +481,7 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    gui_hint: 0,0,4,4
+    gui_hint: 0,0,5,5
     label0: Tiempo
     label1: Espectro
     label10: Tab 10
@@ -557,7 +541,7 @@ blocks:
     ctrlpanel: 'True'
     entags: 'True'
     grid: 'False'
-    gui_hint: qtgui_tab@0:0,0,2,2
+    gui_hint: qtgui_tab@0:0,0,5,5
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
