@@ -8,4 +8,4 @@
 #
 cd /home/mdoallo/operaciones/rx/
 # Para NOAA-15
-python3 /usr/local/src/rx/rx_apt.py --freq=137.62e6 --path="/home/mdoallo/" --rfgain=30 --timeout=900
+python3 /usr/local/src/rx/rx_apt.py --freq=137.62e6 --path="/mnt/pasadas/wav/" --rfgain=30 --timeout=900
