@@ -53,7 +53,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 12.0]
+    coordinate: [432, 12.0]
     rotation: 0
     state: true
 - name: date
@@ -65,7 +65,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 12.0]
+    coordinate: [952, 12.0]
     rotation: 0
     state: true
 - name: file_name
@@ -77,7 +77,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 76.0]
+    coordinate: [952, 76.0]
     rotation: 0
     state: true
 - name: path
@@ -89,7 +89,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 76.0]
+    coordinate: [664, 76.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -266,7 +266,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 12.0]
+    coordinate: [664, 12.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0

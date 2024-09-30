@@ -51,7 +51,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 12.0]
+    coordinate: [264, 12.0]
     rotation: 0
     state: true
 - name: amplitud_2
@@ -72,7 +72,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 12.0]
+    coordinate: [504, 12.0]
     rotation: 0
     state: true
 - name: frecuencia_1
@@ -93,7 +93,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 12.0]
+    coordinate: [368, 12.0]
     rotation: 0
     state: true
 - name: frecuencia_2
@@ -114,7 +114,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [592, 12.0]
+    coordinate: [608, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -188,7 +188,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 240.0]
+    coordinate: [376, 240.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -207,7 +207,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 252.0]
+    coordinate: [464, 252.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -288,7 +288,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 236.0]
+    coordinate: [672, 236.0]
     rotation: 0
     state: true
 
