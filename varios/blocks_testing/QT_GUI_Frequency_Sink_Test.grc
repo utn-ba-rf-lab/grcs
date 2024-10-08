@@ -142,7 +142,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
-    type: complex
+    type: float
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
@@ -164,7 +164,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
-    type: complex
+    type: float
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
@@ -182,7 +182,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
@@ -201,7 +201,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
@@ -268,7 +268,7 @@ blocks:
     tr_level: '0.0'
     tr_mode: qtgui.TRIG_MODE_FREE
     tr_tag: '""'
-    type: complex
+    type: float
     units: dB
     update_time: '0.10'
     width1: '1'

@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: AGC_Test
+    id: Phase_Mod_Test
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Demo de AGC
+    title: "Prueba de modulaci\xF3n de fase"
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -33,67 +33,46 @@ options:
     state: enabled
 
 blocks:
-- name: Amplitud
+- name: Sensibilidad
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 0,1,1,1
+    label: 'Sensibilidad [x math.pi]:'
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-1'
+    step: '.1'
+    stop: '1'
+    value: '0'
+    widget: counter
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [528, 12.0]
+    rotation: 0
+    state: true
+- name: entrada
   id: variable_qtgui_range
   parameters:
     comment: ''
     gui_hint: 0,0,1,1
-    label: Amplitud antes de AGC
+    label: 'Valor a la entrada:'
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
-    start: '0'
-    step: '0.05'
-    stop: '20'
-    value: '1'
+    start: '-1'
+    step: '.1'
+    stop: '1'
+    value: '0'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 12.0]
-    rotation: 0
-    state: true
-- name: Rate
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 0,2,1,1
-    label: 'Rate:'
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '0.00001'
-    step: '0.00001'
-    stop: '0.001'
-    value: '0.0001'
-    widget: counter
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [584, 12.0]
-    rotation: 0
-    state: true
-- name: Reference
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 0,1,1,1
-    label: 'Reference:'
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '0.5'
-    step: '0.1'
-    stop: '2'
-    value: '1'
-    widget: counter
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [464, 12.0]
+    coordinate: [384, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -108,46 +87,37 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
-- name: analog_agc_xx_0
-  id: analog_agc_xx
+- name: analog_const_source_x_0
+  id: analog_const_source_x
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    gain: '1'
-    max_gain: '4'
+    const: entrada
     maxoutbuf: '0'
     minoutbuf: '0'
-    rate: Rate
-    reference: Reference
     type: float
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 260.0]
+    coordinate: [40, 236.0]
     rotation: 0
     state: true
-- name: analog_sig_source_x_0
-  id: analog_sig_source_x
+- name: analog_phase_modulator_fc_0
+  id: analog_phase_modulator_fc
   parameters:
     affinity: ''
     alias: ''
-    amp: Amplitud
     comment: ''
-    freq: '1000'
     maxoutbuf: '0'
     minoutbuf: '0'
-    offset: '0'
-    phase: '0'
-    samp_rate: samp_rate
-    type: float
-    waveform: analog.GR_COS_WAVE
+    sensitivity: Sensibilidad*math.pi
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [48, 156.0]
+    coordinate: [240, 236.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -160,17 +130,30 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
-    type: float
+    type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 196.0]
+    coordinate: [496, 172.0]
     rotation: 0
     state: true
-- name: qtgui_time_sink_x_0
-  id: qtgui_time_sink_x
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import math
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 84.0]
+    rotation: 0
+    state: true
+- name: qtgui_const_sink_x_0
+  id: qtgui_const_sink_x
   parameters:
     affinity: ''
     alias: ''
@@ -186,65 +169,60 @@ blocks:
     alpha9: '1.0'
     autoscale: 'False'
     axislabels: 'True'
-    color1: blue
-    color10: dark blue
-    color2: red
-    color3: green
-    color4: black
-    color5: cyan
-    color6: magenta
-    color7: yellow
-    color8: dark red
-    color9: dark green
+    color1: '"blue"'
+    color10: '"red"'
+    color2: '"red"'
+    color3: '"red"'
+    color4: '"red"'
+    color5: '"red"'
+    color6: '"red"'
+    color7: '"red"'
+    color8: '"red"'
+    color9: '"red"'
     comment: ''
-    ctrlpanel: 'True'
-    entags: 'True'
-    grid: 'False'
-    gui_hint: 1,0,5,3
-    label1: Antes AGC
-    label10: Signal 10
-    label2: Post AGC
-    label3: Signal 3
-    label4: Signal 4
-    label5: Signal 5
-    label6: Signal 6
-    label7: Signal 7
-    label8: Signal 8
-    label9: Signal 9
+    grid: 'True'
+    gui_hint: 1,0,4,2
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
     legend: 'True'
-    marker1: '-1'
-    marker10: '-1'
-    marker2: '-1'
-    marker3: '-1'
-    marker4: '-1'
-    marker5: '-1'
-    marker6: '-1'
-    marker7: '-1'
-    marker8: '-1'
-    marker9: '-1'
+    marker1: '0'
+    marker10: '0'
+    marker2: '0'
+    marker3: '0'
+    marker4: '0'
+    marker5: '0'
+    marker6: '0'
+    marker7: '0'
+    marker8: '0'
+    marker9: '0'
     name: '""'
-    nconnections: '2'
-    size: '1024'
-    srate: samp_rate
-    stemplot: 'False'
-    style1: '1'
-    style10: '1'
-    style2: '1'
-    style3: '1'
-    style4: '1'
-    style5: '1'
-    style6: '1'
-    style7: '1'
-    style8: '1'
-    style9: '1'
+    nconnections: '1'
+    size: '32'
+    style1: '2'
+    style10: '0'
+    style2: '0'
+    style3: '0'
+    style4: '0'
+    style5: '0'
+    style6: '0'
+    style7: '0'
+    style8: '0'
+    style9: '0'
     tr_chan: '0'
-    tr_delay: '0'
     tr_level: '0.0'
     tr_mode: qtgui.TRIG_MODE_FREE
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
-    type: float
-    update_time: '0.10'
+    type: complex
+    update_time: '0.05'
     width1: '1'
     width10: '1'
     width2: '1'
@@ -255,23 +233,22 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    ylabel: Amplitude
+    xmax: '2'
+    xmin: '-2'
     ymax: '2'
     ymin: '-2'
-    yunit: '""'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 196.0]
+    coordinate: [496, 228.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_agc_xx_0, '0', qtgui_time_sink_x_0, '1']
-- [analog_sig_source_x_0, '0', analog_agc_xx_0, '0']
-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
-- [blocks_throttle_0, '0', qtgui_time_sink_x_0, '0']
+- [analog_const_source_x_0, '0', analog_phase_modulator_fc_0, '0']
+- [analog_phase_modulator_fc_0, '0', blocks_throttle_0, '0']
+- [analog_phase_modulator_fc_0, '0', qtgui_const_sink_x_0, '0']
 
 metadata:
   file_format: 1

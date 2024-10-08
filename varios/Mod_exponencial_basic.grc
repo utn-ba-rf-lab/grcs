@@ -223,7 +223,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [200, 140.0]
+    coordinate: [216, 140.0]
     rotation: 0
     state: true
 - name: analog_phase_modulator_fc_0
@@ -239,7 +239,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 188.0]
+    coordinate: [240, 188.0]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0
@@ -283,7 +283,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 260.0]
+    coordinate: [392, 252.0]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0_1
@@ -321,26 +321,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 176.0]
-    rotation: 0
-    state: true
-- name: blocks_delay_0
-  id: blocks_delay
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    delay: '32'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_ports: '1'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [896, 344.0]
+    coordinate: [824, 176.0]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_0
@@ -358,7 +339,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 160.0]
+    coordinate: [704, 160.0]
     rotation: 0
     state: true
 - name: blocks_selector_0
@@ -381,7 +362,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 124.0]
+    coordinate: [488, 124.0]
     rotation: 0
     state: true
 - name: blocks_selector_0_0
@@ -404,7 +385,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 484.0]
+    coordinate: [960, 484.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -423,7 +404,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [856, 172.0]
+    coordinate: [1024, 172.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -504,8 +485,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 44.0]
-    rotation: 180
+    coordinate: [1192, 52.0]
+    rotation: 0
     state: true
 - name: qtgui_tab
   id: qtgui_tab_widget
@@ -612,11 +593,11 @@ blocks:
     tr_chan: '1'
     tr_delay: '0'
     tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_AUTO
+    tr_mode: qtgui.TRIG_MODE_NORM
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
     type: float
-    update_time: '0.10'
+    update_time: '0.20'
     width1: '1'
     width10: '1'
     width2: '1'
@@ -635,8 +616,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [824, 252.0]
-    rotation: 180
+    coordinate: [1024, 236.0]
+    rotation: 0
     state: true
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
@@ -655,8 +636,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 36.0]
-    rotation: 180
+    coordinate: [1016, 44.0]
+    rotation: 0
     state: true
 - name: virtual_sink_0
   id: virtual_sink
@@ -668,8 +649,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 612.0]
-    rotation: 180
+    coordinate: [1160, 516.0]
+    rotation: 0
     state: true
 - name: virtual_source_0
   id: virtual_source
@@ -694,7 +675,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 340.0]
+    coordinate: [808, 340.0]
     rotation: 0
     state: true
 
@@ -705,16 +686,15 @@ connections:
 - [analog_sig_source_x_0_0, '0', blocks_multiply_xx_0, '1']
 - [analog_sig_source_x_0_1, '0', blocks_selector_0_0, '1']
 - [blocks_complex_to_real_0, '0', blocks_throttle_0, '0']
-- [blocks_delay_0, '0', qtgui_time_sink_x_0, '1']
+- [blocks_complex_to_real_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_complex_to_real_0, '0', rational_resampler_xxx_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_complex_to_real_0, '0']
 - [blocks_selector_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_selector_0_0, '0', virtual_sink_0, '0']
-- [blocks_throttle_0, '0', qtgui_time_sink_x_0, '0']
-- [blocks_throttle_0, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', qtgui_freq_sink_x_0, '0']
 - [virtual_source_0, '0', analog_frequency_modulator_fc_0, '0']
 - [virtual_source_0, '0', analog_phase_modulator_fc_0, '0']
-- [virtual_source_0_0, '0', blocks_delay_0, '0']
+- [virtual_source_0_0, '0', qtgui_time_sink_x_0, '1']
 
 metadata:
   file_format: 1

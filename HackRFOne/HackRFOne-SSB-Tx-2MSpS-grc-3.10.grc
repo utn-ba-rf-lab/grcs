@@ -33,27 +33,6 @@ options:
     state: enabled
 
 blocks:
-- name: Amplitud
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 3,0,1,4
-    label: ''
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '0'
-    step: '0.1'
-    stop: '1'
-    value: '0.5'
-    widget: counter_slider
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [480, 260.0]
-    rotation: 0
-    state: true
 - name: Amplitud_1
   id: variable_qtgui_range
   parameters:
@@ -72,7 +51,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 140.0]
+    coordinate: [352, 140.0]
     rotation: 0
     state: true
 - name: Amplitud_2
@@ -93,7 +72,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 140.0]
+    coordinate: [584, 140.0]
     rotation: 0
     state: true
 - name: Freq
@@ -114,7 +93,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 12.0]
+    coordinate: [720, 12.0]
     rotation: 0
     state: true
 - name: Freq_1
@@ -135,7 +114,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [600, 140.0]
+    coordinate: [472, 140.0]
     rotation: 0
     state: true
 - name: Freq_2
@@ -156,14 +135,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 140.0]
+    coordinate: [720, 140.0]
     rotation: 0
     state: true
 - name: IF_Gain
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 0,0,1,2
+    gui_hint: 0,0,1,1
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -177,7 +156,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 12.0]
+    coordinate: [352, 12.0]
     rotation: 0
     state: true
 - name: RF_Gain
@@ -185,7 +164,7 @@ blocks:
   parameters:
     comment: ''
     'false': '0'
-    gui_hint: 0,3,1,1
+    gui_hint: 0,1,1,1
     label: RF Gain (13 dB)
     'true': '13'
     type: int
@@ -194,9 +173,39 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 12.0]
+    coordinate: [472, 12.0]
     rotation: 0
     state: enabled
+- name: mode
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: 0,3,1,1
+    label: Mode
+    label0: USB
+    label1: LSB
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '2'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: int
+    value: '0'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 12.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -207,23 +216,6 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [184, 12]
-    rotation: 0
-    state: enabled
-- name: analog_const_source_x_0
-  id: analog_const_source_x
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: Amplitud
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [120, 396.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -278,7 +270,7 @@ blocks:
     comment: Real part
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_inputs: '3'
+    num_inputs: '2'
     type: float
     vlen: '1'
   states:
@@ -288,39 +280,77 @@ blocks:
     coordinate: [360, 272.0]
     rotation: 0
     state: true
-- name: blocks_float_to_complex_0
-  id: blocks_float_to_complex
+- name: blocks_conjugate_cc_0
+  id: blocks_conjugate_cc
   parameters:
     affinity: ''
     alias: ''
-    comment: Complex envelope
+    comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 424.0]
+    coordinate: [648, 288.0]
     rotation: 0
     state: true
-- name: blocks_null_source_0
-  id: blocks_null_source
+- name: blocks_selector_0
+  id: blocks_selector
   parameters:
     affinity: ''
     alias: ''
-    bus_structure_source: '[[0,],]'
-    comment: Imaginary part
+    comment: ''
+    enabled: 'True'
+    input_index: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
+    num_inputs: '2'
     num_outputs: '1'
-    type: float
+    output_index: '0'
+    showports: 'False'
+    type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 456.0]
+    coordinate: [520, 408.0]
+    rotation: 0
+    state: true
+- name: blocks_var_to_msg_0
+  id: blocks_var_to_msg
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    msgname: mode
+    target: mode
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 492.0]
+    rotation: 0
+    state: true
+- name: hilbert_fc_0
+  id: hilbert_fc
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_taps: '65'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 284.0]
     rotation: 0
     state: true
 - name: osmosdr_sink_0
@@ -581,17 +611,155 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 364.0]
+    coordinate: [784, 340.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_freq_sink_x_0
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    average: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'False'
+    fc: Freq
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: 3,0,3,4
+    label: Relative Gain
+    label1: ''
+    label10: ''''''
+    label2: ''''''
+    label3: ''''''
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    norm_window: 'False'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: complex
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: window.WIN_BLACKMAN_hARRIS
+    ymax: '10'
+    ymin: '-140'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [784, 508.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: LSB
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 284.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: USB
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 332.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: LSB
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 436.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: USB
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 388.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_const_source_x_0, '0', blocks_add_xx_0, '2']
 - [analog_sig_source_x_0, '0', blocks_add_xx_0, '1']
 - [analog_sig_source_x_0_0, '0', blocks_add_xx_0, '0']
-- [blocks_add_xx_0, '0', blocks_float_to_complex_0, '0']
-- [blocks_float_to_complex_0, '0', osmosdr_sink_0, '0']
-- [blocks_null_source_0, '0', blocks_float_to_complex_0, '1']
+- [blocks_add_xx_0, '0', hilbert_fc_0, '0']
+- [blocks_conjugate_cc_0, '0', virtual_sink_0, '0']
+- [blocks_selector_0, '0', osmosdr_sink_0, '0']
+- [blocks_selector_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_var_to_msg_0, msgout, blocks_selector_0, iindex]
+- [hilbert_fc_0, '0', blocks_conjugate_cc_0, '0']
+- [hilbert_fc_0, '0', virtual_sink_0_0, '0']
+- [virtual_source_0, '0', blocks_selector_0, '1']
+- [virtual_source_0_0, '0', blocks_selector_0, '0']
 
 metadata:
   file_format: 1

@@ -350,6 +350,28 @@ blocks:
     coordinate: [240, 292.0]
     rotation: 0
     state: true
+- name: qtgui_ledindicator_0
+  id: qtgui_ledindicator
+  parameters:
+    affinity: ''
+    alias: ''
+    cellalignment: '1'
+    comment: ''
+    gui_hint: ''
+    label: '""'
+    maxSize: '40'
+    offColor: red
+    onColor: green
+    position: '1'
+    state: 'False'
+    verticalalignment: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [752, 188.0]
+    rotation: 0
+    state: true
 - name: qtgui_number_sink_0
   id: qtgui_number_sink
   parameters:
