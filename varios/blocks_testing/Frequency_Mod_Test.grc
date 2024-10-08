@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: Phase_Mod_Test
+    id: Frequency_Mod_Test
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: "Prueba de modulaci\xF3n de fase"
+    title: "Prueba de modulaci\xF3n de Frecuencia"
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -38,7 +38,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: 0,1,1,1
-    label: 'Sensibilidad [x math.pi]:'
+    label: 'Sensibilidad [Hz]:'
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -104,20 +104,26 @@ blocks:
     coordinate: [40, 236.0]
     rotation: 0
     state: true
-- name: analog_phase_modulator_fc_0
-  id: analog_phase_modulator_fc
+- name: analog_frequency_modulator_fc_0
+  id: analog_frequency_modulator_fc
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: 'sensitivity : radians/sample = amplitude * sensitivity
+
+      Si quiero que ante una entrada de valor uno,
+
+      La salidad sea de 1 Hz, entonces:
+
+      sensitivity = 2 * pi / sample_rate'
     maxoutbuf: '0'
     minoutbuf: '0'
-    sensitivity: Sensibilidad*math.pi
+    sensitivity: 2*math.pi*Sensibilidad/samp_rate
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 236.0]
+    coordinate: [264, 236.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -136,7 +142,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 172.0]
+    coordinate: [536, 172.0]
     rotation: 0
     state: true
 - name: import_0
@@ -206,7 +212,7 @@ blocks:
     name: '""'
     nconnections: '1'
     size: '1'
-    style1: '1'
+    style1: '2'
     style10: '0'
     style2: '0'
     style3: '0'
@@ -241,14 +247,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 228.0]
+    coordinate: [536, 228.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_const_source_x_0, '0', analog_phase_modulator_fc_0, '0']
-- [analog_phase_modulator_fc_0, '0', blocks_throttle_0, '0']
-- [analog_phase_modulator_fc_0, '0', qtgui_const_sink_x_0, '0']
+- [analog_const_source_x_0, '0', analog_frequency_modulator_fc_0, '0']
+- [analog_frequency_modulator_fc_0, '0', blocks_throttle_0, '0']
+- [analog_frequency_modulator_fc_0, '0', qtgui_const_sink_x_0, '0']
 
 metadata:
   file_format: 1
