@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: Frequency_Mod_Test
+    id: QT_GUI_Constellation_Sink_Test
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: "Prueba de modulaci\xF3n de Frecuencia"
+    title: Constellation Sink Demo
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -33,46 +33,46 @@ options:
     state: enabled
 
 blocks:
-- name: Sensibilidad
+- name: amplitud
   id: variable_qtgui_range
   parameters:
     comment: ''
     gui_hint: 0,1,1,1
-    label: 'Sensibilidad [Hz]:'
+    label: Amplitud
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: '0'
     step: '.1'
-    stop: '1'
-    value: '0.5'
-    widget: counter
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [528, 12.0]
-    rotation: 0
-    state: true
-- name: entrada
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 0,0,1,1
-    label: 'Valor a la entrada:'
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '-1'
-    step: '.1'
-    stop: '1'
-    value: '0'
+    stop: '1.2'
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 12.0]
+    coordinate: [648, 20.0]
+    rotation: 0
+    state: true
+- name: frecuencia
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 0,0,1,1
+    label: 'Frecuencia [Hz]:'
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-2'
+    step: '.1'
+    stop: '2'
+    value: '.2'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 20.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -87,43 +87,26 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
-- name: analog_const_source_x_0
-  id: analog_const_source_x
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
   parameters:
     affinity: ''
     alias: ''
+    amp: amplitud
     comment: ''
-    const: entrada
+    freq: frecuencia
     maxoutbuf: '0'
     minoutbuf: '0'
-    type: float
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [40, 236.0]
-    rotation: 0
-    state: true
-- name: analog_frequency_modulator_fc_0
-  id: analog_frequency_modulator_fc
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: 'sensitivity : radians/sample = amplitude * sensitivity
-
-      Si quiero que ante una entrada de valor uno,
-
-      La salidad sea de 1 Hz, entonces:
-
-      sensitivity = 2 * pi / sample_rate'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    sensitivity: 2*math.pi*Sensibilidad/samp_rate
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [264, 236.0]
+    coordinate: [48, 196.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -142,7 +125,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 172.0]
+    coordinate: [496, 172.0]
     rotation: 0
     state: true
 - name: import_0
@@ -228,8 +211,8 @@ blocks:
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
     type: complex
-    update_time: '0.025'
-    width1: '3'
+    update_time: '0.01'
+    width1: '2'
     width10: '1'
     width2: '1'
     width3: '1'
@@ -247,14 +230,13 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 228.0]
+    coordinate: [496, 228.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_const_source_x_0, '0', analog_frequency_modulator_fc_0, '0']
-- [analog_frequency_modulator_fc_0, '0', blocks_throttle_0, '0']
-- [analog_frequency_modulator_fc_0, '0', qtgui_const_sink_x_0, '0']
+- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
+- [analog_sig_source_x_0, '0', qtgui_const_sink_x_0, '0']
 
 metadata:
   file_format: 1

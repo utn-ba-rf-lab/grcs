@@ -210,7 +210,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 4e6
+    value: '64000'
   states:
     bus_sink: false
     bus_source: false
@@ -316,6 +316,25 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [520, 408.0]
+    rotation: 0
+    state: true
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [784, 588.0]
     rotation: 0
     state: true
 - name: blocks_var_to_msg_0
@@ -613,7 +632,7 @@ blocks:
     bus_structure: null
     coordinate: [784, 340.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -753,6 +772,7 @@ connections:
 - [analog_sig_source_x_0_0, '0', blocks_add_xx_0, '0']
 - [blocks_add_xx_0, '0', hilbert_fc_0, '0']
 - [blocks_conjugate_cc_0, '0', virtual_sink_0, '0']
+- [blocks_selector_0, '0', blocks_throttle_0, '0']
 - [blocks_selector_0, '0', osmosdr_sink_0, '0']
 - [blocks_selector_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_var_to_msg_0, msgout, blocks_selector_0, iindex]

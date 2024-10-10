@@ -223,7 +223,7 @@ blocks:
     tr_tag: '""'
     type: complex
     update_time: '0.025'
-    width1: '1'
+    width1: '3'
     width10: '1'
     width2: '1'
     width3: '1'

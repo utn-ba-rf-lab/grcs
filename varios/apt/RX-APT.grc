@@ -44,7 +44,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [672, 12.0]
+    coordinate: [704, 12.0]
     rotation: 0
     state: enabled
 - name: FI
@@ -56,7 +56,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 12.0]
+    coordinate: [640, 12.0]
     rotation: 0
     state: enabled
 - name: FI_BWD
@@ -92,7 +92,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 12.0]
+    coordinate: [848, 12.0]
     rotation: 0
     state: enabled
 - name: decim_2
@@ -104,7 +104,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [896, 12.0]
+    coordinate: [928, 12.0]
     rotation: 0
     state: enabled
 - name: file_name
@@ -353,7 +353,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 260.0]
+    coordinate: [48, 260.0]
     rotation: 0
     state: true
 - name: timeout
@@ -370,7 +370,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 12.0]
+    coordinate: [776, 12.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -383,7 +383,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1112, 284.0]
+    coordinate: [1128, 284.0]
     rotation: 0
     state: true
 - name: virtual_source_0
