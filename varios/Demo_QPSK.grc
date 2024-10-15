@@ -257,7 +257,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 524.0]
+    coordinate: [416, 524.0]
     rotation: 0
     state: true
 - name: blocks_throttle_1
@@ -316,7 +316,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 236.0]
+    coordinate: [696, 236.0]
     rotation: 0
     state: enabled
 - name: qtgui_const_sink_x_0
@@ -536,7 +536,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 244.0]
+    coordinate: [1040, 244.0]
     rotation: 0
     state: true
 - name: virtual_source_0
