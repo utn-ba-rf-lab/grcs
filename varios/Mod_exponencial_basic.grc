@@ -96,7 +96,7 @@ blocks:
     options: '[0, 1, 2]'
     orient: Qt.QVBoxLayout
     type: int
-    value: '0'
+    value: '1'
     widget: combo_box
   states:
     bus_sink: false

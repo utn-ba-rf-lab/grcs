@@ -6,7 +6,7 @@ options:
     cmake_opt: ''
     comment: 'Crear un pipe "sdrstick.dat"
 
-      Ejecutar ./sdrstick-udpserv de
+      Ejecutar ./sdrstick-udpserv
 
       ejecutar este .grc'
     copyright: ''
@@ -187,8 +187,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1328, 340.0]
-    rotation: 0
+    coordinate: [1152, 436.0]
+    rotation: 180
     state: enabled
 - name: blocks_complex_to_mag_0
   id: blocks_complex_to_mag
@@ -225,7 +225,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [56, 516.0]
+    coordinate: [32, 428.0]
     rotation: 0
     state: enabled
 - name: blocks_interleaved_short_to_complex_0
@@ -243,7 +243,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 540.0]
+    coordinate: [264, 452.0]
     rotation: 0
     state: true
 - name: blocks_moving_average_xx_0
@@ -498,7 +498,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 548.0]
+    coordinate: [512, 460.0]
     rotation: 0
     state: true
 - name: virtual_source_0
