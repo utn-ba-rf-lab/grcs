@@ -173,6 +173,22 @@ blocks:
     coordinate: [864, 236.0]
     rotation: 0
     state: enabled
+- name: blocks_complex_to_float_0
+  id: blocks_complex_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [232, 648.0]
+    rotation: 0
+    state: true
 - name: blocks_head_0_0
   id: blocks_head
   parameters:
@@ -230,6 +246,28 @@ blocks:
     coordinate: [240, 476.0]
     rotation: 0
     state: enabled
+- name: blocks_wavfile_sink_1
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    bits_per_sample1: FORMAT_PCM_16
+    bits_per_sample2: FORMAT_PCM_16
+    bits_per_sample3: FORMAT_VORBIS
+    bits_per_sample4: FORMAT_PCM_16
+    comment: ''
+    file: path + "IQ" +".wav"
+    format: FORMAT_WAV
+    nchan: '2'
+    samp_rate: int(samp_rate//2)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [432, 628.0]
+    rotation: 0
+    state: true
 - name: freq
   id: parameter
   parameters:
@@ -386,6 +424,19 @@ blocks:
     coordinate: [1128, 284.0]
     rotation: 0
     state: true
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: sigue_2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [864, 180.0]
+    rotation: 0
+    state: true
 - name: virtual_source_0
   id: virtual_source
   parameters:
@@ -399,16 +450,33 @@ blocks:
     coordinate: [64, 508.0]
     rotation: 0
     state: true
+- name: virtual_source_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: sigue_2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [64, 660.0]
+    rotation: 0
+    state: true
 
 connections:
 - [analog_agc_xx_0, '0', analog_fm_demod_cf_0, '0']
+- [analog_agc_xx_0, '0', virtual_sink_0_0, '0']
 - [analog_fm_demod_cf_0, '0', virtual_sink_0, '0']
+- [blocks_complex_to_float_0, '0', blocks_wavfile_sink_1, '0']
+- [blocks_complex_to_float_0, '1', blocks_wavfile_sink_1, '1']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
 - [soapy_rtlsdr_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
 - [virtual_source_0, '0', blocks_wavfile_sink_0, '0']
+- [virtual_source_0_0, '0', blocks_complex_to_float_0, '0']
 
 metadata:
   file_format: 1
