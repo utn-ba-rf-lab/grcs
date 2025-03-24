@@ -136,7 +136,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 260.0]
+    coordinate: [696, 276.0]
     rotation: 0
     state: true
 - name: analog_fm_demod_cf_0
@@ -158,7 +158,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 236.0]
+    coordinate: [864, 252.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_float_0
@@ -192,7 +192,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [592, 396.0]
+    coordinate: [592, 412.0]
     rotation: 0
     state: true
 - name: blocks_null_sink_0
@@ -209,7 +209,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 400.0]
+    coordinate: [848, 416.0]
     rotation: 0
     state: true
 - name: blocks_wavfile_sink_0
@@ -231,7 +231,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 476.0]
+    coordinate: [240, 492.0]
     rotation: 0
     state: enabled
 - name: blocks_wavfile_sink_1
@@ -245,7 +245,7 @@ blocks:
     bits_per_sample3: FORMAT_VORBIS
     bits_per_sample4: FORMAT_PCM_16
     comment: ''
-    file: path + "IQ_" + ".wav"
+    file: path + "IQ" + ".wav"
     format: FORMAT_WAV
     nchan: '2'
     samp_rate: int(samp_rate//2)
@@ -307,7 +307,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 260.0]
+    coordinate: [336, 276.0]
     rotation: 0
     state: enabled
 - name: import_0
@@ -357,7 +357,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 372.0]
+    coordinate: [336, 388.0]
     rotation: 0
     state: true
 - name: rfgain
@@ -396,7 +396,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [48, 260.0]
+    coordinate: [48, 276.0]
     rotation: 0
     state: true
 - name: timeout
@@ -426,7 +426,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 284.0]
+    coordinate: [1128, 300.0]
     rotation: 0
     state: true
 - name: virtual_sink_0_0
@@ -434,12 +434,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: sigue_2
+    stream_id: IQ
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 196.0]
+    coordinate: [696, 212.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -452,7 +452,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 508.0]
+    coordinate: [64, 524.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0
@@ -460,7 +460,7 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: sigue_2
+    stream_id: IQ
   states:
     bus_sink: false
     bus_source: false
