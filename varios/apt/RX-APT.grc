@@ -107,18 +107,6 @@ blocks:
     coordinate: [928, 12.0]
     rotation: 0
     state: enabled
-- name: file_name
-  id: variable
-  parameters:
-    comment: ''
-    value: '"NOAA_pass_"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [744, 108.0]
-    rotation: 0
-    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -148,7 +136,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [656, 260.0]
+    coordinate: [696, 260.0]
     rotation: 0
     state: true
 - name: analog_fm_demod_cf_0
@@ -257,7 +245,7 @@ blocks:
     bits_per_sample3: FORMAT_VORBIS
     bits_per_sample4: FORMAT_PCM_16
     comment: ''
-    file: path + "IQ" +".wav"
+    file: path + "IQ_" + ".wav"
     format: FORMAT_WAV
     nchan: '2'
     samp_rate: int(samp_rate//2)
@@ -266,6 +254,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [432, 628.0]
+    rotation: 0
+    state: true
+- name: file_name
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: str
+    value: '"NOAA_pass_"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [744, 108.0]
     rotation: 0
     state: true
 - name: freq
@@ -434,7 +439,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 180.0]
+    coordinate: [696, 196.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -466,12 +471,12 @@ blocks:
 
 connections:
 - [analog_agc_xx_0, '0', analog_fm_demod_cf_0, '0']
-- [analog_agc_xx_0, '0', virtual_sink_0_0, '0']
 - [analog_fm_demod_cf_0, '0', virtual_sink_0, '0']
 - [blocks_complex_to_float_0, '0', blocks_wavfile_sink_1, '0']
 - [blocks_complex_to_float_0, '1', blocks_wavfile_sink_1, '1']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', virtual_sink_0_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
 - [soapy_rtlsdr_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
