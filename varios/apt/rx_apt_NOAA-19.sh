@@ -8,4 +8,4 @@
 #
 cd /home/mdoallo/operaciones/rx/
 # Para NOAA-19
-python3 /usr/local/src/rx/rx_apt.py --freq=137.1e6 --path="/mnt/pasadas/wav/" --rfgain=30 --timeout=780
+python3 /usr/local/src/rx/rx_apt.py --freq=137.1e6 --path="/mnt/pasadas/wav/" --file-name="NOAA-19_pass_" --rfgain=30 --timeout=780

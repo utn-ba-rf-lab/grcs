@@ -8,4 +8,4 @@
 #
 cd /home/mdoallo/operaciones/rx/
 # Para NOAA-18
-python3 /usr/local/src/rx/rx_apt.py --freq=137.9125e6 --path="/mnt/pasadas/wav/" --rfgain=30 --timeout=900
+python3 /usr/local/src/rx/rx_apt.py --freq=137.9125e6 --path="/mnt/pasadas/wav/" --file-name="NOAA-18_pass_" --rfgain=30 --timeout=900
