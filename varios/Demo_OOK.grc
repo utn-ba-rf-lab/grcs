@@ -85,7 +85,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: sample_per_bit*2
+    value: sample_per_bit*2*10
   states:
     bus_sink: false
     bus_source: false
@@ -136,7 +136,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    delay: '40'
+    delay: '400'
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
@@ -155,7 +155,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    delay: '20'
+    delay: '200'
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
