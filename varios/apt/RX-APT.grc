@@ -177,6 +177,40 @@ blocks:
     coordinate: [232, 648.0]
     rotation: 0
     state: true
+- name: blocks_complex_to_mag_0
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 752.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: path + "IQ-Mag-1SpS-Float.raw"
+    type: float
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 732.0]
+    rotation: 0
+    state: enabled
 - name: blocks_head_0_0
   id: blocks_head
   parameters:
@@ -195,6 +229,78 @@ blocks:
     coordinate: [592, 412.0]
     rotation: 0
     state: true
+- name: blocks_integrate_xx_0
+  id: blocks_integrate_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: int(samp_rate/decim_1/1000)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [360, 748.0]
+    rotation: 0
+    state: enabled
+- name: blocks_integrate_xx_0_0
+  id: blocks_integrate_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '1000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 748.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: 1/int(samp_rate/decim_1/1000)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 748.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: 1/1000
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1032, 748.0]
+    rotation: 0
+    state: enabled
 - name: blocks_null_sink_0
   id: blocks_null_sink
   parameters:
@@ -428,7 +534,7 @@ blocks:
     bus_structure: null
     coordinate: [1128, 300.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: virtual_sink_0_0
   id: virtual_sink
   parameters:
@@ -454,7 +560,7 @@ blocks:
     bus_structure: null
     coordinate: [64, 524.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: virtual_source_0_0
   id: virtual_source
   parameters:
@@ -468,13 +574,31 @@ blocks:
     coordinate: [64, 660.0]
     rotation: 0
     state: true
+- name: virtual_source_0_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: IQ
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [64, 748.0]
+    rotation: 0
+    state: enabled
 
 connections:
 - [analog_agc_xx_0, '0', analog_fm_demod_cf_0, '0']
 - [analog_fm_demod_cf_0, '0', virtual_sink_0, '0']
 - [blocks_complex_to_float_0, '0', blocks_wavfile_sink_1, '0']
 - [blocks_complex_to_float_0, '1', blocks_wavfile_sink_1, '1']
+- [blocks_complex_to_mag_0, '0', blocks_integrate_xx_0, '0']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
+- [blocks_integrate_xx_0, '0', blocks_multiply_const_vxx_0, '0']
+- [blocks_integrate_xx_0_0, '0', blocks_multiply_const_vxx_0_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_integrate_xx_0_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', blocks_file_sink_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', virtual_sink_0_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
@@ -482,6 +606,7 @@ connections:
 - [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
 - [virtual_source_0, '0', blocks_wavfile_sink_0, '0']
 - [virtual_source_0_0, '0', blocks_complex_to_float_0, '0']
+- [virtual_source_0_0_0, '0', blocks_complex_to_mag_0, '0']
 
 metadata:
   file_format: 1
