@@ -165,7 +165,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 572.0]
+    coordinate: [256, 576.0]
     rotation: 180
     state: enabled
 - name: blocks_complex_to_mag_0
@@ -181,7 +181,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [344, 192.0]
+    coordinate: [344, 200.0]
     rotation: 0
     state: true
 - name: blocks_integrate_xx_0
@@ -199,7 +199,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 188.0]
+    coordinate: [504, 192.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -217,7 +217,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 572.0]
+    coordinate: [440, 576.0]
     rotation: 180
     state: enabled
 - name: low_pass_filter_0
@@ -265,7 +265,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 524.0]
+    coordinate: [704, 536.0]
     rotation: 180
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -298,7 +298,7 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     fc: freq*1e6
     fftsize: '1024'
     freqhalf: 'True'
@@ -379,7 +379,7 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     fc: '0'
     fftsize: '1024'
     freqhalf: 'True'
@@ -427,7 +427,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 436.0]
+    coordinate: [680, 448.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0_0_0
@@ -460,7 +460,7 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     fc: '0'
     fftsize: '2048'
     freqhalf: 'False'
@@ -571,7 +571,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 164.0]
+    coordinate: [680, 168.0]
     rotation: 0
     state: true
 - name: qtgui_tab
@@ -614,6 +614,8 @@ blocks:
     affinity: ''
     agc: 'False'
     alias: ''
+    bias: 'False'
+    bufflen: '16384'
     center_freq: freq*1e6
     comment: ''
     dev_args: ''
@@ -627,7 +629,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [56, 324.0]
+    coordinate: [48, 320.0]
     rotation: 0
     state: true
 
@@ -646,3 +648,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0

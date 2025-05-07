@@ -223,7 +223,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [120, 396.0]
+    coordinate: [64, 408.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -239,6 +239,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -261,6 +262,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -581,7 +583,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 364.0]
+    coordinate: [752, 356.0]
     rotation: 0
     state: true
 
@@ -595,3 +597,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0

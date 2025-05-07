@@ -163,7 +163,7 @@ blocks:
     affinity: ''
     alias: ''
     amp: '1'
-    comment: Carrier fasor (Complex)
+    comment: Carrier phasor (Complex)
     freq: '20000'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -770,4 +770,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.12.0

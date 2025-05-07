@@ -79,6 +79,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: complex
     waveform: analog.GR_COS_WAVE
   states:
@@ -101,6 +102,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: complex
     waveform: analog.GR_COS_WAVE
   states:
@@ -144,13 +146,15 @@ blocks:
     coordinate: [696, 256.0]
     rotation: 0
     state: true
-- name: blocks_throttle_0
-  id: blocks_throttle
+- name: blocks_throttle2_0
+  id: blocks_throttle2
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
@@ -160,9 +164,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 252.0]
+    coordinate: [296, 304.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -241,7 +245,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 252.0]
+    coordinate: [992, 248.0]
     rotation: 0
     state: enabled
 - name: qtgui_tab
@@ -372,17 +376,18 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 124.0]
+    coordinate: [296, 152.0]
     rotation: 0
     state: enabled
 
 connections:
-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
+- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '0']
+- [analog_sig_source_x_0, '0', blocks_throttle2_0, '0']
+- [analog_sig_source_x_0, '0', qtgui_time_sink_x_0, '0']
 - [analog_sig_source_x_0_0, '0', blocks_multiply_xx_0, '1']
 - [blocks_complex_to_real_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_complex_to_real_0, '0']
-- [blocks_throttle_0, '0', blocks_multiply_xx_0, '0']
-- [blocks_throttle_0, '0', qtgui_time_sink_x_0, '0']
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0
