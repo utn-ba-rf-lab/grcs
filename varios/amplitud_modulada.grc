@@ -44,7 +44,7 @@ blocks:
     rangeType: float
     start: '0'
     step: '0.1'
-    stop: '1'
+    stop: '1.3'
     value: '0.5'
     widget: counter_slider
   states:
@@ -131,7 +131,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 332.0]
+    coordinate: [112, 332.0]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0
@@ -147,13 +147,14 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 196.0]
+    coordinate: [8, 196.0]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0_0
@@ -169,13 +170,14 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: complex
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [344, 372.0]
+    coordinate: [352, 436.0]
     rotation: 0
     state: true
 - name: blocks_add_xx_0
@@ -193,7 +195,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 240.0]
+    coordinate: [336, 240.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_mag_0
@@ -209,7 +211,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 184.0]
+    coordinate: [1000, 184.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_real_0
@@ -225,7 +227,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 400.0]
+    coordinate: [792, 464.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_real_1
@@ -241,7 +243,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 96.0]
+    coordinate: [1000, 96.0]
     rotation: 0
     state: true
 - name: blocks_float_to_complex_0
@@ -257,7 +259,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 256.0]
+    coordinate: [464, 336.0]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_0
@@ -275,7 +277,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 384.0]
+    coordinate: [664, 448.0]
     rotation: 0
     state: true
 - name: blocks_null_source_0
@@ -294,16 +296,18 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 368.0]
+    coordinate: [160, 392.0]
     rotation: 0
     state: true
-- name: blocks_throttle_0
-  id: blocks_throttle
+- name: blocks_throttle2_0
+  id: blocks_throttle2
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
@@ -313,9 +317,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [856, 396.0]
+    coordinate: [960, 452.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -337,7 +341,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 156.0]
+    coordinate: [656, 244.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -418,7 +422,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 284.0]
+    coordinate: [1000, 276.0]
     rotation: 0
     state: true
 - name: qtgui_tab_widget
@@ -549,7 +553,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1040, 380.0]
+    coordinate: [1176, 444.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -608,7 +612,7 @@ blocks:
     name: '""'
     nconnections: '1'
     size: '128'
-    srate: samp_rate
+    srate: samp_rate/10
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -646,7 +650,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1040, 164.0]
+    coordinate: [1160, 164.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -705,7 +709,7 @@ blocks:
     name: '""'
     nconnections: '1'
     size: '128'
-    srate: samp_rate
+    srate: samp_rate/10
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -743,7 +747,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1040, 76.0]
+    coordinate: [1160, 76.0]
     rotation: 0
     state: true
 
@@ -753,16 +757,17 @@ connections:
 - [analog_sig_source_x_0_0, '0', blocks_multiply_xx_0, '1']
 - [blocks_add_xx_0, '0', blocks_float_to_complex_0, '0']
 - [blocks_complex_to_mag_0, '0', qtgui_time_sink_x_0_0, '0']
-- [blocks_complex_to_real_0, '0', blocks_throttle_0, '0']
+- [blocks_complex_to_real_0, '0', blocks_throttle2_0, '0']
 - [blocks_complex_to_real_1, '0', qtgui_time_sink_x_0_0_0, '0']
 - [blocks_float_to_complex_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_float_to_complex_0, '0', low_pass_filter_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_complex_to_real_0, '0']
 - [blocks_null_source_0, '0', blocks_float_to_complex_0, '1']
-- [blocks_throttle_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_throttle2_0, '0', qtgui_time_sink_x_0, '0']
 - [low_pass_filter_0, '0', blocks_complex_to_mag_0, '0']
 - [low_pass_filter_0, '0', blocks_complex_to_real_1, '0']
 - [low_pass_filter_0, '0', qtgui_freq_sink_x_0, '0']
 
 metadata:
   file_format: 1
+  grc_version: 3.10.9.2
