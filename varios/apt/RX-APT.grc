@@ -176,7 +176,7 @@ blocks:
     bus_structure: null
     coordinate: [232, 648.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_complex_to_mag_0
   id: blocks_complex_to_mag
   parameters:
@@ -190,7 +190,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 752.0]
+    coordinate: [224, 752.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0
@@ -244,7 +244,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [360, 748.0]
+    coordinate: [400, 748.0]
     rotation: 0
     state: enabled
 - name: blocks_integrate_xx_0_0
@@ -262,7 +262,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [880, 748.0]
+    coordinate: [808, 748.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0
@@ -271,7 +271,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: 1/int(samp_rate/decim_1/1000)
+    const: 1/int(samp_rate/decim_1)
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -361,7 +361,7 @@ blocks:
     bus_structure: null
     coordinate: [432, 628.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: file_name
   id: parameter
   parameters:
@@ -573,7 +573,7 @@ blocks:
     bus_structure: null
     coordinate: [64, 660.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: virtual_source_0_0_0
   id: virtual_source
   parameters:
