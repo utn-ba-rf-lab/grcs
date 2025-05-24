@@ -96,7 +96,7 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: /home/mdoallo/Descargas/RMS-1SpS-Float.raw
+    file: /home/mdoallo/Descargas/2K4-1SpS-Float.raw
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -110,7 +110,7 @@ blocks:
     bus_structure: null
     coordinate: [16, 472.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_file_source_0_1
   id: blocks_file_source
   parameters:
@@ -151,7 +151,7 @@ blocks:
     bus_structure: null
     coordinate: [96, 592.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_streams_to_vector_0
   id: blocks_streams_to_vector
   parameters:
@@ -488,7 +488,7 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: Valor RMS de Banda Base
+    name: Valor 2K4 de Banda Base
     nconnections: '1'
     size: 2620//4
     srate: samp_rate
@@ -523,7 +523,7 @@ blocks:
     width9: '1'
     ylabel: Amplitude
     ymax: '1'
-    ymin: '-1'
+    ymin: '0'
     yunit: '""'
   states:
     bus_sink: false

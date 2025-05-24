@@ -4,16 +4,15 @@ options:
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
-    comment: "Se invoca as\xED:\npython3 rx_apt.py --freq=137.1e6 --path=\"/home/mdoallo/\"\
-      \ --rfgain=30 --timeout=900\n\nNOAA-15 137,62 MHz\nNOAA-18 137,9125 MHz\nNOAA-19\
-      \ 137,1"
+    comment: "Se invoca as\xED:\nsim_apt_2049.py  --ifie=\"/mnt/pasadas/wav/IQ.wav\"\
+      \ --opath=\"/home/mdoallo/\" \n\nLa salida son varios archivos:"
     copyright: ''
     description: ''
     gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: no_gui
     hier_block_src_path: '.:'
-    id: sim_apt
+    id: sim_apt_2049
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -30,7 +29,7 @@ options:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 12.0]
+    coordinate: [8, 16.0]
     rotation: 0
     state: enabled
 
@@ -44,7 +43,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 12.0]
+    coordinate: [448, 16.0]
     rotation: 0
     state: enabled
 - name: FI
@@ -56,7 +55,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 12.0]
+    coordinate: [384, 16.0]
     rotation: 0
     state: enabled
 - name: FI_BWD
@@ -68,7 +67,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 12.0]
+    coordinate: [280, 16.0]
     rotation: 0
     state: enabled
 - name: date
@@ -80,7 +79,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [936, 108.0]
+    coordinate: [872, 128.0]
     rotation: 0
     state: true
 - name: file_name
@@ -92,19 +91,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 108.0]
+    coordinate: [680, 128.0]
     rotation: 0
     state: true
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '240000'
+    value: '2048000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12.0]
+    coordinate: [192, 16.0]
     rotation: 0
     state: enabled
 - name: analog_agc_xx_0
@@ -126,7 +125,7 @@ blocks:
     bus_structure: null
     coordinate: [808, 264.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: analog_fm_demod_cf_0
   id: analog_fm_demod_cf
   parameters:
@@ -148,7 +147,7 @@ blocks:
     bus_structure: null
     coordinate: [992, 236.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: analog_sig_source_x_0
   id: analog_sig_source_x
   parameters:
@@ -171,7 +170,7 @@ blocks:
     bus_structure: null
     coordinate: [128, 936.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_complex_to_mag_0
   id: blocks_complex_to_mag
   parameters:
@@ -187,7 +186,7 @@ blocks:
     bus_structure: null
     coordinate: [816, 968.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_complex_to_mag_squared_0
   id: blocks_complex_to_mag_squared
   parameters:
@@ -227,7 +226,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: ./IQ-Mag-1SpS-Float.raw
+    file: opath + "IQ-Mag-1SpS-Float.raw"
     type: float
     unbuffered: 'False'
     vlen: '1'
@@ -235,7 +234,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1440, 456.0]
+    coordinate: [1448, 456.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0_0
@@ -255,7 +254,7 @@ blocks:
     bus_structure: null
     coordinate: [784, 744.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_file_sink_0_1
   id: blocks_file_sink
   parameters:
@@ -273,7 +272,7 @@ blocks:
     bus_structure: null
     coordinate: [1184, 840.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_file_sink_0_2
   id: blocks_file_sink
   parameters:
@@ -281,7 +280,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: ./FI-Mag-1SpS-Float.raw
+    file: opath + "FI-Mag-1SpS-Float.raw"
     type: float
     unbuffered: 'False'
     vlen: '1'
@@ -305,7 +304,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [248, 256.0]
+    coordinate: [192, 208.0]
     rotation: 0
     state: true
 - name: blocks_float_to_complex_1
@@ -323,7 +322,7 @@ blocks:
     bus_structure: null
     coordinate: [232, 856.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_head_0
   id: blocks_head
   parameters:
@@ -348,7 +347,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '500'
+    decim: '128'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -377,7 +376,7 @@ blocks:
     bus_structure: null
     coordinate: [232, 760.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_integrate_xx_0_0_0
   id: blocks_integrate_xx
   parameters:
@@ -395,7 +394,7 @@ blocks:
     bus_structure: null
     coordinate: [792, 856.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_integrate_xx_0_0_1
   id: blocks_integrate_xx
   parameters:
@@ -413,14 +412,14 @@ blocks:
     bus_structure: null
     coordinate: [400, 760.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_integrate_xx_0_1
   id: blocks_integrate_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '480'
+    decim: '128'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -438,7 +437,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '480'
+    decim: '512'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -448,6 +447,24 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [800, 536.0]
+    rotation: 0
+    state: enabled
+- name: blocks_integrate_xx_0_1_1
+  id: blocks_integrate_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '125'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [960, 472.0]
     rotation: 0
     state: enabled
 - name: blocks_integrate_xx_0_2
@@ -478,14 +495,14 @@ blocks:
     max_iter: '300'
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: 1/30
+    scale: 1/(128*128*125*30)
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1232, 448.0]
+    coordinate: [1200, 448.0]
     rotation: 0
     state: enabled
 - name: blocks_moving_average_xx_0_0
@@ -525,7 +542,7 @@ blocks:
     bus_structure: null
     coordinate: [952, 856.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_multiply_const_vxx_0_0_1
   id: blocks_multiply_const_vxx
   parameters:
@@ -543,32 +560,14 @@ blocks:
     bus_structure: null
     coordinate: [560, 760.0]
     rotation: 0
-    state: true
-- name: blocks_multiply_const_vxx_0_1
-  id: blocks_multiply_const_vxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: 1/(500*480)
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [968, 472.0]
-    rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_multiply_const_vxx_0_1_0
   id: blocks_multiply_const_vxx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    const: 1/(500*480)
+    const: 1/(500*512)
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -597,7 +596,7 @@ blocks:
     bus_structure: null
     coordinate: [440, 952.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_null_sink_0
   id: blocks_null_sink
   parameters:
@@ -631,7 +630,7 @@ blocks:
     bus_structure: null
     coordinate: [504, 712.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_throttle_0
   id: blocks_throttle
   parameters:
@@ -641,14 +640,14 @@ blocks:
     ignoretag: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samples_per_second: samp_rate*10
+    samples_per_second: samp_rate*5
     type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 204.0]
+    coordinate: [464, 216.0]
     rotation: 0
     state: true
 - name: blocks_wavfile_sink_0
@@ -662,7 +661,7 @@ blocks:
     bits_per_sample3: FORMAT_VORBIS
     bits_per_sample4: FORMAT_PCM_16
     comment: ''
-    file: path + file_name + date +".wav"
+    file: opath + file_name + date +".wav"
     format: FORMAT_WAV
     nchan: '1'
     samp_rate: int(samp_rate/15)
@@ -679,7 +678,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    file: /home/mdoallo/Descargas/sdrangel_20230801_137800000Hz_240KSpS.wav
+    file: ifile
     maxoutbuf: '0'
     minoutbuf: '0'
     nchan: '2'
@@ -688,7 +687,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 256.0]
+    coordinate: [8, 208.0]
     rotation: 0
     state: true
 - name: dc_blocker_xx_0
@@ -708,24 +707,7 @@ blocks:
     bus_structure: null
     coordinate: [216, 616.0]
     rotation: 0
-    state: true
-- name: freq
-  id: parameter
-  parameters:
-    alias: ''
-    comment: ''
-    hide: none
-    label: ''
-    short_id: ''
-    type: eng_float
-    value: 137.62e6
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [320, 12.0]
-    rotation: 0
-    state: true
+    state: disabled
 - name: freq_xlating_fir_filter_xxx_0
   id: freq_xlating_fir_filter_xxx
   parameters:
@@ -733,7 +715,7 @@ blocks:
     alias: ''
     center_freq: FI
     comment: ''
-    decim: '1'
+    decim: '8'
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: samp_rate
@@ -743,7 +725,24 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 264.0]
+    coordinate: [464, 272.0]
+    rotation: 0
+    state: enabled
+- name: ifile
+  id: parameter
+  parameters:
+    alias: ''
+    comment: Rrchivo .raw con las muestras IQ en 2.048 MSpS
+    hide: none
+    label: ''
+    short_id: ''
+    type: str
+    value: '"/mnt/pasadas/wav/IQ.wav"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 16.0]
     rotation: 0
     state: enabled
 - name: import_0
@@ -756,7 +755,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 108.0]
+    coordinate: [464, 128.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -782,12 +781,12 @@ blocks:
     bus_structure: null
     coordinate: [576, 920.0]
     rotation: 0
-    state: enabled
-- name: path
+    state: disabled
+- name: opath
   id: parameter
   parameters:
     alias: ''
-    comment: ''
+    comment: Ruta de destino de archivos
     hide: none
     label: ''
     short_id: ''
@@ -797,7 +796,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 108.0]
+    coordinate: [896, 16.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -820,23 +819,6 @@ blocks:
     coordinate: [464, 368.0]
     rotation: 0
     state: disabled
-- name: rfgain
-  id: parameter
-  parameters:
-    alias: ''
-    comment: ''
-    hide: none
-    label: ''
-    short_id: ''
-    type: eng_float
-    value: '20'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [464, 12.0]
-    rotation: 0
-    state: true
 - name: timeout
   id: parameter
   parameters:
@@ -851,7 +833,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [776, 12.0]
+    coordinate: [520, 16.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -866,7 +848,7 @@ blocks:
     bus_structure: null
     coordinate: [1232, 288.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: virtual_sink_0_0
   id: virtual_sink
   parameters:
@@ -892,7 +874,7 @@ blocks:
     bus_structure: null
     coordinate: [32, 624.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: virtual_source_0_0
   id: virtual_source
   parameters:
@@ -905,7 +887,7 @@ blocks:
     bus_structure: null
     coordinate: [32, 864.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: virtual_source_0_1
   id: virtual_source
   parameters:
@@ -930,21 +912,20 @@ connections:
 - [blocks_float_to_complex_0, '0', blocks_complex_to_mag_squared_0, '0']
 - [blocks_float_to_complex_0, '0', blocks_throttle_0, '0']
 - [blocks_float_to_complex_0, '0', freq_xlating_fir_filter_xxx_0, '0']
-- [blocks_float_to_complex_0, '0', rational_resampler_xxx_0, '0']
 - [blocks_float_to_complex_1, '0', blocks_multiply_xx_0, '0']
 - [blocks_head_0, '0', blocks_null_sink_0, '0']
 - [blocks_integrate_xx_0, '0', blocks_integrate_xx_0_1, '0']
 - [blocks_integrate_xx_0_0, '0', blocks_integrate_xx_0_0_1, '0']
 - [blocks_integrate_xx_0_0_0, '0', blocks_multiply_const_vxx_0_0_0, '0']
 - [blocks_integrate_xx_0_0_1, '0', blocks_multiply_const_vxx_0_0_1, '0']
-- [blocks_integrate_xx_0_1, '0', blocks_multiply_const_vxx_0_1, '0']
+- [blocks_integrate_xx_0_1, '0', blocks_integrate_xx_0_1_1, '0']
 - [blocks_integrate_xx_0_1_0, '0', blocks_multiply_const_vxx_0_1_0, '0']
+- [blocks_integrate_xx_0_1_1, '0', blocks_moving_average_xx_0, '0']
 - [blocks_integrate_xx_0_2, '0', blocks_integrate_xx_0_1_0, '0']
 - [blocks_moving_average_xx_0, '0', blocks_file_sink_0, '0']
 - [blocks_moving_average_xx_0_0, '0', blocks_file_sink_0_2, '0']
 - [blocks_multiply_const_vxx_0_0_0, '0', blocks_file_sink_0_1, '0']
 - [blocks_multiply_const_vxx_0_0_1, '0', blocks_file_sink_0_0, '0']
-- [blocks_multiply_const_vxx_0_1, '0', blocks_moving_average_xx_0, '0']
 - [blocks_multiply_const_vxx_0_1_0, '0', blocks_moving_average_xx_0_0, '0']
 - [blocks_multiply_xx_0, '0', low_pass_filter_0, '0']
 - [blocks_wavfile_source_0, '0', blocks_float_to_complex_0, '0']
