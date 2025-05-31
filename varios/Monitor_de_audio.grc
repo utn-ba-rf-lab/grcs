@@ -37,7 +37,7 @@ blocks:
   id: variable_qtgui_toggle_button_msg
   parameters:
     comment: ''
-    gui_hint: 0,6,1,1
+    gui_hint: 4,5,1,1
     initPressed: 'False'
     label: Graba
     outputmsgname: value
@@ -53,7 +53,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 12.0]
+    coordinate: [440, 16.0]
     rotation: 0
     state: true
 - name: date
@@ -72,12 +72,12 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '"NOAA_pass_"'
+    value: '"Audio_"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [952, 76.0]
+    coordinate: [952, 88.0]
     rotation: 0
     state: true
 - name: path
@@ -89,7 +89,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 76.0]
+    coordinate: [952, 160.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -120,7 +120,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 260.0]
+    coordinate: [8, 256.0]
     rotation: 0
     state: true
 - name: blocks_abs_xx_0_0
@@ -137,9 +137,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 376.0]
+    coordinate: [296, 416.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_max_xx_0
   id: blocks_max_xx
   parameters:
@@ -150,15 +150,15 @@ blocks:
     minoutbuf: '0'
     num_inputs: '1'
     type: float
-    vlen: '1024'
+    vlen: '16384'
     vlen_out: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 364.0]
+    coordinate: [624, 400.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_null_sink_0
   id: blocks_null_sink
   parameters:
@@ -173,7 +173,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 464.0]
+    coordinate: [520, 488.0]
     rotation: 0
     state: true
 - name: blocks_rms_xx_0
@@ -190,7 +190,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 228.0]
+    coordinate: [296, 256.0]
     rotation: 0
     state: true
 - name: blocks_selector_0
@@ -213,7 +213,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 444.0]
+    coordinate: [296, 464.0]
     rotation: 0
     state: true
 - name: blocks_stream_to_vector_0
@@ -224,16 +224,16 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_items: '1024'
+    num_items: '16384'
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 376.0]
+    coordinate: [424, 416.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_wavfile_sink_0
   id: blocks_wavfile_sink
   parameters:
@@ -253,7 +253,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 460.0]
+    coordinate: [624, 480.0]
     rotation: 0
     state: enabled
 - name: import_0
@@ -266,7 +266,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 12.0]
+    coordinate: [952, 232.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -285,7 +285,7 @@ blocks:
     alpha8: '1.0'
     alpha9: '1.0'
     autoscale: 'False'
-    average: '1.0'
+    average: '0.2'
     axislabels: 'True'
     bw: samp_rate
     color1: '"blue"'
@@ -341,13 +341,13 @@ blocks:
     width8: '1'
     width9: '1'
     wintype: window.WIN_BLACKMAN_hARRIS
-    ymax: '-10'
-    ymin: '-60'
+    ymax: '-20'
+    ymin: '-70'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 292.0]
+    coordinate: [296, 320.0]
     rotation: 0
     state: true
 - name: qtgui_ledindicator_0
@@ -357,11 +357,11 @@ blocks:
     alias: ''
     cellalignment: '1'
     comment: ''
-    gui_hint: ''
+    gui_hint: 3,5,1,1
     label: '""'
     maxSize: '40'
-    offColor: red
-    onColor: green
+    offColor: black
+    onColor: red
     position: '1'
     state: 'False'
     verticalalignment: '1'
@@ -369,7 +369,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 188.0]
+    coordinate: [672, 56.0]
     rotation: 0
     state: true
 - name: qtgui_number_sink_0
@@ -432,7 +432,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 204.0]
+    coordinate: [480, 232.0]
     rotation: 0
     state: true
 - name: qtgui_number_sink_0_0
@@ -441,8 +441,8 @@ blocks:
     affinity: ''
     alias: ''
     autoscale: 'False'
-    avg: '0.25'
-    color1: ("black", "red")
+    avg: '1'
+    color1: ("black", "white")
     color10: ("black", "black")
     color2: ("black", "black")
     color3: ("black", "black")
@@ -464,8 +464,8 @@ blocks:
     factor8: '1'
     factor9: '1'
     graph_type: qtgui.NUM_GRAPH_VERT
-    gui_hint: 1,5,4,2
-    label1: Nivel Ent.
+    gui_hint: 1,5,2,1
+    label1: Nivel Max.
     label10: ''
     label2: ''
     label3: ''
@@ -490,14 +490,14 @@ blocks:
     unit7: ''
     unit8: ''
     unit9: ''
-    update_time: '0.10'
+    update_time: '0.1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 348.0]
+    coordinate: [936, 384.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_tab
   id: qtgui_tab_widget
   parameters:
@@ -626,11 +626,12 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 132.0]
+    coordinate: [296, 160.0]
     rotation: 0
     state: true
 
 connections:
+- [Graba, state, qtgui_ledindicator_0, state]
 - [audio_source_0, '0', blocks_abs_xx_0_0, '0']
 - [audio_source_0, '0', blocks_rms_xx_0, '0']
 - [audio_source_0, '0', blocks_selector_0, '0']
@@ -645,3 +646,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0
