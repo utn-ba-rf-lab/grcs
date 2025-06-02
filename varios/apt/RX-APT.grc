@@ -6,7 +6,7 @@ options:
     cmake_opt: ''
     comment: "Se invoca as\xED:\npython3 rx_apt.py --freq=137.1e6 --path=\"/home/mdoallo/\"\
       \ --rfgain=30 --timeout=900\n\nNOAA-15 137,62 MHz\nNOAA-18 137,9125 MHz\nNOAA-19\
-      \ 137,1"
+      \ 137,1\n\nEn rf-lab2 ejecutar \"grcc RX-APT.grc\""
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -30,7 +30,7 @@ options:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 12.0]
+    coordinate: [8, 16.0]
     rotation: 0
     state: enabled
 
@@ -44,7 +44,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 12.0]
+    coordinate: [728, 16.0]
     rotation: 0
     state: enabled
 - name: FI
@@ -56,7 +56,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 12.0]
+    coordinate: [664, 16.0]
     rotation: 0
     state: enabled
 - name: FI_BWD
@@ -68,7 +68,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 12.0]
+    coordinate: [560, 16.0]
     rotation: 0
     state: enabled
 - name: date
@@ -80,31 +80,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [936, 108.0]
+    coordinate: [944, 112.0]
     rotation: 0
     state: true
 - name: decim_1
   id: variable
   parameters:
     comment: ''
-    value: '2'
+    value: '8'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 12.0]
+    coordinate: [880, 16.0]
     rotation: 0
     state: enabled
 - name: decim_2
   id: variable
   parameters:
     comment: ''
-    value: '32'
+    value: '8'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 12.0]
+    coordinate: [960, 16.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -116,7 +116,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12.0]
+    coordinate: [192, 16.0]
     rotation: 0
     state: enabled
 - name: analog_agc_xx_0
@@ -136,7 +136,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 276.0]
+    coordinate: [704, 280.0]
     rotation: 0
     state: true
 - name: analog_fm_demod_cf_0
@@ -158,7 +158,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 252.0]
+    coordinate: [904, 252.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_float_0
@@ -190,7 +190,23 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [224, 752.0]
+    coordinate: [224, 760.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_mag_0_0
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 864.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0
@@ -200,7 +216,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: path + "IQ-Mag-1SpS-Float.raw"
+    file: path + "FI-IQ-Mag-1SpS-Float.raw"
     type: float
     unbuffered: 'False'
     vlen: '1'
@@ -208,7 +224,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1200, 732.0]
+    coordinate: [984, 736.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: path + "RF-IQ-Mag-1SpS-Float.raw"
+    type: float
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 840.0]
     rotation: 0
     state: enabled
 - name: blocks_head_0_0
@@ -226,16 +260,16 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [592, 412.0]
+    coordinate: [584, 408.0]
     rotation: 0
     state: true
-- name: blocks_integrate_xx_0
+- name: blocks_integrate_xx_0_1_0
   id: blocks_integrate_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    decim: int(samp_rate/decim_1/1000)
+    decim: '512'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -244,16 +278,16 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 748.0]
+    coordinate: [568, 752.0]
     rotation: 0
     state: enabled
-- name: blocks_integrate_xx_0_0
+- name: blocks_integrate_xx_0_1_0_0
   id: blocks_integrate_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '1000'
+    decim: '128'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -262,16 +296,16 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 748.0]
+    coordinate: [520, 856.0]
     rotation: 0
     state: enabled
-- name: blocks_multiply_const_vxx_0
-  id: blocks_multiply_const_vxx
+- name: blocks_integrate_xx_0_1_0_0_0
+  id: blocks_integrate_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    const: 1/int(samp_rate/decim_1)
+    decim: '125'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -280,16 +314,16 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 748.0]
+    coordinate: [672, 856.0]
     rotation: 0
     state: enabled
-- name: blocks_multiply_const_vxx_0_0
-  id: blocks_multiply_const_vxx
+- name: blocks_integrate_xx_0_2
+  id: blocks_integrate_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    const: 1/1000
+    decim: '500'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -298,7 +332,65 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1032, 748.0]
+    coordinate: [408, 752.0]
+    rotation: 0
+    state: enabled
+- name: blocks_integrate_xx_0_2_0
+  id: blocks_integrate_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '128'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [368, 856.0]
+    rotation: 0
+    state: enabled
+- name: blocks_moving_average_xx_0_0
+  id: blocks_moving_average_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    length: '30'
+    max_iter: '300'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: 1/(500*512*30)
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [736, 728.0]
+    rotation: 0
+    state: enabled
+- name: blocks_moving_average_xx_0_0_0
+  id: blocks_moving_average_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    length: '30'
+    max_iter: '300'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: 1/(128*128*125*30)
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [824, 832.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -354,12 +446,12 @@ blocks:
     file: path + "IQ" + ".wav"
     format: FORMAT_WAV
     nchan: '2'
-    samp_rate: int(samp_rate//2)
+    samp_rate: int(samp_rate//decim_1)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 628.0]
+    coordinate: [408, 624.0]
     rotation: 0
     state: enabled
 - name: file_name
@@ -376,7 +468,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 108.0]
+    coordinate: [760, 112.0]
     rotation: 0
     state: true
 - name: freq
@@ -393,7 +485,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [320, 12.0]
+    coordinate: [328, 16.0]
     rotation: 0
     state: true
 - name: freq_xlating_fir_filter_xxx_0
@@ -413,7 +505,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 276.0]
+    coordinate: [336, 280.0]
     rotation: 0
     state: enabled
 - name: import_0
@@ -426,7 +518,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 108.0]
+    coordinate: [464, 112.0]
     rotation: 0
     state: true
 - name: path
@@ -443,7 +535,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 108.0]
+    coordinate: [672, 112.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -463,7 +555,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 388.0]
+    coordinate: [336, 384.0]
     rotation: 0
     state: true
 - name: rfgain
@@ -480,7 +572,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 12.0]
+    coordinate: [480, 16.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
@@ -489,6 +581,8 @@ blocks:
     affinity: ''
     agc: 'False'
     alias: ''
+    bias: 'False'
+    bufflen: '16384'
     center_freq: freq
     comment: ''
     dev_args: ''
@@ -502,7 +596,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [48, 276.0]
+    coordinate: [56, 280.0]
     rotation: 0
     state: true
 - name: timeout
@@ -519,7 +613,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [776, 12.0]
+    coordinate: [800, 16.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -532,7 +626,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 300.0]
+    coordinate: [1184, 304.0]
     rotation: 0
     state: enabled
 - name: virtual_sink_0_0
@@ -540,12 +634,25 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: IQ
+    stream_id: FI
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [696, 212.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: RF
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [336, 216.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -566,12 +673,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: IQ
+    stream_id: FI
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 660.0]
+    coordinate: [64, 656.0]
     rotation: 0
     state: enabled
 - name: virtual_source_0_0_0
@@ -579,12 +686,25 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: IQ
+    stream_id: FI
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 748.0]
+    coordinate: [64, 752.0]
+    rotation: 0
+    state: enabled
+- name: virtual_source_0_0_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: RF
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [64, 856.0]
     rotation: 0
     state: enabled
 
@@ -593,20 +713,27 @@ connections:
 - [analog_fm_demod_cf_0, '0', virtual_sink_0, '0']
 - [blocks_complex_to_float_0, '0', blocks_wavfile_sink_1, '0']
 - [blocks_complex_to_float_0, '1', blocks_wavfile_sink_1, '1']
-- [blocks_complex_to_mag_0, '0', blocks_integrate_xx_0, '0']
+- [blocks_complex_to_mag_0, '0', blocks_integrate_xx_0_2, '0']
+- [blocks_complex_to_mag_0_0, '0', blocks_integrate_xx_0_2_0, '0']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
-- [blocks_integrate_xx_0, '0', blocks_multiply_const_vxx_0, '0']
-- [blocks_integrate_xx_0_0, '0', blocks_multiply_const_vxx_0_0, '0']
-- [blocks_multiply_const_vxx_0, '0', blocks_integrate_xx_0_0, '0']
-- [blocks_multiply_const_vxx_0_0, '0', blocks_file_sink_0, '0']
+- [blocks_integrate_xx_0_1_0, '0', blocks_moving_average_xx_0_0, '0']
+- [blocks_integrate_xx_0_1_0_0, '0', blocks_integrate_xx_0_1_0_0_0, '0']
+- [blocks_integrate_xx_0_1_0_0_0, '0', blocks_moving_average_xx_0_0_0, '0']
+- [blocks_integrate_xx_0_2, '0', blocks_integrate_xx_0_1_0, '0']
+- [blocks_integrate_xx_0_2_0, '0', blocks_integrate_xx_0_1_0_0, '0']
+- [blocks_moving_average_xx_0_0, '0', blocks_file_sink_0, '0']
+- [blocks_moving_average_xx_0_0_0, '0', blocks_file_sink_0_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', virtual_sink_0_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
 - [soapy_rtlsdr_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
+- [soapy_rtlsdr_source_0, '0', virtual_sink_0_0_0, '0']
 - [virtual_source_0, '0', blocks_wavfile_sink_0, '0']
 - [virtual_source_0_0, '0', blocks_complex_to_float_0, '0']
 - [virtual_source_0_0_0, '0', blocks_complex_to_mag_0, '0']
+- [virtual_source_0_0_0_0, '0', blocks_complex_to_mag_0_0, '0']
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0

@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: APT_Review
+    id: WFM_Review
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: "An\xE1lisis de APT"
+    title: "An\xE1lisis de WFM"
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -33,6 +33,18 @@ options:
     state: enabled
 
 blocks:
+- name: nbytes
+  id: variable
+  parameters:
+    comment: ''
+    value: '3600'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 16.0]
+    rotation: 0
+    state: enabled
 - name: samp_rate
   id: variable
   parameters:
@@ -52,12 +64,12 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: /home/mdoallo/Descargas/FI-Mag-1SpS-Float.raw
+    file: /home/mdoallo/Descargas/FI-IQ-Mag-1SpS-Float.raw
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
-    repeat: 'False'
+    repeat: 'True'
     type: float
     vlen: '1'
   states:
@@ -88,7 +100,7 @@ blocks:
     bus_structure: null
     coordinate: [16, 352.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_file_source_0_0_0
   id: blocks_file_source
   parameters:
@@ -110,7 +122,7 @@ blocks:
     bus_structure: null
     coordinate: [16, 472.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_file_source_0_1
   id: blocks_file_source
   parameters:
@@ -118,12 +130,12 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: /home/mdoallo/Descargas/IQ-Mag-1SpS-Float.raw
+    file: /home/mdoallo/Descargas/RF-IQ-Mag-1SpS-Float.raw
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
-    repeat: 'False'
+    repeat: 'True'
     type: float
     vlen: '1'
   states:
@@ -160,7 +172,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '4'
+    num_streams: '2'
     type: float
     vlen: '1'
   states:
@@ -181,7 +193,7 @@ blocks:
     minoutbuf: '0'
     samples_per_second: samp_rate*4000
     type: float
-    vlen: '4'
+    vlen: '2'
   states:
     bus_sink: false
     bus_source: false
@@ -197,7 +209,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '4'
+    num_streams: '2'
     type: float
     vlen: '1'
   states:
@@ -296,7 +308,7 @@ blocks:
     marker9: '-1'
     name: "Amplitud (M\xF3dulo de Envolvente Compleja) de FI"
     nconnections: '1'
-    size: 2620//4
+    size: nbytes//4
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -337,7 +349,7 @@ blocks:
     bus_structure: null
     coordinate: [800, 148.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_time_sink_x_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -434,7 +446,7 @@ blocks:
     bus_structure: null
     coordinate: [800, 252.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_0_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -531,7 +543,7 @@ blocks:
     bus_structure: null
     coordinate: [800, 356.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_0_1
   id: qtgui_time_sink_x
   parameters:
@@ -587,7 +599,7 @@ blocks:
     marker9: '-1'
     name: "Amplitud (M\xF3dulo de Envolvente Compleja) de RF"
     nconnections: '1'
-    size: 2620//4
+    size: nbytes//4
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -632,16 +644,11 @@ blocks:
 
 connections:
 - [blocks_file_source_0, '0', blocks_streams_to_vector_0, '1']
-- [blocks_file_source_0_0, '0', blocks_streams_to_vector_0, '2']
-- [blocks_file_source_0_0_0, '0', blocks_streams_to_vector_0, '3']
 - [blocks_file_source_0_1, '0', blocks_streams_to_vector_0, '0']
-- [blocks_null_source_0, '0', blocks_streams_to_vector_0, '3']
 - [blocks_streams_to_vector_0, '0', blocks_throttle_0, '0']
 - [blocks_streams_to_vector_0, '0', blocks_vector_to_streams_0, '0']
 - [blocks_vector_to_streams_0, '0', qtgui_time_sink_x_0_1, '0']
 - [blocks_vector_to_streams_0, '1', qtgui_time_sink_x_0, '0']
-- [blocks_vector_to_streams_0, '2', qtgui_time_sink_x_0_0, '0']
-- [blocks_vector_to_streams_0, '3', qtgui_time_sink_x_0_0_0, '0']
 
 metadata:
   file_format: 1
