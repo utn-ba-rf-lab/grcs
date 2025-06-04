@@ -255,6 +255,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -277,6 +278,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: complex
     waveform: analog.GR_COS_WAVE
   states:
@@ -299,6 +301,7 @@ blocks:
     offset: -amplitud_mod
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_SQR_WAVE
   states:
@@ -388,13 +391,15 @@ blocks:
     coordinate: [960, 484.0]
     rotation: 0
     state: true
-- name: blocks_throttle_0
-  id: blocks_throttle
+- name: blocks_throttle2_0
+  id: blocks_throttle2
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
@@ -404,9 +409,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1024, 172.0]
+    coordinate: [1016, 164.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -616,7 +621,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1024, 236.0]
+    coordinate: [1016, 236.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -675,7 +680,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 340.0]
+    coordinate: [800, 268.0]
     rotation: 0
     state: true
 
@@ -685,7 +690,7 @@ connections:
 - [analog_sig_source_x_0, '0', blocks_selector_0_0, '0']
 - [analog_sig_source_x_0_0, '0', blocks_multiply_xx_0, '1']
 - [analog_sig_source_x_0_1, '0', blocks_selector_0_0, '1']
-- [blocks_complex_to_real_0, '0', blocks_throttle_0, '0']
+- [blocks_complex_to_real_0, '0', blocks_throttle2_0, '0']
 - [blocks_complex_to_real_0, '0', qtgui_time_sink_x_0, '0']
 - [blocks_complex_to_real_0, '0', rational_resampler_xxx_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_complex_to_real_0, '0']
@@ -698,3 +703,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.9.2

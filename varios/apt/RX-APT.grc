@@ -5,8 +5,8 @@ options:
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: "Se invoca as\xED:\npython3 rx_apt.py --freq=137.1e6 --path=\"/home/mdoallo/\"\
-      \ --rfgain=30 --timeout=900\n\nNOAA-15 137,62 MHz\nNOAA-18 137,9125 MHz\nNOAA-19\
-      \ 137,1\n\nEn rf-lab2 ejecutar \"grcc RX-APT.grc\""
+      \ --rfgain=30 --agc=False --timeout=900\n\nNOAA-15 137,62 MHz\nNOAA-18 137,9125\
+      \ MHz\nNOAA-19 137,1\n\nEn rf-lab2 ejecutar \"grcc RX-APT.grc\""
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -44,7 +44,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 16.0]
+    coordinate: [840, 12.0]
     rotation: 0
     state: enabled
 - name: FI
@@ -56,7 +56,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 16.0]
+    coordinate: [776, 12.0]
     rotation: 0
     state: enabled
 - name: FI_BWD
@@ -68,7 +68,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [560, 16.0]
+    coordinate: [672, 12.0]
     rotation: 0
     state: enabled
 - name: date
@@ -80,7 +80,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 112.0]
+    coordinate: [984, 116.0]
     rotation: 0
     state: true
 - name: decim_1
@@ -92,7 +92,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [880, 16.0]
+    coordinate: [992, 12.0]
     rotation: 0
     state: enabled
 - name: decim_2
@@ -104,7 +104,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 16.0]
+    coordinate: [1072, 12.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -119,6 +119,23 @@ blocks:
     coordinate: [192, 16.0]
     rotation: 0
     state: enabled
+- name: agc
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: str
+    value: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 12.0]
+    rotation: 0
+    state: true
 - name: analog_agc_xx_0
   id: analog_agc_xx
   parameters:
@@ -468,7 +485,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 112.0]
+    coordinate: [792, 116.0]
     rotation: 0
     state: true
 - name: freq
@@ -518,7 +535,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 112.0]
+    coordinate: [496, 116.0]
     rotation: 0
     state: true
 - name: path
@@ -535,7 +552,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [672, 112.0]
+    coordinate: [704, 116.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -572,14 +589,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 16.0]
+    coordinate: [480, 12.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
   id: soapy_rtlsdr_source
   parameters:
     affinity: ''
-    agc: 'False'
+    agc: agc
     alias: ''
     bias: 'False'
     bufflen: '16384'
@@ -613,7 +630,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 16.0]
+    coordinate: [912, 12.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -736,4 +753,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2
