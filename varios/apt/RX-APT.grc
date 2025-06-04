@@ -596,7 +596,7 @@ blocks:
   id: soapy_rtlsdr_source
   parameters:
     affinity: ''
-    agc: agc
+    agc: 'True'
     alias: ''
     bias: 'False'
     bufflen: '16384'
