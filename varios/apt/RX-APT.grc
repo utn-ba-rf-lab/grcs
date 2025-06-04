@@ -241,7 +241,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 736.0]
+    coordinate: [984, 740.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0_0
@@ -259,8 +259,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 840.0]
+    coordinate: [1072, 844.0]
     rotation: 0
+    state: enabled
+- name: blocks_file_sink_0_0_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: path + "RF-IQ-Max-1SpS-Float.raw"
+    type: float
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1024, 1028.0]
+    rotation: 180
     state: enabled
 - name: blocks_head_0_0
   id: blocks_head
@@ -295,7 +313,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 752.0]
+    coordinate: [568, 756.0]
     rotation: 0
     state: enabled
 - name: blocks_integrate_xx_0_1_0_0
@@ -313,7 +331,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [520, 856.0]
+    coordinate: [520, 860.0]
     rotation: 0
     state: enabled
 - name: blocks_integrate_xx_0_1_0_0_0
@@ -331,7 +349,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [672, 856.0]
+    coordinate: [672, 860.0]
     rotation: 0
     state: enabled
 - name: blocks_integrate_xx_0_2
@@ -349,7 +367,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 752.0]
+    coordinate: [408, 756.0]
     rotation: 0
     state: enabled
 - name: blocks_integrate_xx_0_2_0
@@ -367,7 +385,45 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 856.0]
+    coordinate: [368, 860.0]
+    rotation: 0
+    state: enabled
+- name: blocks_max_xx_0_0
+  id: blocks_max_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    type: float
+    vlen: 2**12
+    vlen_out: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [552, 956.0]
+    rotation: 0
+    state: enabled
+- name: blocks_max_xx_0_0_0
+  id: blocks_max_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    type: float
+    vlen: 2**9
+    vlen_out: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1120, 956.0]
     rotation: 0
     state: enabled
 - name: blocks_moving_average_xx_0_0
@@ -387,7 +443,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 728.0]
+    coordinate: [736, 732.0]
     rotation: 0
     state: enabled
 - name: blocks_moving_average_xx_0_0_0
@@ -407,7 +463,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [824, 832.0]
+    coordinate: [824, 836.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -427,6 +483,42 @@ blocks:
     coordinate: [848, 416.0]
     rotation: 0
     state: true
+- name: blocks_stream_to_vector_0_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: 2**12
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 968.0]
+    rotation: 0
+    state: enabled
+- name: blocks_stream_to_vector_0_0_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: 2**9
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [960, 968.0]
+    rotation: 0
+    state: enabled
 - name: blocks_wavfile_sink_0
   id: blocks_wavfile_sink
   parameters:
@@ -575,6 +667,26 @@ blocks:
     coordinate: [336, 384.0]
     rotation: 0
     state: true
+- name: rational_resampler_xxx_1
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '125'
+    fbw: '0'
+    interp: '128'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 940.0]
+    rotation: 0
+    state: enabled
 - name: rfgain
   id: parameter
   parameters:
@@ -708,7 +820,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 752.0]
+    coordinate: [64, 756.0]
     rotation: 0
     state: enabled
 - name: virtual_source_0_0_0_0
@@ -721,7 +833,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 856.0]
+    coordinate: [64, 860.0]
     rotation: 0
     state: enabled
 
@@ -732,17 +844,23 @@ connections:
 - [blocks_complex_to_float_0, '1', blocks_wavfile_sink_1, '1']
 - [blocks_complex_to_mag_0, '0', blocks_integrate_xx_0_2, '0']
 - [blocks_complex_to_mag_0_0, '0', blocks_integrate_xx_0_2_0, '0']
+- [blocks_complex_to_mag_0_0, '0', blocks_stream_to_vector_0_0, '0']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
 - [blocks_integrate_xx_0_1_0, '0', blocks_moving_average_xx_0_0, '0']
 - [blocks_integrate_xx_0_1_0_0, '0', blocks_integrate_xx_0_1_0_0_0, '0']
 - [blocks_integrate_xx_0_1_0_0_0, '0', blocks_moving_average_xx_0_0_0, '0']
 - [blocks_integrate_xx_0_2, '0', blocks_integrate_xx_0_1_0, '0']
 - [blocks_integrate_xx_0_2_0, '0', blocks_integrate_xx_0_1_0_0, '0']
+- [blocks_max_xx_0_0, '0', rational_resampler_xxx_1, '0']
+- [blocks_max_xx_0_0_0, '0', blocks_file_sink_0_0_0, '0']
 - [blocks_moving_average_xx_0_0, '0', blocks_file_sink_0, '0']
 - [blocks_moving_average_xx_0_0_0, '0', blocks_file_sink_0_0, '0']
+- [blocks_stream_to_vector_0_0, '0', blocks_max_xx_0_0, '0']
+- [blocks_stream_to_vector_0_0_0, '0', blocks_max_xx_0_0_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', virtual_sink_0_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
+- [rational_resampler_xxx_1, '0', blocks_stream_to_vector_0_0_0, '0']
 - [soapy_rtlsdr_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
 - [soapy_rtlsdr_source_0, '0', virtual_sink_0_0_0, '0']
