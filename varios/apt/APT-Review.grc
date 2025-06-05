@@ -85,13 +85,13 @@ blocks:
     affinity: ''
     alias: ''
     begin_tag: pmt.PMT_NIL
-    comment: ''
-    file: /home/mdoallo/Descargas/BB-1SpS-Float.raw
+    comment: 'Alternatica File: /dev/zero'
+    file: /dev/zero
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
-    repeat: 'False'
+    repeat: 'True'
     type: float
     vlen: '1'
   states:
@@ -100,7 +100,7 @@ blocks:
     bus_structure: null
     coordinate: [16, 352.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_file_source_0_0_0
   id: blocks_file_source
   parameters:
@@ -120,7 +120,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 472.0]
+    coordinate: [16, 496.0]
     rotation: 0
     state: disabled
 - name: blocks_file_source_0_1
@@ -161,7 +161,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [96, 592.0]
+    coordinate: [96, 616.0]
     rotation: 0
     state: disabled
 - name: blocks_streams_to_vector_0
@@ -172,7 +172,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '2'
+    num_streams: '3'
     type: float
     vlen: '1'
   states:
@@ -193,7 +193,7 @@ blocks:
     minoutbuf: '0'
     samples_per_second: samp_rate*4000
     type: float
-    vlen: '2'
+    vlen: '3'
   states:
     bus_sink: false
     bus_source: false
@@ -209,7 +209,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '2'
+    num_streams: '3'
     type: float
     vlen: '1'
   states:
@@ -225,8 +225,8 @@ blocks:
     alias: ''
     comment: ''
     gui_hint: 0,0,5,5
-    label0: RF
-    label1: FI
+    label0: RF Mag
+    label1: FI Mag
     label10: Tab 10
     label11: Tab 11
     label12: Tab 12
@@ -237,7 +237,7 @@ blocks:
     label17: Tab 17
     label18: Tab 18
     label19: Tab 19
-    label2: BB
+    label2: RF Max
     label3: RMS
     label4: Tab 4
     label5: Tab 5
@@ -403,9 +403,9 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: Valor medio de Banda Base
+    name: "Amplitud (M\xF3dulo M\xE1ximo de Envolvente Compleja) de RF"
     nconnections: '1'
-    size: 2620//4
+    size: nbytes//4
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -446,7 +446,7 @@ blocks:
     bus_structure: null
     coordinate: [800, 252.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_time_sink_x_0_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -644,12 +644,14 @@ blocks:
 
 connections:
 - [blocks_file_source_0, '0', blocks_streams_to_vector_0, '1']
+- [blocks_file_source_0_0, '0', blocks_streams_to_vector_0, '2']
 - [blocks_file_source_0_1, '0', blocks_streams_to_vector_0, '0']
 - [blocks_streams_to_vector_0, '0', blocks_throttle_0, '0']
 - [blocks_streams_to_vector_0, '0', blocks_vector_to_streams_0, '0']
 - [blocks_vector_to_streams_0, '0', qtgui_time_sink_x_0_1, '0']
 - [blocks_vector_to_streams_0, '1', qtgui_time_sink_x_0, '0']
+- [blocks_vector_to_streams_0, '2', qtgui_time_sink_x_0_0, '0']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2
