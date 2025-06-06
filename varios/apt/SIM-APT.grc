@@ -188,8 +188,8 @@ blocks:
     coordinate: [816, 968.0]
     rotation: 0
     state: enabled
-- name: blocks_complex_to_mag_squared_0
-  id: blocks_complex_to_mag_squared
+- name: blocks_complex_to_mag_0_0
+  id: blocks_complex_to_mag
   parameters:
     affinity: ''
     alias: ''
@@ -201,11 +201,11 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 480.0]
+    coordinate: [472, 480.0]
     rotation: 0
     state: enabled
-- name: blocks_complex_to_mag_squared_0_0
-  id: blocks_complex_to_mag_squared
+- name: blocks_complex_to_mag_0_1
+  id: blocks_complex_to_mag
   parameters:
     affinity: ''
     alias: ''
@@ -217,7 +217,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 544.0]
+    coordinate: [472, 544.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0
@@ -925,9 +925,9 @@ connections:
 - [analog_fm_demod_cf_0, '0', virtual_sink_0, '0']
 - [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
 - [blocks_complex_to_mag_0, '0', blocks_integrate_xx_0_0_0, '0']
-- [blocks_complex_to_mag_squared_0, '0', blocks_integrate_xx_0, '0']
-- [blocks_complex_to_mag_squared_0_0, '0', blocks_integrate_xx_0_2, '0']
-- [blocks_float_to_complex_0, '0', blocks_complex_to_mag_squared_0, '0']
+- [blocks_complex_to_mag_0_0, '0', blocks_integrate_xx_0, '0']
+- [blocks_complex_to_mag_0_1, '0', blocks_integrate_xx_0_2, '0']
+- [blocks_float_to_complex_0, '0', blocks_complex_to_mag_0_0, '0']
 - [blocks_float_to_complex_0, '0', blocks_throttle_0, '0']
 - [blocks_float_to_complex_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [blocks_float_to_complex_0, '0', rational_resampler_xxx_0, '0']
@@ -959,7 +959,7 @@ connections:
 - [virtual_source_0, '0', dc_blocker_xx_0, '0']
 - [virtual_source_0_0, '0', blocks_float_to_complex_1, '0']
 - [virtual_source_0_0, '0', blocks_float_to_complex_1, '1']
-- [virtual_source_0_1, '0', blocks_complex_to_mag_squared_0_0, '0']
+- [virtual_source_0_1, '0', blocks_complex_to_mag_0_1, '0']
 
 metadata:
   file_format: 1
