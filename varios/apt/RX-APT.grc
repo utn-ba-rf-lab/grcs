@@ -233,7 +233,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: path + "FI-IQ-Mag-1SpS-Float.raw"
+    file: path + file_name + date + "-FI-IQ-Mag-1SpS-Float.raw"
     type: float
     unbuffered: 'False'
     vlen: '1'
@@ -251,7 +251,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: path + "RF-IQ-Mag-1SpS-Float.raw"
+    file: path + file_name + date + "-RF-IQ-Mag-1SpS-Float.raw"
     type: float
     unbuffered: 'False'
     vlen: '1'
@@ -269,7 +269,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: path + "RF-IQ-Max-1SpS-Float.raw"
+    file: path + file_name + date + "-RF-IQ-Max-1SpS-Float.raw"
     type: float
     unbuffered: 'False'
     vlen: '1'

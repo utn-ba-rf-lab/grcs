@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 84.0]
+    coordinate: [376, 12.0]
     rotation: 0
     state: enabled
 - name: nbytes
@@ -54,19 +54,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 12.0]
+    coordinate: [440, 12.0]
     rotation: 0
     state: enabled
 - name: path
   id: variable
   parameters:
-    comment: ''
-    value: '"/home/mdoallo/Descargas/"'
+    comment: Path + Filename + "-"
+    value: '"/home/mdoallo/Descargas/NOAA-19_pass_20250607_095950-ARG-Casa-QFH/NOAA-19_pass_20250607_100006-ARG-"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 12.0]
+    coordinate: [512, 12.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -100,7 +100,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 404.0]
+    coordinate: [16, 436.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0_0
@@ -124,7 +124,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 124.0]
+    coordinate: [16, 156.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0_0_0
@@ -146,7 +146,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 540.0]
+    coordinate: [16, 572.0]
     rotation: 0
     state: disabled
 - name: blocks_file_source_0_1
@@ -168,7 +168,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 268.0]
+    coordinate: [16, 300.0]
     rotation: 0
     state: enabled
 - name: blocks_head_0_0
@@ -206,7 +206,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 76.0]
+    coordinate: [560, 116.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -242,7 +242,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [104, 656.0]
+    coordinate: [104, 688.0]
     rotation: 0
     state: disabled
 - name: blocks_streams_to_vector_0
@@ -297,7 +297,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 272.0]
+    coordinate: [752, 272.0]
     rotation: 0
     state: true
 - name: blocks_vector_to_streams_0_0
@@ -315,7 +315,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 72.0]
+    coordinate: [752, 112.0]
     rotation: 0
     state: true
 - name: qtgui_tab
@@ -324,8 +324,8 @@ blocks:
     alias: ''
     comment: ''
     gui_hint: 0,0,5,5
-    label0: RF Mag
-    label1: FI Mag
+    label0: RF Max
+    label1: RF Mag
     label10: Tab 10
     label11: Tab 11
     label12: Tab 12
@@ -336,7 +336,7 @@ blocks:
     label17: Tab 17
     label18: Tab 18
     label19: Tab 19
-    label2: RF Max
+    label2: FI Mag
     label3: RMS
     label4: Tab 4
     label5: Tab 5
@@ -383,7 +383,7 @@ blocks:
     ctrlpanel: 'True'
     entags: 'True'
     grid: 'False'
-    gui_hint: qtgui_tab@1:0,0,5,5
+    gui_hint: qtgui_tab@2:0,0,5,5
     label1: Amp FI
     label10: Signal 10
     label2: Amp Avg FI
@@ -480,7 +480,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: qtgui_tab@2:0,0,5,5
+    gui_hint: qtgui_tab@0:0,0,5,5
     label1: Max
     label10: Signal 10
     label2: Max Avg
@@ -674,7 +674,7 @@ blocks:
     ctrlpanel: 'True'
     entags: 'True'
     grid: 'False'
-    gui_hint: qtgui_tab@0:0,0,5,5
+    gui_hint: qtgui_tab@1:0,0,5,5
     label1: Amp
     label10: Signal 10
     label2: Amp Avg
