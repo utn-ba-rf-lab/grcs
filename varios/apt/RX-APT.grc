@@ -259,7 +259,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 844.0]
+    coordinate: [1088, 844.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0_0_0
@@ -426,44 +426,40 @@ blocks:
     coordinate: [1120, 956.0]
     rotation: 0
     state: enabled
-- name: blocks_moving_average_xx_0_0
-  id: blocks_moving_average_xx
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    length: '30'
-    max_iter: '300'
+    const: 1/(500*512)
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: 1/(500*512*30)
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 732.0]
+    coordinate: [744, 756.0]
     rotation: 0
     state: enabled
-- name: blocks_moving_average_xx_0_0_0
-  id: blocks_moving_average_xx
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    length: '30'
-    max_iter: '300'
+    const: 1/(128*128*125)
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: 1/(128*128*125*30)
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [824, 836.0]
+    coordinate: [832, 860.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -480,7 +476,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 416.0]
+    coordinate: [840, 416.0]
     rotation: 0
     state: true
 - name: blocks_stream_to_vector_0_0
@@ -846,15 +842,15 @@ connections:
 - [blocks_complex_to_mag_0_0, '0', blocks_integrate_xx_0_2_0, '0']
 - [blocks_complex_to_mag_0_0, '0', blocks_stream_to_vector_0_0, '0']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
-- [blocks_integrate_xx_0_1_0, '0', blocks_moving_average_xx_0_0, '0']
+- [blocks_integrate_xx_0_1_0, '0', blocks_multiply_const_vxx_0, '0']
 - [blocks_integrate_xx_0_1_0_0, '0', blocks_integrate_xx_0_1_0_0_0, '0']
-- [blocks_integrate_xx_0_1_0_0_0, '0', blocks_moving_average_xx_0_0_0, '0']
+- [blocks_integrate_xx_0_1_0_0_0, '0', blocks_multiply_const_vxx_0_0, '0']
 - [blocks_integrate_xx_0_2, '0', blocks_integrate_xx_0_1_0, '0']
 - [blocks_integrate_xx_0_2_0, '0', blocks_integrate_xx_0_1_0_0, '0']
 - [blocks_max_xx_0_0, '0', rational_resampler_xxx_1, '0']
 - [blocks_max_xx_0_0_0, '0', blocks_file_sink_0_0_0, '0']
-- [blocks_moving_average_xx_0_0, '0', blocks_file_sink_0, '0']
-- [blocks_moving_average_xx_0_0_0, '0', blocks_file_sink_0_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_file_sink_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', blocks_file_sink_0_0, '0']
 - [blocks_stream_to_vector_0_0, '0', blocks_max_xx_0_0, '0']
 - [blocks_stream_to_vector_0_0_0, '0', blocks_max_xx_0_0_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_agc_xx_0, '0']
