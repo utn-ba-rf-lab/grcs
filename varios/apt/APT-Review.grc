@@ -61,7 +61,7 @@ blocks:
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/NOAA-19_pass_20250607_095950-ARG-Casa-QFH/NOAA-19_pass_20250607_100006-ARG-"'
+    value: '"/home/mdoallo/Descargas/NOAA-15_pass_20250609_071528-ARG-"'
   states:
     bus_sink: false
     bus_source: false
@@ -380,7 +380,7 @@ blocks:
     color8: dark red
     color9: dark green
     comment: ''
-    ctrlpanel: 'True'
+    ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
     gui_hint: qtgui_tab@2:0,0,5,5
@@ -446,7 +446,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1096, 252.0]
+    coordinate: [1096, 288.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0_0
@@ -640,7 +640,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1096, 348.0]
+    coordinate: [1096, 400.0]
     rotation: 0
     state: disabled
 - name: qtgui_time_sink_x_0_1
@@ -671,7 +671,7 @@ blocks:
     color8: dark red
     color9: dark green
     comment: ''
-    ctrlpanel: 'True'
+    ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
     gui_hint: qtgui_tab@1:0,0,5,5
@@ -737,7 +737,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1096, 156.0]
+    coordinate: [1096, 176.0]
     rotation: 0
     state: true
 
@@ -760,4 +760,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.12.0
