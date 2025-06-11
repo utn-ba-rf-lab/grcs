@@ -54,19 +54,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [440, 12.0]
+    coordinate: [448, 16.0]
     rotation: 0
     state: enabled
 - name: path
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/NOAA-15_pass_20250609_071528-ARG-"'
+    value: '"/home/mdoallo/Descargas/NOAA-19_Campus_20250609_093450-ARG-"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 12.0]
+    coordinate: [520, 16.0]
     rotation: 0
     state: enabled
 - name: samp_rate
