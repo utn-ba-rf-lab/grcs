@@ -1,0 +1,389 @@
+options:
+  parameters:
+    author: Marcelo Doallo
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: LRPT_Campare
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: "Compraci\xF3n de sela\xF1es de LRPT"
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 12.0]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: campus
+  id: variable
+  parameters:
+    comment: Filename de Campus
+    value: '"Meteor-M2-4_Campus_20250618_153846-ARG-FI-Hi-IQ-Mag-1SpS-Float"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 84.0]
+    rotation: 0
+    state: enabled
+- name: canales
+  id: variable
+  parameters:
+    comment: ''
+    value: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 12.0]
+    rotation: 0
+    state: enabled
+- name: casa
+  id: variable
+  parameters:
+    comment: Filename de Casa
+    value: '"METEOR-M2-4_Casa_20250618_153801-ARG-FI-Hi-IQ-Mag-1SpS-Float"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 84.0]
+    rotation: 0
+    state: enabled
+- name: largo
+  id: variable
+  parameters:
+    comment: ''
+    value: '30'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 12.0]
+    rotation: 0
+    state: enabled
+- name: nbytes
+  id: variable
+  parameters:
+    comment: ''
+    value: '3600'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 12.0]
+    rotation: 0
+    state: enabled
+- name: path
+  id: variable
+  parameters:
+    comment: ''
+    value: '"/home/mdoallo/Descargas/"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 12.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [176, 12.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_source_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: 'Casa.raw
+
+      Alternatica File: /dev/zero'
+    file: path + casa +".raw"
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 164.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_source_0_2
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: 'Campus.raw
+
+      Alternatica File: /dev/zero'
+    file: path + campus +".raw"
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 316.0]
+    rotation: 0
+    state: enabled
+- name: blocks_head_0_0
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: nbytes//4
+    type: float
+    vlen: canales
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 380.0]
+    rotation: 0
+    state: true
+- name: blocks_moving_average_xx_0_0_0
+  id: blocks_moving_average_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    length: largo
+    max_iter: '300'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: 1/largo
+    type: float
+    vlen: canales
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 188.0]
+    rotation: 0
+    state: enabled
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: float
+    vlen: canales
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 388.0]
+    rotation: 0
+    state: true
+- name: blocks_streams_to_vector_0
+  id: blocks_streams_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: canales
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 200.0]
+    rotation: 0
+    state: true
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate*4000
+    type: float
+    vlen: canales
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 308.0]
+    rotation: 0
+    state: enabled
+- name: blocks_vector_to_streams_0_0
+  id: blocks_vector_to_streams
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: canales
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [824, 200.0]
+    rotation: 0
+    state: true
+- name: qtgui_time_sink_x_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'False'
+    entags: 'True'
+    grid: 'False'
+    gui_hint: 0,0,5,5
+    label1: Casa
+    label10: Signal 10
+    label2: Campus
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: "Amplitud (M\xF3dulo de Envolvente Compleja) en FI"
+    nconnections: '2'
+    size: nbytes//4
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1'
+    ymin: '0'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1040, 188.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [blocks_file_source_0, '0', blocks_streams_to_vector_0, '0']
+- [blocks_file_source_0_2, '0', blocks_streams_to_vector_0, '1']
+- [blocks_head_0_0, '0', blocks_null_sink_0, '0']
+- [blocks_moving_average_xx_0_0_0, '0', blocks_vector_to_streams_0_0, '0']
+- [blocks_streams_to_vector_0, '0', blocks_head_0_0, '0']
+- [blocks_streams_to_vector_0, '0', blocks_moving_average_xx_0_0_0, '0']
+- [blocks_streams_to_vector_0, '0', blocks_throttle_0, '0']
+- [blocks_vector_to_streams_0_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_vector_to_streams_0_0, '1', qtgui_time_sink_x_0, '1']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.9.2

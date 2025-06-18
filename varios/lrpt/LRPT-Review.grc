@@ -28,7 +28,7 @@ options:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 16.0]
+    coordinate: [16, 12.0]
     rotation: 0
     state: enabled
 
@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [520, 16.0]
+    coordinate: [512, 12.0]
     rotation: 0
     state: enabled
 - name: largo
@@ -54,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 16.0]
+    coordinate: [376, 12.0]
     rotation: 0
     state: enabled
 - name: nbytes
@@ -66,19 +66,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 16.0]
+    coordinate: [440, 12.0]
     rotation: 0
     state: enabled
 - name: path
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/Meteor-M2-4_Campus_20250617_160017-ARG-"'
+    value: '"/home/mdoallo/Descargas/METEOR-M2-4_Casa_20250618_153801-ARG-"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [592, 16.0]
+    coordinate: [680, 12.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -90,7 +90,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [168, 16.0]
+    coordinate: [168, 12.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0
@@ -99,7 +99,7 @@ blocks:
     affinity: ''
     alias: ''
     begin_tag: pmt.PMT_NIL
-    comment: FI-IQ-Mag-1SpS-Float.raw
+    comment: FI-Hi-IQ-Mag-1SpS-Float.raw
     file: path + "FI-Hi-IQ-Mag-1SpS-Float.raw"
     length: '0'
     maxoutbuf: '0'
@@ -112,7 +112,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 456.0]
+    coordinate: [16, 436.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0_0
@@ -158,7 +158,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 312.0]
+    coordinate: [16, 300.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0_2
@@ -167,7 +167,7 @@ blocks:
     affinity: ''
     alias: ''
     begin_tag: pmt.PMT_NIL
-    comment: FI-IQ-Mag-1SpS-Float.raw
+    comment: FI-Lo-IQ-Mag-1SpS-Float.raw
     file: path + "FI-Lo-IQ-Mag-1SpS-Float.raw"
     length: '0'
     maxoutbuf: '0'
@@ -180,7 +180,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 600.0]
+    coordinate: [16, 572.0]
     rotation: 0
     state: enabled
 - name: blocks_head_0_0
@@ -198,7 +198,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 496.0]
+    coordinate: [704, 476.0]
     rotation: 0
     state: true
 - name: blocks_moving_average_xx_0_0_0
@@ -218,7 +218,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 120.0]
+    coordinate: [560, 116.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -235,28 +235,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 504.0]
+    coordinate: [912, 484.0]
     rotation: 0
     state: true
-- name: blocks_null_source_0
-  id: blocks_null_source
-  parameters:
-    affinity: ''
-    alias: ''
-    bus_structure_source: '[[0,],]'
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_outputs: '1'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [200, 736.0]
-    rotation: 0
-    state: disabled
 - name: blocks_streams_to_vector_0
   id: blocks_streams_to_vector
   parameters:
@@ -272,7 +253,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 280.0]
+    coordinate: [384, 360.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -291,7 +272,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 424.0]
+    coordinate: [704, 404.0]
     rotation: 0
     state: enabled
 - name: blocks_vector_to_streams_0
@@ -309,7 +290,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 272.0]
+    coordinate: [784, 272.0]
     rotation: 0
     state: true
 - name: blocks_vector_to_streams_0_0
@@ -327,7 +308,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 104.0]
+    coordinate: [784, 96.0]
     rotation: 0
     state: true
 - name: qtgui_tab
@@ -348,8 +329,8 @@ blocks:
     label17: Tab 17
     label18: Tab 18
     label19: Tab 19
-    label2: FI Hi
-    label3: FI Lo
+    label2: FI  Hi Mag
+    label3: FI  Lo Mag
     label4: Tab 4
     label5: Tab 5
     label6: Tab 6
@@ -361,7 +342,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [256, 16.0]
+    coordinate: [256, 12.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -749,7 +730,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1096, 400.0]
+    coordinate: [1096, 388.0]
     rotation: 0
     state: enabled
 
@@ -767,12 +748,12 @@ connections:
 - [blocks_vector_to_streams_0, '0', qtgui_time_sink_x_0_0, '0']
 - [blocks_vector_to_streams_0, '1', qtgui_time_sink_x_0_1, '0']
 - [blocks_vector_to_streams_0, '2', qtgui_time_sink_x_0, '0']
-- [blocks_vector_to_streams_0, '3', qtgui_time_sink_x_0_2, '0']
+- [blocks_vector_to_streams_0, '3', qtgui_time_sink_x_0_2, '1']
 - [blocks_vector_to_streams_0_0, '0', qtgui_time_sink_x_0_0, '1']
 - [blocks_vector_to_streams_0_0, '1', qtgui_time_sink_x_0_1, '1']
 - [blocks_vector_to_streams_0_0, '2', qtgui_time_sink_x_0, '1']
-- [blocks_vector_to_streams_0_0, '3', qtgui_time_sink_x_0_2, '1']
+- [blocks_vector_to_streams_0_0, '3', qtgui_time_sink_x_0_2, '0']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2
