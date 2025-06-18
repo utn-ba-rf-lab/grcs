@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: APT_Review
+    id: LRPT_Review
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,17 +22,29 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: "An\xE1lisis de APT"
+    title: "An\xE1lisis de LRPT"
     window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 12.0]
+    coordinate: [16, 16.0]
     rotation: 0
     state: enabled
 
 blocks:
+- name: canales
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 16.0]
+    rotation: 0
+    state: enabled
 - name: largo
   id: variable
   parameters:
@@ -42,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 12.0]
+    coordinate: [376, 16.0]
     rotation: 0
     state: enabled
 - name: nbytes
@@ -61,12 +73,12 @@ blocks:
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/NOAA-19_Campus_20250617_093409-ARG-"'
+    value: '"/home/mdoallo/Descargas/Meteor-M2-4_Campus_20250617_160017-ARG-"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [520, 16.0]
+    coordinate: [592, 16.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -78,7 +90,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [168, 12.0]
+    coordinate: [168, 16.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0
@@ -88,7 +100,7 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: FI-IQ-Mag-1SpS-Float.raw
-    file: path + "FI-IQ-Mag-1SpS-Float.raw"
+    file: path + "FI-Hi-IQ-Mag-1SpS-Float.raw"
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -100,7 +112,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 436.0]
+    coordinate: [16, 456.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0_0
@@ -127,28 +139,6 @@ blocks:
     coordinate: [16, 156.0]
     rotation: 0
     state: enabled
-- name: blocks_file_source_0_0_0
-  id: blocks_file_source
-  parameters:
-    affinity: ''
-    alias: ''
-    begin_tag: pmt.PMT_NIL
-    comment: ''
-    file: /home/mdoallo/Descargas/2K4-1SpS-Float.raw
-    length: '0'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    offset: '0'
-    repeat: 'False'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [16, 572.0]
-    rotation: 0
-    state: disabled
 - name: blocks_file_source_0_1
   id: blocks_file_source
   parameters:
@@ -168,7 +158,29 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 300.0]
+    coordinate: [16, 312.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_source_0_2
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: FI-IQ-Mag-1SpS-Float.raw
+    file: path + "FI-Lo-IQ-Mag-1SpS-Float.raw"
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 600.0]
     rotation: 0
     state: enabled
 - name: blocks_head_0_0
@@ -181,12 +193,12 @@ blocks:
     minoutbuf: '0'
     num_items: nbytes//4
     type: float
-    vlen: '3'
+    vlen: canales
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 476.0]
+    coordinate: [712, 496.0]
     rotation: 0
     state: true
 - name: blocks_moving_average_xx_0_0_0
@@ -201,12 +213,12 @@ blocks:
     minoutbuf: '0'
     scale: 1/largo
     type: float
-    vlen: '3'
+    vlen: canales
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [560, 116.0]
+    coordinate: [576, 120.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -218,12 +230,12 @@ blocks:
     comment: ''
     num_inputs: '1'
     type: float
-    vlen: '3'
+    vlen: canales
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 484.0]
+    coordinate: [928, 504.0]
     rotation: 0
     state: true
 - name: blocks_null_source_0
@@ -242,7 +254,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [104, 688.0]
+    coordinate: [200, 736.0]
     rotation: 0
     state: disabled
 - name: blocks_streams_to_vector_0
@@ -253,14 +265,14 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '3'
+    num_streams: canales
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 272.0]
+    coordinate: [400, 280.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -274,12 +286,12 @@ blocks:
     minoutbuf: '0'
     samples_per_second: samp_rate*4000
     type: float
-    vlen: '3'
+    vlen: canales
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 404.0]
+    coordinate: [712, 424.0]
     rotation: 0
     state: enabled
 - name: blocks_vector_to_streams_0
@@ -290,14 +302,14 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '3'
+    num_streams: canales
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 272.0]
+    coordinate: [808, 272.0]
     rotation: 0
     state: true
 - name: blocks_vector_to_streams_0_0
@@ -308,14 +320,14 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_streams: '3'
+    num_streams: canales
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 112.0]
+    coordinate: [808, 104.0]
     rotation: 0
     state: true
 - name: qtgui_tab
@@ -336,8 +348,8 @@ blocks:
     label17: Tab 17
     label18: Tab 18
     label19: Tab 19
-    label2: FI Mag
-    label3: RMS
+    label2: FI Hi
+    label3: FI Lo
     label4: Tab 4
     label5: Tab 5
     label6: Tab 6
@@ -349,7 +361,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [256, 12.0]
+    coordinate: [256, 16.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -405,7 +417,7 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: "Amplitud (M\xF3dulo de Envolvente Compleja) de FI"
+    name: "Amplitud (M\xF3dulo de Envolvente Compleja) de FI en 137,9 MHz"
     nconnections: '2'
     size: nbytes//4
     srate: samp_rate
@@ -546,103 +558,6 @@ blocks:
     coordinate: [1096, 60.0]
     rotation: 0
     state: enabled
-- name: qtgui_time_sink_x_0_0_0
-  id: qtgui_time_sink_x
-  parameters:
-    affinity: ''
-    alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'True'
-    axislabels: 'True'
-    color1: blue
-    color10: dark blue
-    color2: red
-    color3: green
-    color4: black
-    color5: cyan
-    color6: magenta
-    color7: yellow
-    color8: dark red
-    color9: dark green
-    comment: ''
-    ctrlpanel: 'False'
-    entags: 'True'
-    grid: 'False'
-    gui_hint: qtgui_tab@3:0,0,5,5
-    label1: Signal 1
-    label10: Signal 10
-    label2: Signal 2
-    label3: Signal 3
-    label4: Signal 4
-    label5: Signal 5
-    label6: Signal 6
-    label7: Signal 7
-    label8: Signal 8
-    label9: Signal 9
-    legend: 'True'
-    marker1: '-1'
-    marker10: '-1'
-    marker2: '-1'
-    marker3: '-1'
-    marker4: '-1'
-    marker5: '-1'
-    marker6: '-1'
-    marker7: '-1'
-    marker8: '-1'
-    marker9: '-1'
-    name: Valor 2K4 de Banda Base
-    nconnections: '1'
-    size: 2620//4
-    srate: samp_rate
-    stemplot: 'False'
-    style1: '1'
-    style10: '1'
-    style2: '1'
-    style3: '1'
-    style4: '1'
-    style5: '1'
-    style6: '1'
-    style7: '1'
-    style8: '1'
-    style9: '1'
-    tr_chan: '0'
-    tr_delay: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_slope: qtgui.TRIG_SLOPE_POS
-    tr_tag: '""'
-    type: float
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    ylabel: Amplitude
-    ymax: '1'
-    ymin: '0'
-    yunit: '""'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1096, 400.0]
-    rotation: 0
-    state: disabled
 - name: qtgui_time_sink_x_0_1
   id: qtgui_time_sink_x
   parameters:
@@ -740,11 +655,109 @@ blocks:
     coordinate: [1096, 176.0]
     rotation: 0
     state: true
+- name: qtgui_time_sink_x_0_2
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'False'
+    entags: 'True'
+    grid: 'False'
+    gui_hint: qtgui_tab@3:0,0,5,5
+    label1: Amp FI
+    label10: Signal 10
+    label2: Amp Avg FI
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: "Amplitud (M\xF3dulo de Envolvente Compleja) de FI en 137,1 MHz"
+    nconnections: '2'
+    size: nbytes//4
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1'
+    ymin: '0'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1096, 400.0]
+    rotation: 0
+    state: enabled
 
 connections:
 - [blocks_file_source_0, '0', blocks_streams_to_vector_0, '2']
 - [blocks_file_source_0_0, '0', blocks_streams_to_vector_0, '0']
 - [blocks_file_source_0_1, '0', blocks_streams_to_vector_0, '1']
+- [blocks_file_source_0_2, '0', blocks_streams_to_vector_0, '3']
 - [blocks_head_0_0, '0', blocks_null_sink_0, '0']
 - [blocks_moving_average_xx_0_0_0, '0', blocks_vector_to_streams_0_0, '0']
 - [blocks_streams_to_vector_0, '0', blocks_head_0_0, '0']
@@ -754,9 +767,11 @@ connections:
 - [blocks_vector_to_streams_0, '0', qtgui_time_sink_x_0_0, '0']
 - [blocks_vector_to_streams_0, '1', qtgui_time_sink_x_0_1, '0']
 - [blocks_vector_to_streams_0, '2', qtgui_time_sink_x_0, '0']
+- [blocks_vector_to_streams_0, '3', qtgui_time_sink_x_0_2, '0']
 - [blocks_vector_to_streams_0_0, '0', qtgui_time_sink_x_0_0, '1']
 - [blocks_vector_to_streams_0_0, '1', qtgui_time_sink_x_0_1, '1']
 - [blocks_vector_to_streams_0_0, '2', qtgui_time_sink_x_0, '1']
+- [blocks_vector_to_streams_0_0, '3', qtgui_time_sink_x_0_2, '1']
 
 metadata:
   file_format: 1
