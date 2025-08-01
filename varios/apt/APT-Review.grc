@@ -61,7 +61,7 @@ blocks:
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/NOAA-19_Campus_20250617_093409-ARG-"'
+    value: '"/home/mdoallo/Descargas/NOAA-15_Campus_20250620_072730-ARG-"'
   states:
     bus_sink: false
     bus_source: false
