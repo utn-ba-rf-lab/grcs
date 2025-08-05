@@ -626,7 +626,6 @@ connections:
 - [blocks_multiply_const_vxx_0_0, '0', id_RF_Mag, '0']
 - [blocks_stream_to_vector_0_0, '0', blocks_max_xx_0_0, '0']
 - [blocks_stream_to_vector_0_0_0, '0', blocks_max_xx_0_0_0, '0']
-- [blocks_var_to_msg_0, msgout, blocks_message_debug_0, log]
 - [blocks_var_to_msg_0, msgout, blocks_message_debug_0, print]
 - [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
 - [rational_resampler_xxx_1, '0', blocks_stream_to_vector_0_0_0, '0']
