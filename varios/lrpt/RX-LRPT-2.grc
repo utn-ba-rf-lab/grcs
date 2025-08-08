@@ -51,7 +51,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: datetime.now().strftime("%Y%m%d_%H%M%S-ARG")
+    value: datetime.now().strftime("-%Y%m%d_%H%M%S-ARG")
   states:
     bus_sink: false
     bus_source: false
@@ -87,7 +87,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '256000'
+    value: '250000'
   states:
     bus_sink: false
     bus_source: false
@@ -194,7 +194,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1024, 1120.0]
+    coordinate: [592, 1164.0]
     rotation: 180
     state: enabled
 - name: blocks_head_0_0
@@ -212,7 +212,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 408.0]
+    coordinate: [584, 412.0]
     rotation: 0
     state: true
 - name: blocks_integrate_xx_0_1_0
@@ -221,7 +221,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '256'
+    decim: '250'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -257,7 +257,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '512'
+    decim: '500'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -303,7 +303,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 1048.0]
+    coordinate: [688, 1044.0]
     rotation: 0
     state: enabled
 - name: blocks_max_xx_0_0_0
@@ -322,8 +322,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1120, 1048.0]
-    rotation: 0
+    coordinate: [1056, 1172.0]
+    rotation: 180
     state: enabled
 - name: blocks_multiply_const_vxx_0
   id: blocks_multiply_const_vxx
@@ -331,7 +331,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: 1/(500*256)
+    const: 1/(500*250)
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -349,7 +349,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: 1/(500*512)
+    const: 1/(500*500)
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -375,7 +375,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 416.0]
+    coordinate: [872, 416.0]
     rotation: 0
     state: true
 - name: blocks_stream_to_vector_0_0
@@ -393,7 +393,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 1064.0]
+    coordinate: [504, 1056.0]
     rotation: 0
     state: enabled
 - name: blocks_stream_to_vector_0_0_0
@@ -411,7 +411,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 1064.0]
+    coordinate: [1112, 1056.0]
     rotation: 0
     state: enabled
 - name: blocks_wavfile_sink_1
@@ -445,7 +445,7 @@ blocks:
     label: ''
     short_id: ''
     type: str
-    value: '"METEOR-M2-4_Pass_"'
+    value: '"METEOR-M2-4_Pass"'
   states:
     bus_sink: false
     bus_source: false
@@ -537,7 +537,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 384.0]
+    coordinate: [336, 388.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_1
@@ -546,9 +546,9 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '125'
+    decim: '15625'
     fbw: '0'
-    interp: '128'
+    interp: '16384'
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: '[]'
@@ -557,7 +557,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 1032.0]
+    coordinate: [912, 1028.0]
     rotation: 0
     state: enabled
 - name: rfgain
@@ -587,7 +587,7 @@ blocks:
     bufflen: '16384'
     center_freq: freq
     comment: ''
-    dev_args: ''
+    dev_args: buflen=16384
     freq_correction: '0'
     gain: rfgain
     maxoutbuf: '0'
