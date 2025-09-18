@@ -231,6 +231,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -253,6 +254,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -371,7 +373,7 @@ blocks:
     bus_structure: null
     coordinate: [464, 284.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: osmosdr_sink_0
   id: osmosdr_sink
   parameters:
@@ -783,3 +785,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.9.2

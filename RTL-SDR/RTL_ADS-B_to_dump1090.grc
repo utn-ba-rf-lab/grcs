@@ -194,12 +194,9 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    bias: '0'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: '1'
-    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
@@ -212,12 +209,9 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    bias: '0'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    scale: '1'
-    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
@@ -485,7 +479,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 392.0]
+    coordinate: [616, 396.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
@@ -560,4 +554,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2

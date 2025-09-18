@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '300'
+    value: '1200'
   states:
     bus_sink: false
     bus_source: false
@@ -309,3 +309,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.9.2

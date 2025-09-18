@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/Meteor-M2-2_Campus_20250717_171847-ARG-"'
+    value: '"/home/mdoallo/Descargas/Meteor-M2-3_Campus_20250827_090838-ARG-"'
   states:
     bus_sink: false
     bus_source: false
@@ -756,4 +756,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2

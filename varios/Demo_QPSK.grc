@@ -523,7 +523,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [503, 12]
+    coordinate: [592, 12.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -569,3 +569,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.9.2

@@ -61,7 +61,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 60*4
+    value: 900*4
   states:
     bus_sink: false
     bus_source: false
@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/Prueba_en_Antena20250805_164856-ARG-"'
+    value: '"/home/mdoallo/Descargas/Meteor-M2-4_Campus_-20250830_160417-ARG-"'
   states:
     bus_sink: false
     bus_source: false
@@ -634,4 +634,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2

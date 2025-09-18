@@ -4,14 +4,14 @@ options:
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
-    comment: "Demo de funcionamiento de Quadrature Demod \ny su disgregaci\xF3n"
+    comment: ''
     copyright: ''
     description: ''
     gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: Quadrature_Demod_Test
+    id: Demo_QPSK_Tx
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,195 +22,97 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Quadrature Demodulator
+    title: 'Demo de QPSK  Tx '
     window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 8]
+    coordinate: [24, 12.0]
     rotation: 0
     state: enabled
 
 blocks:
-- name: frec
-  id: variable_qtgui_range
+- name: qpsk
+  id: variable_constellation
   parameters:
     comment: ''
-    gui_hint: 0,0,1,1
-    label: 'Frecuencia [HZ]:'
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '-10'
-    step: '1'
-    stop: '10'
-    value: '0'
-    widget: counter_slider
+    const_points: '[-1-1j, -1+1j, 1+1j, 1-1j]'
+    dims: '1'
+    normalization: digital.constellation.AMPLITUDE_NORMALIZATION
+    npwr: '1.0'
+    precision: '8'
+    rot_sym: '4'
+    soft_dec_lut: None
+    sym_map: '[0, 1, 3, 2]'
+    type: qpsk
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 12.0]
+    coordinate: [160, 124.0]
     rotation: 0
-    state: true
-- name: fsk_deviation_hz
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 0,1,1,1
-    label: 'Sensibiliad [1/Hz]:'
-    min_len: '200'
-    orient: QtCore.Qt.Horizontal
-    rangeType: float
-    start: '0'
-    step: '10'
-    stop: '100'
-    value: '10'
-    widget: counter
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [424, 12.0]
-    rotation: 0
-    state: true
+    state: enabled
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '32000'
+    value: '2000000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12]
+    coordinate: [184, 12.0]
     rotation: 0
     state: enabled
-- name: analog_quadrature_demod_cf_0
-  id: analog_quadrature_demod_cf
+- name: sps
+  id: variable
   parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    gain: samp_rate/(2*math.pi*fsk_deviation_hz)
-    maxoutbuf: '0'
-    minoutbuf: '0'
+    comment: Samples per symbol
+    value: '8'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 212.0]
+    coordinate: [280, 12.0]
     rotation: 0
-    state: true
-- name: analog_sig_source_x_0
-  id: analog_sig_source_x
+    state: enabled
+- name: analog_random_source_x_0
+  id: analog_random_source_x
   parameters:
     affinity: ''
     alias: ''
-    amp: '1'
     comment: ''
-    freq: frec
+    max: '4'
     maxoutbuf: '0'
+    min: '0'
     minoutbuf: '0'
-    offset: '0'
-    phase: '0'
-    samp_rate: samp_rate
-    showports: 'False'
-    type: complex
-    waveform: analog.GR_COS_WAVE
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [56, 172.0]
+    coordinate: [24, 284.0]
     rotation: 0
-    state: true
-- name: blocks_complex_to_arg_0
-  id: blocks_complex_to_arg
+    state: enabled
+- name: blocks_repeat_0
+  id: blocks_repeat
   parameters:
     affinity: ''
     alias: ''
     comment: ''
+    interp: sps
     maxoutbuf: '0'
     minoutbuf: '0'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [728, 344.0]
-    rotation: 0
-    state: true
-- name: blocks_conjugate_cc_0
-  id: blocks_conjugate_cc
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [392, 408.0]
-    rotation: 0
-    state: true
-- name: blocks_delay_0
-  id: blocks_delay
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    delay: '1'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_ports: '1'
-    showports: 'False'
     type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 392.0]
-    rotation: 0
-    state: true
-- name: blocks_multiply_const_vxx_0
-  id: blocks_multiply_const_vxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: samp_rate/(2*math.pi*fsk_deviation_hz)
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [888, 340.0]
-    rotation: 0
-    state: true
-- name: blocks_multiply_xx_0
-  id: blocks_multiply_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
-    type: complex
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [616, 328.0]
+    coordinate: [448, 308.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -229,9 +131,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 164.0]
+    coordinate: [680, 388.0]
     rotation: 0
     state: true
+- name: digital_constellation_encoder_bc_0
+  id: digital_constellation_encoder_bc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: qpsk
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 308.0]
+    rotation: 0
+    state: enabled
 - name: qtgui_const_sink_x_0
   id: qtgui_const_sink_x
   parameters:
@@ -252,7 +170,7 @@ blocks:
     color1: '"blue"'
     color10: '"red"'
     color2: '"red"'
-    color3: '"red"'
+    color3: '"green"'
     color4: '"red"'
     color5: '"red"'
     color6: '"red"'
@@ -261,11 +179,11 @@ blocks:
     color9: '"red"'
     comment: ''
     grid: 'True'
-    gui_hint: 1,0,3,1
-    label1: ''
+    gui_hint: tab@2:0,0,1,1
+    label1: QPSK Tx
     label10: ''
-    label2: ''
-    label3: ''
+    label2: Tx
+    label3: Rx
     label4: ''
     label5: ''
     label6: ''
@@ -285,8 +203,8 @@ blocks:
     marker9: '0'
     name: '""'
     nconnections: '1'
-    size: '1'
-    style1: '2'
+    size: '1024'
+    style1: '1'
     style10: '0'
     style2: '0'
     style3: '0'
@@ -302,8 +220,8 @@ blocks:
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
     type: complex
-    update_time: '0.025'
-    width1: '3'
+    update_time: '0.10'
+    width1: '1'
     width10: '1'
     width2: '1'
     width3: '1'
@@ -313,17 +231,98 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    xmax: '2'
-    xmin: '-2'
-    ymax: '2'
-    ymin: '-2'
+    xmax: '1.5'
+    xmin: '-1.5'
+    ymax: '1.5'
+    ymin: '-1.5'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 468.0]
+    coordinate: [680, 444.0]
     rotation: 0
-    state: true
+    state: enabled
+- name: qtgui_freq_sink_x_0
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    average: '0.05'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'True'
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: tab@1:0,0,1,1
+    label: Relative Gain
+    label1: QPSK Tx
+    label10: ''''''
+    label2: Tx
+    label3: Rx
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    norm_window: 'False'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: complex
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: window.WIN_BLACKMAN_hARRIS
+    ymax: '0'
+    ymin: '-80'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 292.0]
+    rotation: 0
+    state: enabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -339,11 +338,11 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
-    color2: red
+    color2: green
     color3: green
     color4: black
     color5: cyan
@@ -352,22 +351,22 @@ blocks:
     color8: dark red
     color9: dark green
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     entags: 'True'
     grid: 'False'
-    gui_hint: 1,1,3,1
-    label1: Quad Demod
+    gui_hint: tab@0:0,0,1,1
+    label1: QPSK Tx (Re)
     label10: Signal 10
-    label2: "Disgregaci\xF3n"
-    label3: Signal 3
-    label4: Signal 4
-    label5: Signal 5
-    label6: Signal 6
+    label2: QPSK Tx (Im)
+    label3: Tx (Re)
+    label4: Tx (Im)
+    label5: Rx (Re)
+    label6: Rx (Im)
     label7: Signal 7
     label8: Signal 8
     label9: Signal 9
     legend: 'True'
-    marker1: '-1'
+    marker1: '0'
     marker10: '-1'
     marker2: '-1'
     marker3: '-1'
@@ -378,11 +377,11 @@ blocks:
     marker8: '-1'
     marker9: '-1'
     name: '""'
-    nconnections: '2'
-    size: '1024'
+    nconnections: '1'
+    size: sps*10
     srate: samp_rate
     stemplot: 'False'
-    style1: '1'
+    style1: '2'
     style10: '1'
     style2: '1'
     style3: '1'
@@ -395,10 +394,10 @@ blocks:
     tr_chan: '0'
     tr_delay: '0'
     tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_mode: qtgui.TRIG_MODE_AUTO
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
-    type: float
+    type: complex
     update_time: '0.10'
     width1: '1'
     width10: '1'
@@ -411,56 +410,58 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '1'
-    ymin: '-1'
+    ymax: '2'
+    ymin: '-2'
     yunit: '""'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1176, 212.0]
+    coordinate: [680, 204.0]
     rotation: 0
-    state: true
-- name: virtual_sink_0
-  id: virtual_sink
+    state: enabled
+- name: tab
+  id: qtgui_tab_widget
   parameters:
     alias: ''
     comment: ''
-    stream_id: Modulada
+    gui_hint: 0,0,3,3
+    label0: Tiempo
+    label1: Espectro
+    label10: Tab 10
+    label11: Tab 11
+    label12: Tab 12
+    label13: Tab 13
+    label14: Tab 14
+    label15: Tab 15
+    label16: Tab 16
+    label17: Tab 17
+    label18: Tab 18
+    label19: Tab 19
+    label2: "Constelaci\xF3n"
+    label3: ''
+    label4: Tab 4
+    label5: Tab 5
+    label6: Tab 6
+    label7: Tab 7
+    label8: Tab 8
+    label9: Tab 9
+    num_tabs: '3'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 260.0]
-    rotation: 0
-    state: true
-- name: virtual_source_0
-  id: virtual_source
-  parameters:
-    alias: ''
-    comment: ''
-    stream_id: Modulada
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [56, 324.0]
+    coordinate: [24, 124.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_quadrature_demod_cf_0, '0', qtgui_time_sink_x_0, '0']
-- [analog_sig_source_x_0, '0', analog_quadrature_demod_cf_0, '0']
-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
-- [analog_sig_source_x_0, '0', virtual_sink_0, '0']
-- [blocks_complex_to_arg_0, '0', blocks_multiply_const_vxx_0, '0']
-- [blocks_conjugate_cc_0, '0', blocks_multiply_xx_0, '1']
-- [blocks_delay_0, '0', blocks_conjugate_cc_0, '0']
-- [blocks_multiply_const_vxx_0, '0', qtgui_time_sink_x_0, '1']
-- [blocks_multiply_xx_0, '0', blocks_complex_to_arg_0, '0']
-- [virtual_source_0, '0', blocks_delay_0, '0']
-- [virtual_source_0, '0', blocks_multiply_xx_0, '0']
-- [virtual_source_0, '0', qtgui_const_sink_x_0, '0']
+- [analog_random_source_x_0, '0', digital_constellation_encoder_bc_0, '0']
+- [blocks_repeat_0, '0', blocks_throttle_0, '0']
+- [blocks_repeat_0, '0', qtgui_const_sink_x_0, '0']
+- [blocks_repeat_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_repeat_0, '0', qtgui_time_sink_x_0, '0']
+- [digital_constellation_encoder_bc_0, '0', blocks_repeat_0, '0']
 
 metadata:
   file_format: 1
