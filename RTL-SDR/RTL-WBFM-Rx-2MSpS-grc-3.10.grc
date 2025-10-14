@@ -108,7 +108,7 @@ blocks:
     start: '86'
     step: '.1'
     stop: '108'
-    value: '93.3'
+    value: '102.3'
     widget: counter
   states:
     bus_sink: false
@@ -184,6 +184,42 @@ blocks:
     coordinate: [344, 200.0]
     rotation: 0
     state: true
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: /home/mdoallo/Descargas/fm.raw
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 692.0]
+    rotation: 0
+    state: enabled
+- name: blocks_head_0
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: samp_rate//8*60
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 708.0]
+    rotation: 0
+    state: enabled
 - name: blocks_integrate_xx_0
   id: blocks_integrate_xx
   parameters:
@@ -632,19 +668,48 @@ blocks:
     coordinate: [48, 320.0]
     rotation: 0
     state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 276.0]
+    rotation: 0
+    state: enabled
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 708.0]
+    rotation: 0
+    state: enabled
 
 connections:
 - [analog_fm_demod_cf_0, '0', low_pass_filter_1, '0']
 - [analog_fm_demod_cf_0, '0', qtgui_freq_sink_x_0_0_0, '0']
 - [blocks_complex_to_mag_0, '0', blocks_integrate_xx_0, '0']
+- [blocks_head_0, '0', blocks_file_sink_0, '0']
 - [blocks_integrate_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
 - [low_pass_filter_0, '0', analog_fm_demod_cf_0, '0']
 - [low_pass_filter_0, '0', qtgui_freq_sink_x_0_0, '0']
+- [low_pass_filter_0, '0', virtual_sink_0, '0']
 - [low_pass_filter_1, '0', blocks_multiply_const_vxx_0, '0']
 - [soapy_rtlsdr_source_0, '0', blocks_complex_to_mag_0, '0']
 - [soapy_rtlsdr_source_0, '0', low_pass_filter_0, '0']
 - [soapy_rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
+- [virtual_source_0, '0', blocks_head_0, '0']
 
 metadata:
   file_format: 1

@@ -158,6 +158,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
+    showports: 'False'
     type: float
     vlen: '1'
   states:
@@ -511,7 +512,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [312, 316.0]
+    coordinate: [320, 320.0]
     rotation: 0
     state: true
 
@@ -531,3 +532,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0

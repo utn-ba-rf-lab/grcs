@@ -408,7 +408,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [832, 516.0]
+    coordinate: [832, 504.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -569,4 +569,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.12.0
