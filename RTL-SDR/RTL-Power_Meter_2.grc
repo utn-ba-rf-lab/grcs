@@ -4,13 +4,12 @@ options:
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
-    comment: "Se invoca as\xED: \npython3 RTL_PM --freq=137.5e6  --rfgain=35  --timeout=900\n\
-      \nMeteor M2 N4 137,5 MHz"
+    comment: ''
     copyright: ''
     description: ''
     gen_cmake: 'On'
     gen_linking: dynamic
-    generate_options: no_gui
+    generate_options: qt_gui
     hier_block_src_path: '.:'
     id: RTL_PM
     max_nouts: '0'
@@ -34,87 +33,136 @@ options:
     state: enabled
 
 blocks:
-- name: Var_RF_Pow
-  id: variable_function_probe
+- name: FI_BWD
+  id: variable_qtgui_range
   parameters:
-    block_id: id_RF_Pow
-    comment: ''
-    function_args: ''
-    function_name: level
-    poll_rate: '.5'
-    value: '0'
+    comment: 0,1,1,1
+    gui_hint: 0,1,1,1
+    label: 'BWD [KHz]:'
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '5'
+    step: '1'
+    stop: '200'
+    value: '30'
+    widget: counter
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [936, 16.0]
+    coordinate: [440, 16.0]
     rotation: 0
     state: enabled
-- name: decim_1
-  id: variable
+- name: freq
+  id: variable_qtgui_entry
   parameters:
-    comment: ''
-    value: '2'
+    comment: 0,0,1,1
+    entry_signal: returnPressed
+    gui_hint: 0,0,1,1
+    label: 'Frec. [Hz]:'
+    type: real
+    value: 432.6e6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 16.0]
-    rotation: 0
-    state: enabled
-- name: decim_2
-  id: variable
-  parameters:
-    comment: ''
-    value: '4'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [840, 16.0]
+    coordinate: [264, 16.0]
     rotation: 0
     state: enabled
 - name: intSize
   id: variable
   parameters:
     comment: ''
-    value: samp_rate//10
+    value: '200000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 16.0]
+    coordinate: [160, 88.0]
     rotation: 0
     state: true
+- name: rfgain
+  id: variable_qtgui_range
+  parameters:
+    comment: 0,2,1,1
+    gui_hint: 0,2,1,1
+    label: 'RF Gain [dB]:'
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '50'
+    value: '0'
+    widget: counter
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 16.0]
+    rotation: 0
+    state: enabled
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '2000000'
+    value: 2e6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 16.0]
+    coordinate: [160, 16.0]
     rotation: 0
     state: enabled
-- name: FI_BWD
-  id: parameter
+- name: signalPowerLabel
+  id: variable_qtgui_label
   parameters:
-    alias: ''
-    comment: ''
-    hide: none
-    label: ''
-    short_id: ''
-    type: eng_float
-    value: '30000'
+    comment: 1,0,1,3
+    formatter: 'lambda x: f''{x:.1f}'''
+    gui_hint: 1,0,1,3
+    label: 'Signal Power (dBFS): '
+    type: real
+    value: variable_function_probe_signal
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 104.0]
+    coordinate: [696, 16.0]
+    rotation: 0
+    state: enabled
+- name: variable_function_probe_signal
+  id: variable_function_probe
+  parameters:
+    block_id: probeSignalPower
+    comment: ''
+    function_args: ''
+    function_name: level
+    poll_rate: '10'
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1088, 336.0]
     rotation: 0
     state: true
+- name: Power_0
+  id: Power
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    intSize: '200000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 176.0]
+    rotation: 0
+    state: disabled
 - name: blocks_complex_to_mag_squared_0
   id: blocks_complex_to_mag_squared
   parameters:
@@ -128,40 +176,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 344.0]
-    rotation: 0
-    state: enabled
-- name: blocks_head_0_0
-  id: blocks_head
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_items: int(samp_rate*timeout/(decim_1*decim_2))
-    type: complex
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [576, 208.0]
-    rotation: 0
-    state: true
-- name: blocks_message_debug_0
-  id: blocks_message_debug
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    en_uvec: 'True'
-    log_level: info
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [360, 456.0]
+    coordinate: [520, 288.0]
     rotation: 0
     state: enabled
 - name: blocks_moving_average_xx_0
@@ -183,7 +198,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 312.0]
+    coordinate: [712, 256.0]
     rotation: 0
     state: enabled
 - name: blocks_nlog10_ff_0
@@ -201,72 +216,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 336.0]
-    rotation: 0
-    state: true
-- name: blocks_null_sink_0
-  id: blocks_null_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    bus_structure_sink: '[[0,],]'
-    comment: ''
-    num_inputs: '1'
-    type: complex
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [880, 216.0]
-    rotation: 0
-    state: true
-- name: blocks_var_to_msg_0
-  id: blocks_var_to_msg
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    msgname: RF Power
-    target: round(Var_RF_Pow,1)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [24, 472.0]
-    rotation: 0
-    state: enabled
-- name: freq
-  id: parameter
-  parameters:
-    alias: ''
-    comment: ''
-    hide: none
-    label: ''
-    short_id: ''
-    type: eng_float
-    value: 137.9e6
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [448, 16.0]
-    rotation: 0
-    state: true
-- name: id_RF_Pow
-  id: blocks_probe_signal_x
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    type: float
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1032, 336.0]
+    coordinate: [920, 280.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -276,7 +226,7 @@ blocks:
     alias: ''
     beta: '6.76'
     comment: ''
-    cutoff_freq: FI_BWD/2
+    cutoff_freq: FI_BWD/2*1e3
     decim: '10'
     gain: '1'
     interp: '1'
@@ -290,44 +240,21 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [312, 296.0]
+    coordinate: [288, 240.0]
     rotation: 0
     state: enabled
-- name: rational_resampler_xxx_0
-  id: rational_resampler_xxx
+- name: probeSignalPower
+  id: blocks_probe_signal_x
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    decim: decim_1*decim_2
-    fbw: '0'
-    interp: '1'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    taps: '[]'
-    type: ccc
+    type: float
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [312, 184.0]
-    rotation: 0
-    state: true
-- name: rfgain
-  id: parameter
-  parameters:
-    alias: ''
-    comment: ''
-    hide: none
-    label: ''
-    short_id: ''
-    type: eng_float
-    value: '45'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [584, 16.0]
+    coordinate: [1088, 280.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
@@ -351,37 +278,18 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [48, 272.0]
-    rotation: 0
-    state: true
-- name: timeout
-  id: parameter
-  parameters:
-    alias: ''
-    comment: ''
-    hide: none
-    label: ''
-    short_id: ''
-    type: eng_float
-    value: '60'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [664, 16.0]
+    coordinate: [56, 272.0]
     rotation: 0
     state: true
 
 connections:
+- [Power_0, '0', probeSignalPower, '0']
 - [blocks_complex_to_mag_squared_0, '0', blocks_moving_average_xx_0, '0']
-- [blocks_head_0_0, '0', blocks_null_sink_0, '0']
 - [blocks_moving_average_xx_0, '0', blocks_nlog10_ff_0, '0']
-- [blocks_nlog10_ff_0, '0', id_RF_Pow, '0']
-- [blocks_var_to_msg_0, msgout, blocks_message_debug_0, print]
+- [blocks_nlog10_ff_0, '0', probeSignalPower, '0']
+- [low_pass_filter_0, '0', Power_0, '0']
 - [low_pass_filter_0, '0', blocks_complex_to_mag_squared_0, '0']
-- [rational_resampler_xxx_0, '0', blocks_head_0_0, '0']
 - [soapy_rtlsdr_source_0, '0', low_pass_filter_0, '0']
-- [soapy_rtlsdr_source_0, '0', rational_resampler_xxx_0, '0']
 
 metadata:
   file_format: 1
