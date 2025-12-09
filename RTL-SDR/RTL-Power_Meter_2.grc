@@ -162,7 +162,7 @@ blocks:
     bus_structure: null
     coordinate: [704, 176.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_complex_to_mag_squared_0
   id: blocks_complex_to_mag_squared
   parameters:
@@ -178,7 +178,7 @@ blocks:
     bus_structure: null
     coordinate: [520, 288.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_moving_average_xx_0
   id: blocks_moving_average_xx
   parameters:
@@ -200,7 +200,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 256.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_nlog10_ff_0
   id: blocks_nlog10_ff
   parameters:
@@ -218,7 +218,7 @@ blocks:
     bus_structure: null
     coordinate: [920, 280.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:

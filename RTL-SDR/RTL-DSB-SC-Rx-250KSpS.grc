@@ -37,7 +37,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: 0,2,1,1
-    gui_hint: 0,2,1,1
+    gui_hint: 0,1,1,1
     label: Freq [MHz]
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -51,14 +51,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 16.0]
+    coordinate: [432, 16.0]
+    rotation: 0
+    state: true
+- name: intSize
+  id: variable
+  parameters:
+    comment: ''
+    value: samp_rate//10
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [168, 96.0]
     rotation: 0
     state: true
 - name: rfgain
   id: variable_qtgui_range
   parameters:
-    comment: 0,0,1,2
-    gui_hint: 0,0,1,2
+    comment: 0,0,1,1
+    gui_hint: 0,0,1,1
     label: 'RF Gain:'
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -72,7 +84,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 16.0]
+    coordinate: [320, 16.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -91,7 +103,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: 0,3,1,1
-    gui_hint: 0,3,1,1
+    gui_hint: 0,2,1,1
     label: 'Vol:'
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -105,7 +117,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 16.0]
+    coordinate: [552, 16.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -122,7 +134,23 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1136, 328.0]
+    coordinate: [960, 328.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_mag_0
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [432, 432.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_real_0
@@ -141,6 +169,25 @@ blocks:
     coordinate: [616, 336.0]
     rotation: 0
     state: enabled
+- name: blocks_max_xx_0
+  id: blocks_max_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    type: float
+    vlen: intSize
+    vlen_out: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [768, 416.0]
+    rotation: 0
+    state: enabled
 - name: blocks_multiply_const_vxx_0
   id: blocks_multiply_const_vxx
   parameters:
@@ -157,6 +204,24 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [776, 328.0]
+    rotation: 0
+    state: enabled
+- name: blocks_stream_to_vector_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: intSize
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 432.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -345,6 +410,69 @@ blocks:
     coordinate: [824, 192.0]
     rotation: 0
     state: enabled
+- name: qtgui_number_sink
+  id: qtgui_number_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    autoscale: 'False'
+    avg: '0'
+    color1: ("black", "red")
+    color10: ("black", "black")
+    color2: ("black", "black")
+    color3: ("black", "black")
+    color4: ("black", "black")
+    color5: ("black", "black")
+    color6: ("black", "black")
+    color7: ("black", "black")
+    color8: ("black", "black")
+    color9: ("black", "black")
+    comment: 0,3,1,1
+    factor1: '1'
+    factor10: '1'
+    factor2: '1'
+    factor3: '1'
+    factor4: '1'
+    factor5: '1'
+    factor6: '1'
+    factor7: '1'
+    factor8: '1'
+    factor9: '1'
+    graph_type: qtgui.NUM_GRAPH_HORIZ
+    gui_hint: 0,3,1,1
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    max: '1'
+    min: '0'
+    name: '""'
+    nconnections: '1'
+    type: float
+    unit1: ''
+    unit10: ''
+    unit2: ''
+    unit3: ''
+    unit4: ''
+    unit5: ''
+    unit6: ''
+    unit7: ''
+    unit8: ''
+    unit9: ''
+    update_time: '0.10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1008, 400.0]
+    rotation: 0
+    state: enabled
 - name: qtgui_tab
   id: qtgui_tab_widget
   parameters:
@@ -376,29 +504,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 16.0]
+    coordinate: [944, 16.0]
     rotation: 0
     state: enabled
-- name: rational_resampler_xxx_0
-  id: rational_resampler_xxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    decim: '25'
-    fbw: '0'
-    interp: '24'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    taps: '[]'
-    type: fff
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [944, 304.0]
-    rotation: 0
-    state: bypassed
 - name: rtlsdr_source_0
   id: rtlsdr_source
   parameters:
@@ -756,41 +864,18 @@ blocks:
     coordinate: [64, 244.0]
     rotation: 0
     state: enabled
-- name: soapy_rtlsdr_source_0
-  id: soapy_rtlsdr_source
-  parameters:
-    affinity: ''
-    agc: 'False'
-    alias: ''
-    bias: 'False'
-    bufflen: '16384'
-    center_freq: Freq*1e6
-    comment: ''
-    dev_args: ''
-    freq_correction: '0'
-    gain: rfgain
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    samp_rate: samp_rate
-    type: fc32
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [64, 160.0]
-    rotation: 0
-    state: disabled
 
 connections:
+- [blocks_complex_to_mag_0, '0', blocks_stream_to_vector_0, '0']
 - [blocks_complex_to_real_0, '0', blocks_multiply_const_vxx_0, '0']
 - [blocks_complex_to_real_0, '0', qtgui_freq_sink_x_0_0, '0']
-- [blocks_multiply_const_vxx_0, '0', rational_resampler_xxx_0, '0']
+- [blocks_max_xx_0, '0', qtgui_number_sink, '0']
+- [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
+- [blocks_stream_to_vector_0, '0', blocks_max_xx_0, '0']
 - [low_pass_filter_0, '0', blocks_complex_to_real_0, '0']
-- [rational_resampler_xxx_0, '0', audio_sink_0, '0']
+- [rtlsdr_source_0, '0', blocks_complex_to_mag_0, '0']
 - [rtlsdr_source_0, '0', low_pass_filter_0, '0']
 - [rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
-- [soapy_rtlsdr_source_0, '0', low_pass_filter_0, '0']
-- [soapy_rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
 
 metadata:
   file_format: 1
