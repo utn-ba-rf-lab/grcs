@@ -47,6 +47,18 @@ blocks:
     coordinate: [496, 16.0]
     rotation: 0
     state: enabled
+- name: bias
+  id: variable
+  parameters:
+    comment: ''
+    value: (Bias_Tee_Power == 1)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1088, 320.0]
+    rotation: 0
+    state: enabled
 - name: date
   id: variable
   parameters:
