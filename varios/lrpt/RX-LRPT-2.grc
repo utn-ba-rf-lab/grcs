@@ -5,8 +5,8 @@ options:
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: "Se invoca as\xED: \npython3 rx_lrpt2.py --freq=137.5e6 --path=\"/home/mdoallo/\"\
-      \ --rfgain=35  --file-name=\"METEOR-M2-4_Casa_\" --timeout=900\n\nMeteor M2\
-      \ N4 137,5 MHz\n\nEn rf-lab2 ejecutar \"grcc RX-LRPT.grc\""
+      \ --rfgain=35  --file-name=\"METEOR-M2-4_Casa_\" --timeout=900 --Bias-Tee-Power=0\n\
+      \nMeteor M2 N4 137,5 MHz\n\nEn rf-lab2 ejecutar \"grcc RX-LRPT-2.grc\""
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -44,7 +44,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [560, 16.0]
+    coordinate: [496, 16.0]
     rotation: 0
     state: enabled
 - name: date
@@ -56,7 +56,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [792, 204.0]
+    coordinate: [800, 248.0]
     rotation: 0
     state: true
 - name: decim_1
@@ -68,7 +68,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 16.0]
+    coordinate: [1088, 248.0]
     rotation: 0
     state: enabled
 - name: decim_2
@@ -80,7 +80,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [824, 16.0]
+    coordinate: [1088, 176.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -95,6 +95,23 @@ blocks:
     coordinate: [192, 16.0]
     rotation: 0
     state: enabled
+- name: Bias_Tee_Power
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: intx
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 16.0]
+    rotation: 0
+    state: true
 - name: blocks_complex_to_float_0
   id: blocks_complex_to_float
   parameters:
@@ -450,7 +467,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [792, 120.0]
+    coordinate: [792, 16.0]
     rotation: 0
     state: true
 - name: freq
@@ -467,7 +484,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 16.0]
+    coordinate: [280, 16.0]
     rotation: 0
     state: true
 - name: freq_xlating_fir_filter_xxx_0_0
@@ -500,7 +517,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [904, 16.0]
+    coordinate: [792, 120.0]
     rotation: 0
     state: true
 - name: path
@@ -517,7 +534,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 120.0]
+    coordinate: [1040, 16.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -574,7 +591,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 16.0]
+    coordinate: [416, 16.0]
     rotation: 0
     state: true
 - name: soapy_rtlsdr_source_0
@@ -583,11 +600,11 @@ blocks:
     affinity: ''
     agc: 'False'
     alias: ''
-    bias: 'False'
+    bias: Bias_Tee_Power == 1
     bufflen: '16384'
     center_freq: freq
     comment: ''
-    dev_args: buflen=16384
+    dev_args: ''
     freq_correction: '0'
     gain: rfgain
     maxoutbuf: '0'
@@ -615,7 +632,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [664, 16.0]
+    coordinate: [600, 16.0]
     rotation: 0
     state: true
 - name: virtual_sink_0_0_0
@@ -713,4 +730,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.12.0
