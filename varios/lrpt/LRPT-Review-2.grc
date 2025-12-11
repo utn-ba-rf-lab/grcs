@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: Path + Filename + "-"
-    value: '"/home/mdoallo/Descargas/Meteor-M2-4_Campus_-20250830_160417-ARG-"'
+    value: '"/home/mdoallo/Descargas/Meteor-M2-4_Campus_-20251211_154105-ARG-"'
   states:
     bus_sink: false
     bus_source: false

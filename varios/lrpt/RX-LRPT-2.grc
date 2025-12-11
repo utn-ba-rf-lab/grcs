@@ -5,8 +5,8 @@ options:
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: "Se invoca as\xED: \npython3 rx_lrpt2.py --freq=137.5e6 --path=\"/home/mdoallo/\"\
-      \ --rfgain=35  --file-name=\"METEOR-M2-4_Casa_\" --timeout=900 --Bias-Tee-Power=0\n\
-      \nMeteor M2 N4 137,5 MHz\n\nEn rf-lab2 ejecutar \"grcc RX-LRPT-2.grc\""
+      \ --rfgain=35  --file-name=\"METEOR-M2-4_Casa_\" --timeout=900 --Bias-Tee-Power=0\
+      \ --FI-BWD=80000\n\nMeteor M2 N4 137,5 MHz\n\nEn rf-lab2 ejecutar \"grcc RX-LRPT-2.grc\""
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -35,18 +35,6 @@ options:
     state: enabled
 
 blocks:
-- name: FI_BWD
-  id: variable
-  parameters:
-    comment: ''
-    value: 80e3
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [496, 16.0]
-    rotation: 0
-    state: enabled
 - name: bias
   id: variable
   parameters:
@@ -122,6 +110,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [680, 16.0]
+    rotation: 0
+    state: true
+- name: FI_BWD
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: eng_float
+    value: '80000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [488, 20.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_float_0
@@ -742,4 +747,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.12.0
+  grc_version: 3.10.9.2

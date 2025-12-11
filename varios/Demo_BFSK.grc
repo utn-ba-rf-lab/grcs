@@ -221,7 +221,7 @@ blocks:
     color9: '"dark green"'
     comment: ''
     ctrlpanel: 'True'
-    fc: '0'
+    fc: 1e6
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'False'
