@@ -4,8 +4,8 @@ options:
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
-    comment: "Se invoca as\xED: \npython3 RTL_PM --freq=137.5e6  --rfgain=35  --timeout=900\n\
-      \nMeteor M2 N4 137,5 MHz"
+    comment: "Se invoca as\xED: \npython3 RTL_PM --freq=137.5e6  --rfgain=35  --timeout=900\
+      \ --Bias-Tee-Power=0\n\nMeteor M2 N4 137,5 MHz"
     copyright: ''
     description: ''
     gen_cmake: 'On'
@@ -98,6 +98,23 @@ blocks:
     coordinate: [192, 16.0]
     rotation: 0
     state: enabled
+- name: Bias_Tee_Power
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: intx
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [664, 104.0]
+    rotation: 0
+    state: true
 - name: FI_BWD
   id: parameter
   parameters:
@@ -252,7 +269,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 16.0]
+    coordinate: [432, 16.0]
     rotation: 0
     state: true
 - name: id_RF_Pow
@@ -336,7 +353,7 @@ blocks:
     affinity: ''
     agc: 'False'
     alias: ''
-    bias: 'False'
+    bias: Bias_Tee_Power == 1
     bufflen: '16384'
     center_freq: freq
     comment: ''
