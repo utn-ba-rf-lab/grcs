@@ -100,13 +100,14 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 188.0]
+    coordinate: [32, 184.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -123,7 +124,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 268.0]
+    coordinate: [600, 224.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0
@@ -141,7 +142,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [248, 228.0]
+    coordinate: [320, 224.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -238,7 +239,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 172.0]
+    coordinate: [600, 128.0]
     rotation: 0
     state: true
 
@@ -249,3 +250,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0
