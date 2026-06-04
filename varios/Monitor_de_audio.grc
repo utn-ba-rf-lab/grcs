@@ -53,7 +53,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [440, 16.0]
+    coordinate: [528, 8.0]
     rotation: 0
     state: true
 - name: date
@@ -101,7 +101,36 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12]
+    coordinate: [160, 8.0]
+    rotation: 0
+    state: enabled
+- name: size
+  id: variable
+  parameters:
+    comment: ''
+    value: samp_rate//2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [248, 8.0]
+    rotation: 0
+    state: enabled
+- name: audio_sink_0
+  id: audio_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: ''
+    num_inputs: '1'
+    ok_to_block: 'True'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 600.0]
     rotation: 0
     state: enabled
 - name: audio_source_0
@@ -150,13 +179,31 @@ blocks:
     minoutbuf: '0'
     num_inputs: '1'
     type: float
-    vlen: '16384'
+    vlen: size
     vlen_out: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [624, 400.0]
+    coordinate: [560, 400.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 600.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -176,6 +223,24 @@ blocks:
     coordinate: [520, 488.0]
     rotation: 0
     state: true
+- name: blocks_repeat_0
+  id: blocks_repeat
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    interp: size
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [808, 408.0]
+    rotation: 0
+    state: enabled
 - name: blocks_rms_xx_0
   id: blocks_rms_xx
   parameters:
@@ -224,14 +289,14 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_items: '16384'
+    num_items: size
     type: float
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 416.0]
+    coordinate: [392, 416.0]
     rotation: 0
     state: enabled
 - name: blocks_wavfile_sink_0
@@ -369,7 +434,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [672, 56.0]
+    coordinate: [752, 48.0]
     rotation: 0
     state: true
 - name: qtgui_number_sink_0
@@ -442,7 +507,7 @@ blocks:
     alias: ''
     autoscale: 'False'
     avg: '1'
-    color1: ("black", "white")
+    color1: ("blue", "red")
     color10: ("black", "black")
     color2: ("black", "black")
     color3: ("black", "black")
@@ -495,7 +560,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [936, 384.0]
+    coordinate: [1024, 384.0]
     rotation: 0
     state: enabled
 - name: qtgui_tab
@@ -529,7 +594,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 12.0]
+    coordinate: [400, 8.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -633,12 +698,15 @@ blocks:
 connections:
 - [Graba, state, qtgui_ledindicator_0, state]
 - [audio_source_0, '0', blocks_abs_xx_0_0, '0']
+- [audio_source_0, '0', blocks_multiply_const_vxx_0, '0']
 - [audio_source_0, '0', blocks_rms_xx_0, '0']
 - [audio_source_0, '0', blocks_selector_0, '0']
 - [audio_source_0, '0', qtgui_freq_sink_x_0, '0']
 - [audio_source_0, '0', qtgui_time_sink_x_0, '0']
 - [blocks_abs_xx_0_0, '0', blocks_stream_to_vector_0, '0']
-- [blocks_max_xx_0, '0', qtgui_number_sink_0_0, '0']
+- [blocks_max_xx_0, '0', blocks_repeat_0, '0']
+- [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
+- [blocks_repeat_0, '0', qtgui_number_sink_0_0, '0']
 - [blocks_rms_xx_0, '0', qtgui_number_sink_0, '0']
 - [blocks_selector_0, '0', blocks_null_sink_0, '0']
 - [blocks_selector_0, '1', blocks_wavfile_sink_0, '0']
