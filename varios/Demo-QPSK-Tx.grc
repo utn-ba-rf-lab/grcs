@@ -50,7 +50,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [160, 124.0]
+    coordinate: [160, 136.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -115,13 +115,15 @@ blocks:
     coordinate: [448, 308.0]
     rotation: 0
     state: true
-- name: blocks_throttle_0
-  id: blocks_throttle
+- name: blocks_throttle2_0
+  id: blocks_throttle2
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
@@ -131,9 +133,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 388.0]
+    coordinate: [680, 384.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: digital_constellation_encoder_bc_0
   id: digital_constellation_encoder_bc
   parameters:
@@ -239,7 +241,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 444.0]
+    coordinate: [680, 464.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -451,13 +453,13 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 124.0]
+    coordinate: [24, 136.0]
     rotation: 0
     state: true
 
 connections:
 - [analog_random_source_x_0, '0', digital_constellation_encoder_bc_0, '0']
-- [blocks_repeat_0, '0', blocks_throttle_0, '0']
+- [blocks_repeat_0, '0', blocks_throttle2_0, '0']
 - [blocks_repeat_0, '0', qtgui_const_sink_x_0, '0']
 - [blocks_repeat_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_repeat_0, '0', qtgui_time_sink_x_0, '0']
@@ -465,4 +467,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.12.0

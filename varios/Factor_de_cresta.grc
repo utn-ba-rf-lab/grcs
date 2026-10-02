@@ -70,7 +70,7 @@ blocks:
     start: '0'
     step: '0.1'
     stop: '1'
-    value: '0.25'
+    value: '0.5'
     widget: counter_slider
   states:
     bus_sink: false
@@ -95,7 +95,7 @@ blocks:
     bus_structure: null
     coordinate: [488, 368.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_divide_xx_0
   id: blocks_divide_xx
   parameters:
@@ -294,6 +294,25 @@ blocks:
     coordinate: [8, 192.0]
     rotation: 0
     state: enabled
+- name: eas_eas_0
+  id: eas_eas
+  parameters:
+    affinity: ''
+    alias: ''
+    board: 'True'
+    comment: ''
+    device: '"/dev/ttyUSB1"'
+    input_type: float
+    mode: data
+    samp_rate: '48000'
+    vref: '4.096'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 496.0]
+    rotation: 0
+    state: enabled
 - name: qtgui_number_sink_0
   id: qtgui_number_sink
   parameters:
@@ -483,6 +502,26 @@ blocks:
     coordinate: [1088, 376.0]
     rotation: 0
     state: enabled
+- name: rational_resampler_xxx_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '441'
+    fbw: '0'
+    interp: '480'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 512.0]
+    rotation: 0
+    state: enabled
 - name: virtual_sink_0
   id: virtual_sink
   parameters:
@@ -516,6 +555,7 @@ connections:
 - [blocks_max_xx_0, '0', blocks_repeat_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_transcendental_0, '0']
 - [blocks_multiply_const_vxx_0_0, '0', audio_sink_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', rational_resampler_xxx_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_integrate_xx_0, '0']
 - [blocks_repeat_0, '0', blocks_divide_xx_0, '0']
 - [blocks_repeat_0, '0', qtgui_number_sink_0_0, '0']
@@ -527,6 +567,7 @@ connections:
 - [blocks_wavfile_source_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_wavfile_source_0, '0', blocks_multiply_xx_0, '1']
 - [blocks_wavfile_source_0, '0', blocks_stream_to_vector_0, '0']
+- [rational_resampler_xxx_0, '0', eas_eas_0, '0']
 - [virtual_source_0, '0', blocks_divide_xx_0, '1']
 
 metadata:

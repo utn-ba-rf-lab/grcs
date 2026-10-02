@@ -132,7 +132,7 @@ blocks:
     bus_structure: null
     coordinate: [464, 600.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: audio_source_0
   id: audio_source
   parameters:
@@ -205,7 +205,7 @@ blocks:
     bus_structure: null
     coordinate: [296, 600.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_null_sink_0
   id: blocks_null_sink
   parameters:
@@ -222,7 +222,7 @@ blocks:
     bus_structure: null
     coordinate: [520, 488.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_repeat_0
   id: blocks_repeat
   parameters:
@@ -280,7 +280,7 @@ blocks:
     bus_structure: null
     coordinate: [296, 464.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_stream_to_vector_0
   id: blocks_stream_to_vector
   parameters:
@@ -320,7 +320,7 @@ blocks:
     bus_structure: null
     coordinate: [624, 480.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: import_0
   id: import
   parameters:
