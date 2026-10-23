@@ -402,7 +402,7 @@ blocks:
     ntaps: taps
     samp_rate: samp_rate
     sym_rate: bit_rate
-    type: interp_fir_filter_fff
+    type: fir_filter_fff
   states:
     bus_sink: false
     bus_source: false

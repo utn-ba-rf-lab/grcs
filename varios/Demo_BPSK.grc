@@ -165,7 +165,27 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 320.0]
+    coordinate: [512, 272.0]
+    rotation: 0
+    state: true
+- name: blocks_delay_0_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '20'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [512, 336.0]
     rotation: 0
     state: true
 - name: blocks_repeat_0
@@ -256,7 +276,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     name: '""'
-    nconnections: '2'
+    nconnections: '3'
     norm_window: 'False'
     showports: 'False'
     tr_chan: '0'
@@ -283,7 +303,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 444.0]
+    coordinate: [912, 432.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -340,7 +360,7 @@ blocks:
     marker8: '-1'
     marker9: '-1'
     name: '""'
-    nconnections: '2'
+    nconnections: '3'
     size: sample_per_bit*20
     srate: samp_rate
     stemplot: 'False'
@@ -380,7 +400,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 332.0]
+    coordinate: [704, 272.0]
     rotation: 0
     state: enabled
 - name: root_raised_cosine_filter_0
@@ -403,7 +423,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 436.0]
+    coordinate: [192, 448.0]
     rotation: 0
     state: true
 - name: root_raised_cosine_filter_0_0
@@ -426,7 +446,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 436.0]
+    coordinate: [456, 448.0]
     rotation: 0
     state: true
 - name: tab
@@ -476,6 +496,19 @@ blocks:
     coordinate: [808, 140.0]
     rotation: 0
     state: true
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: Tx
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [456, 584.0]
+    rotation: 0
+    state: true
 - name: virtual_source_0
   id: virtual_source
   parameters:
@@ -486,7 +519,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 476.0]
+    coordinate: [24, 488.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0
@@ -499,7 +532,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 444.0]
+    coordinate: [696, 384.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0_0
@@ -512,7 +545,20 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [320, 320.0]
+    coordinate: [344, 272.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: Tx
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [696, 440.0]
     rotation: 0
     state: true
 
@@ -521,14 +567,18 @@ connections:
 - [blocks_add_const_vxx_0, '0', blocks_repeat_0, '0']
 - [blocks_char_to_float_0, '0', blocks_add_const_vxx_0, '0']
 - [blocks_delay_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_delay_0_0, '0', qtgui_time_sink_x_0, '1']
 - [blocks_repeat_0, '0', blocks_throttle_0, '0']
 - [blocks_repeat_0, '0', virtual_sink_0, '0']
+- [root_raised_cosine_filter_0, '0', blocks_delay_0_0, '0']
 - [root_raised_cosine_filter_0, '0', root_raised_cosine_filter_0_0, '0']
-- [root_raised_cosine_filter_0_0, '0', qtgui_freq_sink_x_0, '1']
-- [root_raised_cosine_filter_0_0, '0', qtgui_time_sink_x_0, '1']
+- [root_raised_cosine_filter_0, '0', virtual_sink_0_0, '0']
+- [root_raised_cosine_filter_0_0, '0', qtgui_freq_sink_x_0, '2']
+- [root_raised_cosine_filter_0_0, '0', qtgui_time_sink_x_0, '2']
 - [virtual_source_0, '0', root_raised_cosine_filter_0, '0']
 - [virtual_source_0_0, '0', qtgui_freq_sink_x_0, '0']
 - [virtual_source_0_0_0, '0', blocks_delay_0, '0']
+- [virtual_source_0_0_1, '0', qtgui_freq_sink_x_0, '1']
 
 metadata:
   file_format: 1
